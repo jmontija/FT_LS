@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:19:30 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/06 01:54:08 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/06 07:31:22 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	delete_dir(t_group *grp)
 	{
 		if (file->name)
 			REMOVE(&file->name);
-		ft_memdel((void *)file);
+		//ft_memdel((void *)file);
 		file = file->next;
 	}
 	grp->first_dir = NULL;
@@ -37,7 +37,6 @@ t_dir	*init_dir(char *name)
 		exit(0);
 	file->name = SDUP(name);
 	file->isopt = false;
-	file->print = false;
 	file->next = NULL;
 	return (file);
 }
@@ -125,20 +124,6 @@ void	organize_file(int isfile, t_group *grp, char *name)
 	grp->curr_dir = new;
 }
 
-
-
-void	insert(t_group *grp, char *name)
-{
-	t_dir	*new;
-
-	new = init_dir(name);
-	if (grp->curr_dir != NULL)
-		grp->curr_dir->next = new;
-	else
-		grp->first_dir = new;
-	grp->curr_dir = new;
-}
-
 t_group	*init_grp(void)
 {
 	t_group *grp;
@@ -149,9 +134,9 @@ t_group	*init_grp(void)
 	grp->first_dir = NULL;
 	grp->curr_dir = NULL;
 	grp->dir_organize = NULL;
-	grp->sub_dir_organize = NULL;
-	grp->options = NULL;
-	grp->is_R = false;
 	grp->diropen = 0;
+	grp->options = (int *)malloc(sizeof(int) * 10);
+	grp->root = (char **)malloc(sizeof(char *) * 1);
+	grp->root[0] = SDUP(".");
 	return (grp);
 }

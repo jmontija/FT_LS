@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:31:53 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/06 01:54:06 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/06 07:30:03 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,24 @@ void	is_error(char *who, char *what)
 	return ;
 }
 
+void	adjust_opt(t_group *grp, char opt)
+{
+	opt == 'R' ? grp->options[R] = true : 0;
+	opt == 't' ? grp->options[t] = true : 0;
+	opt == 'r' ? grp->options[r] = true : 0;
+	opt == 'l' ? grp->options[l] = true : 0;
+	opt == 'a' ? grp->options[a] = true : 0;
+}
+
 int		isvalid_opt(t_group *grp, char opt)
 {
 	int i = -1;
 	char *text;
+	char *ls_options;
 
-	char *ls_options = SDUP("alrRt");
+	adjust_opt(grp, opt);
+	ls_options = SDUP("alrRt");
 	text = NEW(2); text[0] = '-'; text[1] = opt; text[2] = '\0';
-	if (opt == 'R')
-		grp->is_R = true;
 	while (++i < LEN(ls_options))
 		if (opt == ls_options[i])
 			return (1);
@@ -43,16 +52,9 @@ int		manage_opt(t_group *grp, char *opt)
 	int i;
 
 	i = 0;
-	if (grp->options == NULL)
-		grp->options = SDUP("");
-	g_opt = grp->options;
 	while(++i < LEN(opt))
 		if (!isvalid_opt(grp, opt[i]))
 			return (false);
-	char *letters = SUB(opt, 1, LEN(opt));
-	grp->options = JOIN(grp->options, letters);
-	REMOVE(&letters);
-	REMOVE(&g_opt);
 	return (true);
 }
 
