@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 06:13:10 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/06 07:31:47 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/06 10:39:50 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <dirent.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <pwd.h>
+# include <grp.h>
+# include <time.h>
 # include "libft.h"
 
 # define NEW(x)			(ft_strnew(x))
@@ -35,6 +38,13 @@ typedef int			t_bool;
 typedef struct		s_dir
 {
 	char			*name;
+	char			*last_stat;
+	char			*last_access;
+	char			*last_modif;
+	char			*uid;
+	char			*gid;
+	int 			slink;
+	int				size;
 	t_bool			isopt;
 	struct s_dir	*next;
 }					t_dir;
@@ -52,7 +62,7 @@ typedef struct		s_group
 t_group		*init_grp(void);
 void		is_error(char *who, char *what);
 void		organize_dir(int filter, t_group *grp, char *name);
-void		organize_file(int filter, t_group *grp, char *name);
+void		organize_file(t_group *grp, struct dirent *file, struct stat buf);
 void		delete_dir(t_group *grp);
 int			manage_opt(t_group *grp, char *opt);
 int			isvalid_opt(t_group *grp, char opt);

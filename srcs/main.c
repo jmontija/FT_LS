@@ -6,13 +6,12 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 23:36:54 by julio             #+#    #+#             */
-/*   Updated: 2016/02/06 07:50:05 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/06 10:10:48 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // ATTENTION : wrapper.app et authserver sont verrouiller a checker lors de louverture:
 // 	sur ces cas ls fait comme si il avait les droits et affiche un fichier vide
-//
 
 #include "ft_ls.h"
 
@@ -48,12 +47,16 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 
 void	file_organizer(t_group *grp, t_dir *curr_arg)
 {
-	DIR		*directory;
+	DIR				*directory;
 	struct dirent	*file;
+	struct stat		buf;
 
 	directory = opendir(curr_arg->name);
 	while ((file = readdir(directory)))
-		organize_file(0, grp, file->d_name);
+	{
+		stat(file->d_name, &buf);
+		organize_file(grp, file, buf);
+	}
 	closedir(directory);
 	launcher(grp, curr_arg->name);
 	delete_dir(grp);
@@ -113,7 +116,7 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 		}
 		else
 		{
-			printf("option_set: %s\n", curr_arg->name);
+			//printf("option_set: %s\n", curr_arg->name);
 		}
 		curr_arg = curr_arg->next;
 	}

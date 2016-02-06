@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:19:30 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/06 07:31:22 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/06 11:04:44 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ void	delete_dir(t_group *grp)
 
 t_dir	*init_dir(char *name)
 {
-	t_dir *file;
+	t_dir *new;
 
-	file = (t_dir *)malloc(sizeof(t_dir));
-	if (!(file))
+	new = (t_dir *)malloc(sizeof(t_dir));
+	if (!(new))
 		exit(0);
-	file->name = SDUP(name);
-	file->isopt = false;
-	file->next = NULL;
-	return (file);
+	new->name = SDUP(name);
+	new->isopt = false;
+	new->next = NULL;
+	return (new);
 }
 
 void	organize_dir(int isopt, t_group *grp, char *name)
@@ -82,14 +82,46 @@ void	organize_dir(int isopt, t_group *grp, char *name)
 	grp->curr_dir = new;
 }
 
-void	organize_file(int isfile, t_group *grp, char *name)
+char	*manage_time(char *data)
+{
+	int i = -1;
+	while (++i < LEN(data))
+	{
+		if (data[i] == '\n')
+			data[i] = '\0';
+	}
+	data[i] = '\0';
+	data = ft_strchr(data, ' ');
+	return (SDUP(data));
+}
+
+t_dir	*init_file(struct dirent *file, struct stat buf)
+{
+	t_dir *new;
+
+	new = (t_dir *)malloc(sizeof(t_dir));
+	if (!(new))
+		exit(0);
+	new->name = SDUP(file->d_name);
+	new->last_stat = manage_time(ctime(&buf.st_ctime));
+	new->last_access = manage_time(ctime(&buf.st_atime));
+	new->last_modif = manage_time(ctime(&buf.st_mtime));
+	new->uid = SDUP(getpwuid(buf.st_uid)->pw_name);
+	new->gid = SDUP(getgrgid(buf.st_gid)->gr_name);
+	new->slink = buf.st_nlink;
+	new->size = buf.st_size;
+	new->isopt = false;
+	new->next = NULL;
+	return (new);
+}
+
+void	organize_file(t_group *grp, struct dirent *file, struct stat buf)
 {
 	t_dir	*last_other;
 	t_dir	*other;
 	t_dir	*new;
 
-	new = init_dir(name);
-	new->isopt = isfile;
+	new = init_file(file, buf);
 	//printf("FILE %s\n", name);
 	if (grp->curr_dir != NULL)
 	{
