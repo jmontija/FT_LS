@@ -6,26 +6,97 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 02:05:33 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/06 11:31:10 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/06 16:08:38 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	opt_l(t_dir *file)
+/*void		ft_print_rights(struct stat buf)
 {
-	ft_putnbr(file->slink);
-	ft_putchar('\t');
-	ft_putstr(file->uid);
+
+	mode_t val;
+
+	val=(buf.st_mode & ~S_IFMT);
+	(S_IFDIR & (buf.st_mode)) ? ft_putchar('d') : ft_putchar('-');
+	(val & S_IRUSR) ? ft_putchar('r') : ft_putchar('-');
+	(val & S_IWUSR) ? ft_putchar('w') : ft_putchar('-');
+	(val & S_IXUSR) ? ft_putchar('x') : ft_putchar('-');
+	(val & S_IRGRP) ? ft_putchar('r') : ft_putchar('-');
+	(val & S_IWGRP) ? ft_putchar('w') : ft_putchar('-');
+	(val & S_IXGRP) ? ft_putchar('x') : ft_putchar('-');
+	(val & S_IROTH) ? ft_putchar('r') : ft_putchar('-');
+	(val & S_IWOTH) ? ft_putchar('w') : ft_putchar('-');
+	(val & S_IXOTH) ? ft_putchar('x') : ft_putchar('-');
 	ft_putchar(' ');
+}*/
+
+int		ft_nblen(int nb)
+{
+	int i;
+
+	i = 1;
+	while (nb /= 10)
+		i++;
+	return (i);
+}
+
+void	len_space_link(t_group *grp)
+{
+	t_dir *test;
+	int i = 0;
+
+	test = grp->first_dir;
+	while (test != NULL)
+	{
+		i = ft_nblen(test->slink);
+		if (i > grp->link_space)
+			grp->link_space = i;
+		test = test->next;
+	}
+	printf("link_max %d\n", grp->link_space);
+}
+
+void	len_space_size(t_group *grp)
+{
+	t_dir *test;
+	int i = 0;
+
+	test = grp->first_dir;
+	while (test != NULL)
+	{
+		i = ft_nblen(test->size);
+		if (i > grp->size_space)
+			grp->size_space = i;
+		test = test->next;
+	}
+	printf("size_max %d\n", grp->size_space);
+}
+
+void	opt_l(t_group *grp, t_dir *file)
+{
+	int link_space_max = grp->link_space;
+	int size_space_max = grp->size_space;
+	int len_file_link  = ft_nblen(file->slink);
+	int len_file_size  = ft_nblen(file->size);
+
+	while (len_file_link++ < link_space_max)
+		ft_putchar(' ');
+	ft_putnbr(file->slink);
+	ft_putchar(' ');
+	ft_putstr(file->uid);
+	ft_putstr("  ");
 	ft_putstr(file->gid);
-	ft_putchar('\t');
+	while (len_file_size++ < size_space_max)
+		ft_putchar(' ');
+	ft_putchar(' ');
 	ft_putnbr(file->size);
-	ft_putchar('\t');
+	/* attention un espace au debut du last_modif dû au strchr qui renvois la chaine a l'espace avec l'espace*/
 	ft_putstr(file->last_modif);
 	ft_putchar(' ');
 }
-void	opt_1(int maj, t_group *grp)
+
+void	opt_1(t_group *grp)
 {
 	t_dir *file;
 
@@ -36,7 +107,7 @@ void	opt_1(int maj, t_group *grp)
 		if (file->name[0] != '.' || grp->options[a] == true)
 		{
 			if (grp->options[l] == true)
-				opt_l(file);
+				opt_l(grp, file);
 			ft_putendl(file->name);
 		}
 		file = file->next;
@@ -47,12 +118,6 @@ int	launcher(t_group *grp, char *opt)
 {
 	static int space = 0;
 
-	struct stat st;
-
-    stat(opt, &st);
-    printf("size: %d\n", (int)st.st_blksize);
-    printf("size: %d\n", (int)st.st_size);
-    printf("size: %d\n", (int)st.st_blocks);
 	if (grp->diropen > 1 || grp->options[R] == true)
 	{
 		if (space != 0)
@@ -69,6 +134,8 @@ int	launcher(t_group *grp, char *opt)
 		}
 		space += 1;
 	}
-	opt_1(1, grp);
+	len_space_link(grp);
+	len_space_size(grp);
+	opt_1(grp);
 	return (0);
 }

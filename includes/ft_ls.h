@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 06:13:10 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/06 10:39:50 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/06 15:31:16 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct		s_group
 {
 	t_bool			diropen;
 	t_bool			*options;
+	int				link_space;
+	int				size_space;
 	char			**root;
 	struct s_dir	*dir_organize;
 	struct s_dir	*first_dir;

@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:19:30 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/06 11:04:44 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/06 16:07:07 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,8 @@ t_dir	*init_file(struct dirent *file, struct stat buf)
 	new->last_modif = manage_time(ctime(&buf.st_mtime));
 	new->uid = SDUP(getpwuid(buf.st_uid)->pw_name);
 	new->gid = SDUP(getgrgid(buf.st_gid)->gr_name);
-	new->slink = buf.st_nlink;
-	new->size = buf.st_size;
+	new->slink = (int)buf.st_nlink;
+	new->size = (int)buf.st_size;
 	new->isopt = false;
 	new->next = NULL;
 	return (new);
@@ -170,5 +170,7 @@ t_group	*init_grp(void)
 	grp->options = (int *)malloc(sizeof(int) * 10);
 	grp->root = (char **)malloc(sizeof(char *) * 1);
 	grp->root[0] = SDUP(".");
+	grp->link_space = 0;
+	grp->size_space = 0;
 	return (grp);
 }
