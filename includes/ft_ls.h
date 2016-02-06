@@ -21,7 +21,7 @@ enum {false, true};
 typedef struct		s_dir
 {
 	char			*name;
-	int				type;
+	t_bool			isopt;
 	t_bool			print;
 	struct s_dir	*next;
 }					t_dir;
@@ -41,9 +41,10 @@ typedef struct		s_group
 t_group		*init_grp(void);
 void		is_error(char *who, char *what);
 void		organize_dir(int filter, t_group *grp, char *name);
+void		organize_file(int filter, t_group *grp, char *name);
 void		insert(t_group *grp, char *name);
 void		delete_dir(t_group *grp);
-void		organize_opt(char *options);
+int			manage_opt(t_group *grp, char *opt);
 int			isvalid_opt(t_group *grp, char opt);
 int			prelauncher(t_group *grp);
 int			launcher(t_group *grp, char *opt);

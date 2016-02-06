@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:19:30 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/05 02:20:02 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/06 01:54:08 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,24 @@ t_dir	*init_dir(char *name)
 	if (!(file))
 		exit(0);
 	file->name = SDUP(name);
-	file->type = 0;
+	file->isopt = false;
 	file->print = false;
 	file->next = NULL;
 	return (file);
 }
 
-void	organize_dir(int filter, t_group *grp, char *name)
+void	organize_dir(int isopt, t_group *grp, char *name)
 {
 	t_dir	*last_other;
 	t_dir	*other;
 	t_dir	*new;
 
 	new = init_dir(name);
-	new->type = filter;
-	//printf("FILTER %d\n", new->type);
+	new->isopt = isopt;
 	if (grp->curr_dir != NULL)
 	{
 		other = grp->dir_organize;
-		if (strcmp(new->name, other->name) < 0 && filter == other->type)
+		if (strcmp(new->name, other->name) < 0 || isopt)
 		{
 			//printf("%s becomes first element\n", new->name);
 			grp->dir_organize = new;
@@ -74,16 +73,59 @@ void	organize_dir(int filter, t_group *grp, char *name)
 			other = other->next;
 		}
 		grp->curr_dir->next = new;
-
 		//printf("%s becomes last element\n", new->name);
 	}
 	else
 	{
 		//printf("entrance: %s becomes first element\n", new->name);
-		grp->dir_organize = new;
+		 grp->dir_organize = new;
 	}
 	grp->curr_dir = new;
 }
+
+void	organize_file(int isfile, t_group *grp, char *name)
+{
+	t_dir	*last_other;
+	t_dir	*other;
+	t_dir	*new;
+
+	new = init_dir(name);
+	new->isopt = isfile;
+	//printf("FILE %s\n", name);
+	if (grp->curr_dir != NULL)
+	{
+		other = grp->first_dir;
+		if (strcmp(new->name, other->name) < 0)
+		{
+			//printf("%s becomes first element\n", new->name);
+			grp->first_dir = new;
+			new->next = other;
+			return ;
+		}
+		while (other != NULL)
+		{
+			if (strcmp(new->name, other->name) < 0)
+			{
+				//printf("insert %s between %s & %s\n", new->name, last_other->name, other->name);
+				last_other->next = new;
+				new->next = other;
+				return ;
+			}
+			last_other = other;
+			other = other->next;
+		}
+		grp->curr_dir->next = new;
+		//printf("%s becomes last element\n", new->name);
+	}
+	else
+	{
+		//printf("entrance: %s becomes first element\n", new->name);
+		 grp->first_dir = new;
+	}
+	grp->curr_dir = new;
+}
+
+
 
 void	insert(t_group *grp, char *name)
 {

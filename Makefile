@@ -6,13 +6,13 @@
 #    By: julio <julio@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 17:28:13 by jmontija          #+#    #+#              #
-#    Updated: 2016/02/01 03:14:56 by julio            ###   ########.fr        #
+#    Updated: 2016/02/05 20:16:04 by julio            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME			=	ft_ls
-COMPIL			=	gcc
+COMPIL			=	gcc -g
 
 LIB_PATH		=	libft/
 LIB				=	$(LIB_PATH)libft.a

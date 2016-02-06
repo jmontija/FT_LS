@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:31:53 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/04 21:29:08 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/06 01:54:06 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ void	is_error(char *who, char *what)
 	ft_putstr(" ");
 	ft_putendl(what);
 	return ;
-}
-
-void	organize_opt(char *options)
-{
-	printf("options_set = -%s\n", options);
 }
 
 int		isvalid_opt(t_group *grp, char opt)
@@ -40,6 +35,25 @@ int		isvalid_opt(t_group *grp, char opt)
 			return (1);
 	is_error(text, "illegal ft_ls option or not asked\nusage: ft_ls [-alRrt] [file ...]");
 	exit(0);
+}
+
+int		manage_opt(t_group *grp, char *opt)
+{
+	char *g_opt;
+	int i;
+
+	i = 0;
+	if (grp->options == NULL)
+		grp->options = SDUP("");
+	g_opt = grp->options;
+	while(++i < LEN(opt))
+		if (!isvalid_opt(grp, opt[i]))
+			return (false);
+	char *letters = SUB(opt, 1, LEN(opt));
+	grp->options = JOIN(grp->options, letters);
+	REMOVE(&letters);
+	REMOVE(&g_opt);
+	return (true);
 }
 
 /*
