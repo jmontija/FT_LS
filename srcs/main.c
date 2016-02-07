@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 23:36:54 by julio             #+#    #+#             */
-/*   Updated: 2016/02/07 15:43:06 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/07 19:56:49 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 // 	sur ces cas ls fait comme si il avait les droits et affiche un fichier vide
 
 #include "ft_ls.h"
+#include <errno.h>
 
 void	file_organizer(t_group *grp, t_dir *curr_arg)
 {
@@ -24,14 +25,19 @@ void	file_organizer(t_group *grp, t_dir *curr_arg)
 	char			*path;
 	int ret;
 
-	directory = opendir(curr_arg->name);
-	while ((file = readdir(directory)))
+	if (!(directory = opendir(curr_arg->name))){}
+	if (errno == EACCES)
+	{}	// A tester sur /Library/Scripts/42 pour permission denied !
+	else
 	{
-		path_before = JOIN(curr_arg->name, "/");
-		path = JOIN(path_before, file->d_name);
-		ret = stat(path, &buf);
-		REMOVE(&path); REMOVE(&path_before);
-		organize_file(grp, file->d_name, buf);
+		while ((file = readdir(directory)))
+		{
+			path_before = JOIN(curr_arg->name, "/");
+			path = JOIN(path_before, file->d_name);
+			ret = stat(path, &buf);
+			REMOVE(&path); REMOVE(&path_before);
+			organize_file(grp, file->d_name, buf);
+		}
 	}
 	closedir(directory);
 	launcher(grp, curr_arg->name);
@@ -68,10 +74,13 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 			// warning: avant d'afficher les erreurs il faut les trier lexicographiquemt !
 			if (!(directory = opendir(argv[i])))
 			{
-				if ((ret = stat(argv[i], &buf)) != 0)
+				if ((ret = stat(argv[i], &buf)) < 0)
 					is_error(argv[i], "is not an available directory");
 				else
+				{
+					printf("%s\n", );
 					organize_file(grp, argv[i], buf);
+				}
 			}
 			else
 			{
@@ -106,7 +115,7 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 	while ((file = readdir(directory)))
 	{
 		if (file->d_type == isdir && (file->d_name[0] != '.' ||
-			(ft_isalnum(file->d_name[1]) && grp->options[a] == true))) // warning a modifier si le dir est _name
+			(/*ft_isalnum(file->d_name[1]) && */grp->options[a] == true))) // warning a modifier si le dir est _name
 		{
 			//printf("sub_dir found %s\n", file->d_name);
 			path = JOIN(curr_arg->name, "/");

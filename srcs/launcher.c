@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 02:05:33 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/07 15:45:35 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/07 17:23:20 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void show_total_blocks(t_group *grp, t_dir *file)
 		//printf("%s: %d\n", file->name, file->blocks);
 		file = file->next;
 	}
-	if (total == 0)
+	if (total == 0 && grp->options[a] == false)
 		return ;
 	ft_putstr("total ");
 	ft_putnbr(total);
