@@ -6,30 +6,11 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 02:05:33 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/06 16:08:38 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/07 11:23:11 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-/*void		ft_print_rights(struct stat buf)
-{
-
-	mode_t val;
-
-	val=(buf.st_mode & ~S_IFMT);
-	(S_IFDIR & (buf.st_mode)) ? ft_putchar('d') : ft_putchar('-');
-	(val & S_IRUSR) ? ft_putchar('r') : ft_putchar('-');
-	(val & S_IWUSR) ? ft_putchar('w') : ft_putchar('-');
-	(val & S_IXUSR) ? ft_putchar('x') : ft_putchar('-');
-	(val & S_IRGRP) ? ft_putchar('r') : ft_putchar('-');
-	(val & S_IWGRP) ? ft_putchar('w') : ft_putchar('-');
-	(val & S_IXGRP) ? ft_putchar('x') : ft_putchar('-');
-	(val & S_IROTH) ? ft_putchar('r') : ft_putchar('-');
-	(val & S_IWOTH) ? ft_putchar('w') : ft_putchar('-');
-	(val & S_IXOTH) ? ft_putchar('x') : ft_putchar('-');
-	ft_putchar(' ');
-}*/
 
 int		ft_nblen(int nb)
 {
@@ -54,7 +35,7 @@ void	len_space_link(t_group *grp)
 			grp->link_space = i;
 		test = test->next;
 	}
-	printf("link_max %d\n", grp->link_space);
+	//printf("link_max %d\n", grp->link_space);
 }
 
 void	len_space_size(t_group *grp)
@@ -70,7 +51,7 @@ void	len_space_size(t_group *grp)
 			grp->size_space = i;
 		test = test->next;
 	}
-	printf("size_max %d\n", grp->size_space);
+	//printf("size_max %d\n", grp->size_space);
 }
 
 void	opt_l(t_group *grp, t_dir *file)
@@ -80,6 +61,8 @@ void	opt_l(t_group *grp, t_dir *file)
 	int len_file_link  = ft_nblen(file->slink);
 	int len_file_size  = ft_nblen(file->size);
 
+	ft_putstr(file->rights);
+	ft_putstr("  ");
 	while (len_file_link++ < link_space_max)
 		ft_putchar(' ');
 	ft_putnbr(file->slink);
@@ -89,7 +72,7 @@ void	opt_l(t_group *grp, t_dir *file)
 	ft_putstr(file->gid);
 	while (len_file_size++ < size_space_max)
 		ft_putchar(' ');
-	ft_putchar(' ');
+	ft_putstr("  ");
 	ft_putnbr(file->size);
 	/* attention un espace au debut du last_modif dû au strchr qui renvois la chaine a l'espace avec l'espace*/
 	ft_putstr(file->last_modif);

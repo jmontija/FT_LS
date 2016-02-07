@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 06:13:10 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/06 15:31:16 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/07 11:00:31 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef int			t_bool;
 typedef struct		s_dir
 {
 	char			*name;
+	char			*rights;
 	char			*last_stat;
 	char			*last_access;
 	char			*last_modif;

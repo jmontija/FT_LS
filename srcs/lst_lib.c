@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:19:30 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/06 16:07:07 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/07 11:22:25 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,28 @@ char	*manage_time(char *data)
 	}
 	data[i] = '\0';
 	data = ft_strchr(data, ' ');
+	data = ft_strncpy(NEW(16), data, 16);
 	return (SDUP(data));
+}
+
+char	*manage_rights(struct stat buf)
+{
+	char *rights;
+	mode_t val;
+
+	rights = NEW(10);
+	val=(buf.st_mode & ~S_IFMT);
+	if (S_IFDIR & (buf.st_mode)) rights[0] = 'd'; else rights[0] = '-';
+	if (val & S_IRUSR) rights[1] = 'r'; else rights[1] = '-';
+	if (val & S_IWUSR) rights[2] = 'w'; else rights[2] = '-';
+	if (val & S_IXUSR) rights[3] = 'x'; else rights[3] = '-';
+	if (val & S_IRGRP) rights[4] = 'r'; else rights[4] = '-';
+	if (val & S_IWGRP) rights[5] = 'w'; else rights[5] = '-';
+	if (val & S_IXGRP) rights[6] = 'x'; else rights[6] = '-';
+	if (val & S_IROTH) rights[7] = 'r'; else rights[7] = '-';
+	if (val & S_IWOTH) rights[8] = 'w'; else rights[8] = '-';
+	if (val & S_IXOTH) rights[9] = 'x'; else rights[9] = '-';
+	return (rights);
 }
 
 t_dir	*init_file(struct dirent *file, struct stat buf)
@@ -103,6 +124,7 @@ t_dir	*init_file(struct dirent *file, struct stat buf)
 	if (!(new))
 		exit(0);
 	new->name = SDUP(file->d_name);
+	new->rights = manage_rights(buf);
 	new->last_stat = manage_time(ctime(&buf.st_ctime));
 	new->last_access = manage_time(ctime(&buf.st_atime));
 	new->last_modif = manage_time(ctime(&buf.st_mtime));
