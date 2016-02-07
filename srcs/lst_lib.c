@@ -6,13 +6,13 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:19:30 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/07 11:22:25 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/07 15:06:44 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	delete_dir(t_group *grp)
+/*void	delete_dir(t_group *grp)
 {
 	t_dir *file;
 
@@ -25,8 +25,8 @@ void	delete_dir(t_group *grp)
 		file = file->next;
 	}
 	grp->first_dir = NULL;
-	grp->curr_dir = NULL;
-}
+	grp->curr_first_dir = NULL;
+}*/
 
 t_dir	*init_dir(char *name)
 {
@@ -82,6 +82,22 @@ void	organize_dir(int isopt, t_group *grp, char *name)
 	grp->curr_dir = new;
 }
 
+void	delete_dir(t_group *grp)
+{
+	t_dir *file;
+
+	file = grp->first_dir;
+	while (file != NULL)
+	{
+		if (file->name)
+			REMOVE(&file->name);
+		//ft_memdel((void *)file);
+		file = file->next;
+	}
+	grp->first_dir = NULL;
+	grp->curr_first_dir = NULL;
+}
+
 char	*manage_time(char *data)
 {
 	int i = -1;
@@ -92,7 +108,7 @@ char	*manage_time(char *data)
 	}
 	data[i] = '\0';
 	data = ft_strchr(data, ' ');
-	data = ft_strncpy(NEW(16), data, 16);
+	data = ft_strncpy(NEW(13), data, 13);
 	return (SDUP(data));
 }
 
@@ -116,14 +132,15 @@ char	*manage_rights(struct stat buf)
 	return (rights);
 }
 
-t_dir	*init_file(struct dirent *file, struct stat buf)
+t_dir	*init_file(char *file, struct stat buf)
 {
 	t_dir *new;
 
 	new = (t_dir *)malloc(sizeof(t_dir));
 	if (!(new))
 		exit(0);
-	new->name = SDUP(file->d_name);
+	new->name = SDUP(file);
+	new->blocks = (int)buf.st_blocks;
 	new->rights = manage_rights(buf);
 	new->last_stat = manage_time(ctime(&buf.st_ctime));
 	new->last_access = manage_time(ctime(&buf.st_atime));
@@ -137,7 +154,7 @@ t_dir	*init_file(struct dirent *file, struct stat buf)
 	return (new);
 }
 
-void	organize_file(t_group *grp, struct dirent *file, struct stat buf)
+void	organize_file(t_group *grp, char *file, struct stat buf)
 {
 	t_dir	*last_other;
 	t_dir	*other;
@@ -145,7 +162,7 @@ void	organize_file(t_group *grp, struct dirent *file, struct stat buf)
 
 	new = init_file(file, buf);
 	//printf("FILE %s\n", name);
-	if (grp->curr_dir != NULL)
+	if (grp->curr_first_dir != NULL)
 	{
 		other = grp->first_dir;
 		if (strcmp(new->name, other->name) < 0)
@@ -167,7 +184,7 @@ void	organize_file(t_group *grp, struct dirent *file, struct stat buf)
 			last_other = other;
 			other = other->next;
 		}
-		grp->curr_dir->next = new;
+		grp->curr_first_dir->next = new;
 		//printf("%s becomes last element\n", new->name);
 	}
 	else
@@ -175,7 +192,7 @@ void	organize_file(t_group *grp, struct dirent *file, struct stat buf)
 		//printf("entrance: %s becomes first element\n", new->name);
 		 grp->first_dir = new;
 	}
-	grp->curr_dir = new;
+	grp->curr_first_dir = new;
 }
 
 t_group	*init_grp(void)
@@ -186,6 +203,7 @@ t_group	*init_grp(void)
 	if (!(grp))
 		exit(0);
 	grp->first_dir = NULL;
+	grp->curr_first_dir = NULL;
 	grp->curr_dir = NULL;
 	grp->dir_organize = NULL;
 	grp->diropen = 0;

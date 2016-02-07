@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 23:36:54 by julio             #+#    #+#             */
-/*   Updated: 2016/02/07 11:01:04 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/07 15:43:06 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,48 @@
 
 #include "ft_ls.h"
 
+void	file_organizer(t_group *grp, t_dir *curr_arg)
+{
+	DIR				*directory;
+	struct dirent	*file;
+	struct stat		buf;
+	char			*path_before;
+	char			*path;
+	int ret;
+
+	directory = opendir(curr_arg->name);
+	while ((file = readdir(directory)))
+	{
+		path_before = JOIN(curr_arg->name, "/");
+		path = JOIN(path_before, file->d_name);
+		ret = stat(path, &buf);
+		REMOVE(&path); REMOVE(&path_before);
+		organize_file(grp, file->d_name, buf);
+	}
+	closedir(directory);
+	launcher(grp, curr_arg->name);
+	delete_dir(grp);
+}
+
+void	show_file(t_group *grp, int dir_opened)
+{
+	// fichier apeller par les arguments dans le shell
+	if (grp->curr_first_dir != NULL)
+	{
+		launcher(grp, NULL);
+		delete_dir(grp);
+		if (dir_opened > 0)
+			ft_putchar('\n');
+	}
+}
+
 t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 {
-	DIR		*directory;
-	t_dir 	*in_order;
+	DIR				*directory;
+	t_dir 			*in_order;
+	struct stat		buf;
+	int 			ret;
+	int				dir_opened = 0;
 
 	while (++i < argc)
 	{
@@ -27,39 +65,28 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 			organize_dir(1, grp, argv[i]);
 		else
 		{
-			//warning: avant d'afficher les erreurs il faut les trier lexicographiquemt !
+			// warning: avant d'afficher les erreurs il faut les trier lexicographiquemt !
 			if (!(directory = opendir(argv[i])))
-				is_error(argv[i], "is not an available directory");
+			{
+				if ((ret = stat(argv[i], &buf)) != 0)
+					is_error(argv[i], "is not an available directory");
+				else
+					organize_file(grp, argv[i], buf);
+			}
 			else
 			{
-				//grp->diropen += 1;
 				organize_dir(0, grp, argv[i]);
 				closedir(directory);
+				dir_opened += 1;
 			}
 			grp->diropen += 1;
 		}
 	}
+	show_file(grp, dir_opened);
 	in_order = grp->dir_organize;
 	grp->dir_organize = NULL;
 	grp->curr_dir = NULL;
 	return (in_order);
-}
-
-void	file_organizer(t_group *grp, t_dir *curr_arg)
-{
-	DIR				*directory;
-	struct dirent	*file;
-	struct stat		buf;
-
-	directory = opendir(curr_arg->name);
-	while ((file = readdir(directory)))
-	{
-		stat(file->d_name, &buf);
-		organize_file(grp, file, buf);
-	}
-	closedir(directory);
-	launcher(grp, curr_arg->name);
-	delete_dir(grp);
 }
 
 /* essayer de faire un mix entre file_organiser et dir_topen */
@@ -114,9 +141,11 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 			j = 0;
 
 		}
-		else
+		else if (curr_arg->isopt == 2)
 		{
-			//printf("option_set: %s\n", curr_arg->name);
+			ft_putendl(curr_arg->name);
+			if (curr_arg->next && curr_arg->next->isopt == 0)
+				ft_putchar('\n');
 		}
 		curr_arg = curr_arg->next;
 	}
@@ -127,8 +156,9 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 int		main(int argc, char **argv)
 {
 	t_group *grp;
+	int i = 0;
 
 	grp = init_grp();
-	manage_dir(0, grp, argc, argv);
+	manage_dir(i, grp, argc, argv);
 	return (0);
 }

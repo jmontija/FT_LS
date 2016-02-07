@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 06:13:10 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/07 11:00:31 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/07 14:47:40 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef int			t_bool;
 typedef struct		s_dir
 {
 	char			*name;
+	int				blocks;
 	char			*rights;
 	char			*last_stat;
 	char			*last_access;
@@ -58,14 +59,16 @@ typedef struct		s_group
 	int				size_space;
 	char			**root;
 	struct s_dir	*dir_organize;
-	struct s_dir	*first_dir;
 	struct s_dir	*curr_dir;
+	struct s_dir	*first_dir;
+	struct s_dir	*curr_first_dir;
+
 }					t_group;
 
 t_group		*init_grp(void);
 void		is_error(char *who, char *what);
 void		organize_dir(int filter, t_group *grp, char *name);
-void		organize_file(t_group *grp, struct dirent *file, struct stat buf);
+void		organize_file(t_group *grp, char *file, struct stat buf);
 void		delete_dir(t_group *grp);
 int			manage_opt(t_group *grp, char *opt);
 int			isvalid_opt(t_group *grp, char opt);

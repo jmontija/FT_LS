@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 02:05:33 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/07 11:23:11 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/07 15:45:35 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,26 @@ void	opt_l(t_group *grp, t_dir *file)
 		ft_putchar(' ');
 	ft_putstr("  ");
 	ft_putnbr(file->size);
-	/* attention un espace au debut du last_modif dû au strchr qui renvois la chaine a l'espace avec l'espace*/
+	/* attention un espace au debut du last_modif dû au strchr qui renvois la chaine a l'espace avec l'espace */
 	ft_putstr(file->last_modif);
 	ft_putchar(' ');
+}
+
+void show_total_blocks(t_group *grp, t_dir *file)
+{
+	int total = 0;
+	while (file != NULL)
+	{
+		if (file->name[0] != '.' || grp->options[a] == true)
+			total += file->blocks;
+		//printf("%s: %d\n", file->name, file->blocks);
+		file = file->next;
+	}
+	if (total == 0)
+		return ;
+	ft_putstr("total ");
+	ft_putnbr(total);
+	ft_putchar('\n');
 }
 
 void	opt_1(t_group *grp)
@@ -84,7 +101,8 @@ void	opt_1(t_group *grp)
 	t_dir *file;
 
 	file = grp->first_dir;
-
+	if (grp->options[l] == true)
+		show_total_blocks(grp, file);
 	while (file != NULL)
 	{
 		if (file->name[0] != '.' || grp->options[a] == true)
@@ -101,24 +119,30 @@ int	launcher(t_group *grp, char *opt)
 {
 	static int space = 0;
 
-	if (grp->diropen > 1 || grp->options[R] == true)
+/*
+struct stat		buf;
+stat("~/ft_ls", &buf);
+printf("BLOCKS %lld\n", buf.st_blocks);
+*/
+
+if ((grp->diropen > 1 || grp->options[R] == true) && opt != NULL)
+{
+	if (space != 0)
+		ft_putchar('\n');
+	if (grp->options[R] == true && space != 0)
 	{
-		if (space != 0)
-			ft_putchar('\n');
-		if (grp->options[R] == true && space != 0)
-		{
-			ft_putstr(opt);
-			ft_putendl(":");
-		}
-		else if (grp->options[R] == false)
-		{
-			ft_putstr(opt);
-			ft_putendl(":");
-		}
-		space += 1;
+		ft_putstr(opt);
+		ft_putendl(":");
 	}
-	len_space_link(grp);
-	len_space_size(grp);
-	opt_1(grp);
-	return (0);
+	else if (grp->options[R] == false)
+	{
+		ft_putstr(opt);
+		ft_putendl(":");
+	}
+	space += 1;
+}
+len_space_link(grp);
+len_space_size(grp);
+opt_1(grp);
+return (0);
 }
