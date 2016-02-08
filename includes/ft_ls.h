@@ -55,8 +55,6 @@ typedef struct		s_group
 {
 	t_bool			diropen;
 	t_bool			*options;
-	int				link_space;
-	int				size_space;
 	char			**root;
 	struct s_dir	*dir_organize;
 	struct s_dir	*curr_dir;
@@ -64,6 +62,14 @@ typedef struct		s_group
 	struct s_dir	*curr_first_dir;
 
 }					t_group;
+
+typedef struct		s_space
+{
+	int		link_space;
+	int		uid_space;
+	int		grpid_space;
+	int		size_space;
+}					t_space;
 
 t_group		*init_grp(void);
 void		is_error(char *who, char *what);

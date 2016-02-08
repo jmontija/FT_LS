@@ -221,7 +221,5 @@ t_group	*init_grp(void)
 	grp->options = (int *)malloc(sizeof(int) * 10);
 	grp->root = (char **)malloc(sizeof(char *) * 1);
 	grp->root[0] = SDUP(".");
-	grp->link_space = 0;
-	grp->size_space = 0;
 	return (grp);
 }

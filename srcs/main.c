@@ -157,12 +157,6 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 			j = 0;
 
 		}
-		/*else if (curr_arg->isopt == 2)
-		{
-			ft_putendl(curr_arg->name);
-			if (curr_arg->next && curr_arg->next->isopt == 0)
-				ft_putchar('\n');
-		}*/
 		curr_arg = curr_arg->next;
 	}
 	if (grp->diropen == false)
