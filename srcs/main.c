@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 23:36:54 by julio             #+#    #+#             */
-/*   Updated: 2016/02/08 03:18:00 by julio            ###   ########.fr       */
+/*   Updated: 2016/02/08 14:12:20 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 	struct stat		buf;
 	int 			ret;
 	int				dir_opened = 0;
+	char			*rchr;
 	char			*error;
 
 	while (++i < argc)
@@ -81,9 +82,14 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 				{
 					if (S_ISREG(buf.st_mode))
 						organize_file(grp, argv[i], buf);
-					else	
-						perror(JOIN("ft_ls: ", strrchr(argv[i], '/') + 1));
+					/*else if (S_ISDIR(buf.st_mode))
+						perror(JOIN("ft_ls_dir: ", strrchr(argv[i], '/') + 1));*/
+					else
+					{
+						perror("WARNING");
+					}
 				}
+
 			}
 			else
 			{
