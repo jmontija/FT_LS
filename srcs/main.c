@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 23:36:54 by julio             #+#    #+#             */
-/*   Updated: 2016/02/07 19:56:49 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/08 03:18:00 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ void	file_organizer(t_group *grp, t_dir *curr_arg)
 	struct stat		buf;
 	char			*path_before;
 	char			*path;
-	int ret;
+	int 			ret;
 
-	if (!(directory = opendir(curr_arg->name))){}
-	if (errno == EACCES)
-	{}	// A tester sur /Library/Scripts/42 pour permission denied !
-	else
+	if (!(directory = opendir(curr_arg->name)))
 	{
-		while ((file = readdir(directory)))
-		{
-			path_before = JOIN(curr_arg->name, "/");
-			path = JOIN(path_before, file->d_name);
-			ret = stat(path, &buf);
-			REMOVE(&path); REMOVE(&path_before);
-			organize_file(grp, file->d_name, buf);
-		}
+		perror("WTF!!!!!!!!!!");
+		exit(0);
+	}
+	while ((file = readdir(directory)))
+	{
+		path_before = JOIN(curr_arg->name, "/");
+		path = JOIN(path_before, file->d_name);
+		ret = stat(path, &buf);
+		//printf("retfile = %d\n", ret);
+		REMOVE(&path); REMOVE(&path_before);
+		organize_file(grp, file->d_name, buf);
 	}
 	closedir(directory);
 	launcher(grp, curr_arg->name);
@@ -63,6 +63,7 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 	struct stat		buf;
 	int 			ret;
 	int				dir_opened = 0;
+	char			*error;
 
 	while (++i < argc)
 	{
@@ -78,8 +79,10 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 					is_error(argv[i], "is not an available directory");
 				else
 				{
-					printf("%s\n", );
-					organize_file(grp, argv[i], buf);
+					if (S_ISREG(buf.st_mode))
+						organize_file(grp, argv[i], buf);
+					else	
+						perror(JOIN("ft_ls: ", strrchr(argv[i], '/') + 1));
 				}
 			}
 			else
@@ -115,7 +118,7 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 	while ((file = readdir(directory)))
 	{
 		if (file->d_type == isdir && (file->d_name[0] != '.' ||
-			(/*ft_isalnum(file->d_name[1]) && */grp->options[a] == true))) // warning a modifier si le dir est _name
+			(file->d_name[1] && file->d_name[1] != '.' && grp->options[a] == true))) // warning a modifier si le dir est _name
 		{
 			//printf("sub_dir found %s\n", file->d_name);
 			path = JOIN(curr_arg->name, "/");
