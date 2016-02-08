@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:19:30 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/07 15:06:44 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/08 16:51:07 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,11 @@ char	*manage_rights(struct stat buf)
 t_dir	*init_file(char *file, struct stat buf)
 {
 	t_dir *new;
+	struct passwd *usr;
+	struct group *grpid;
 
+	usr   = getpwuid(buf.st_uid);
+	grpid = getgrgid(buf.st_gid);
 	new = (t_dir *)malloc(sizeof(t_dir));
 	if (!(new))
 		exit(0);
@@ -145,8 +149,8 @@ t_dir	*init_file(char *file, struct stat buf)
 	new->last_stat = manage_time(ctime(&buf.st_ctime));
 	new->last_access = manage_time(ctime(&buf.st_atime));
 	new->last_modif = manage_time(ctime(&buf.st_mtime));
-	new->uid = SDUP(getpwuid(buf.st_uid)->pw_name);
-	new->gid = SDUP(getgrgid(buf.st_gid)->gr_name);
+	new->uid = SDUP(usr->pw_name);
+	if (grpid != NULL) new->gid = SDUP(grpid->gr_name); else new->gid = SDUP("101");
 	new->slink = (int)buf.st_nlink;
 	new->size = (int)buf.st_size;
 	new->isopt = false;
@@ -154,14 +158,21 @@ t_dir	*init_file(char *file, struct stat buf)
 	return (new);
 }
 
-void	organize_file(t_group *grp, char *file, struct stat buf)
+void	organize_file(int perm, t_group *grp, char *file, struct stat buf)
 {
 	t_dir	*last_other;
 	t_dir	*other;
 	t_dir	*new;
 
-	new = init_file(file, buf);
-	//printf("FILE %s\n", name);
+	//printf("ret = %d\n", perm);
+	if (perm == 0)
+		new = init_file(file, buf);
+	else
+	{
+		new = init_dir(file);
+		new->isopt = 2;
+	}
+	//printf("YO\n");
 	if (grp->curr_first_dir != NULL)
 	{
 		other = grp->first_dir;

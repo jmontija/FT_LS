@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 23:36:54 by julio             #+#    #+#             */
-/*   Updated: 2016/02/08 14:12:20 by julio            ###   ########.fr       */
+/*   Updated: 2016/02/08 17:00:40 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ void	file_organizer(t_group *grp, t_dir *curr_arg)
 	if (!(directory = opendir(curr_arg->name)))
 	{
 		perror("WTF!!!!!!!!!!");
-		exit(0);
+		//exit(0);
 	}
 	while ((file = readdir(directory)))
 	{
 		path_before = JOIN(curr_arg->name, "/");
 		path = JOIN(path_before, file->d_name);
 		ret = stat(path, &buf);
-		//printf("retfile = %d\n", ret);
+		//printf("retfile = %d %s\n", ret, path);
 		REMOVE(&path); REMOVE(&path_before);
-		organize_file(grp, file->d_name, buf);
+		organize_file(ret, grp, file->d_name, buf);
 	}
 	closedir(directory);
 	launcher(grp, curr_arg->name);
@@ -63,7 +63,6 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 	struct stat		buf;
 	int 			ret;
 	int				dir_opened = 0;
-	char			*rchr;
 	char			*error;
 
 	while (++i < argc)
@@ -81,15 +80,14 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 				else
 				{
 					if (S_ISREG(buf.st_mode))
-						organize_file(grp, argv[i], buf);
-					/*else if (S_ISDIR(buf.st_mode))
-						perror(JOIN("ft_ls_dir: ", strrchr(argv[i], '/') + 1));*/
+						organize_file(0, grp, argv[i], buf);
 					else
 					{
-						perror("WARNING");
+						if (grp->diropen > 0)
+							ft_putchar('\n');
+						perror(argv[i]);
 					}
 				}
-
 			}
 			else
 			{
@@ -159,12 +157,12 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 			j = 0;
 
 		}
-		else if (curr_arg->isopt == 2)
+		/*else if (curr_arg->isopt == 2)
 		{
 			ft_putendl(curr_arg->name);
 			if (curr_arg->next && curr_arg->next->isopt == 0)
 				ft_putchar('\n');
-		}
+		}*/
 		curr_arg = curr_arg->next;
 	}
 	if (grp->diropen == false)

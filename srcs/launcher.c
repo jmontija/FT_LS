@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 02:05:33 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/07 17:23:20 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/08 17:10:44 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,12 @@ void	opt_l(t_group *grp, t_dir *file)
 	ft_putnbr(file->slink);
 	ft_putchar(' ');
 	ft_putstr(file->uid);
-	ft_putstr("  ");
+	ft_putchar('\t');
 	ft_putstr(file->gid);
-	while (len_file_size++ < size_space_max)
+	ft_putchar('\t');
+	/*while (len_file_size++ < size_space_max)
 		ft_putchar(' ');
-	ft_putstr("  ");
+	ft_putstr("  ");*/
 	ft_putnbr(file->size);
 	/* attention un espace au debut du last_modif dû au strchr qui renvois la chaine a l'espace avec l'espace */
 	ft_putstr(file->last_modif);
@@ -86,33 +87,41 @@ void show_total_blocks(t_group *grp, t_dir *file)
 	{
 		if (file->name[0] != '.' || grp->options[a] == true)
 			total += file->blocks;
+		if (file->isopt == 2)
+			total = -1;
 		//printf("%s: %d\n", file->name, file->blocks);
 		file = file->next;
 	}
-	if (total == 0 && grp->options[a] == false)
+	if ((total == 0 && grp->options[a] == false) || total == -1)
 		return ;
 	ft_putstr("total ");
 	ft_putnbr(total);
 	ft_putchar('\n');
 }
 
-void	opt_1(t_group *grp)
+int		opt_1(t_group *grp, char *opt)
 {
 	t_dir *file;
-
+	int ret = 0;
 	file = grp->first_dir;
-	if (grp->options[l] == true)
+	if (grp->options[l] == true && opt != NULL)
 		show_total_blocks(grp, file);
 	while (file != NULL)
 	{
 		if (file->name[0] != '.' || grp->options[a] == true)
 		{
-			if (grp->options[l] == true)
+			if (grp->options[l] == true && file->isopt != 2)
 				opt_l(grp, file);
+			else if (file->isopt == 2)
+			{
+				ft_putstr("permission denied -> ");
+				ret = -1;
+			}
 			ft_putendl(file->name);
 		}
 		file = file->next;
 	}
+	return (ret);
 }
 
 int	launcher(t_group *grp, char *opt)
@@ -143,6 +152,10 @@ if ((grp->diropen > 1 || grp->options[R] == true) && opt != NULL)
 }
 len_space_link(grp);
 len_space_size(grp);
-opt_1(grp);
+if (opt_1(grp, opt) == -1)
+{
+	ft_putstr("permission denied -> ");
+	ft_putendl(strrchr(opt, '/') + 1);
+}
 return (0);
 }
