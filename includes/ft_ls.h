@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 06:13:10 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/08 16:16:53 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/09 03:31:39 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct		s_group
 {
 	t_bool			diropen;
 	t_bool			*options;
+	char			*chemin;
 	char			**root;
 	struct s_dir	*dir_organize;
 	struct s_dir	*curr_dir;
@@ -72,10 +73,12 @@ typedef struct		s_space
 }					t_space;
 
 t_group		*init_grp(void);
+t_space		*define_space(t_group *grp, t_dir *file);
 void		is_error(char *who, char *what);
 void		organize_dir(int filter, t_group *grp, char *name);
 void		organize_file(int perm, t_group *grp, char *file, struct stat buf);
 void		delete_dir(t_group *grp);
+void		opt_l(t_group *grp, t_dir *file);
 int			manage_opt(t_group *grp, char *opt);
 int			isvalid_opt(t_group *grp, char opt);
 int			prelauncher(t_group *grp);

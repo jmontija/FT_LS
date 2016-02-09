@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 23:36:54 by julio             #+#    #+#             */
-/*   Updated: 2016/02/08 17:00:40 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/09 03:42:47 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	file_organizer(t_group *grp, t_dir *curr_arg)
 	{
 		path_before = JOIN(curr_arg->name, "/");
 		path = JOIN(path_before, file->d_name);
-		ret = stat(path, &buf);
+		ret = lstat(path, &buf);
 		//printf("retfile = %d %s\n", ret, path);
+		grp->chemin = SDUP(path);
 		REMOVE(&path); REMOVE(&path_before);
 		organize_file(ret, grp, file->d_name, buf);
 	}
@@ -75,7 +76,7 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 			// warning: avant d'afficher les erreurs il faut les trier lexicographiquemt !
 			if (!(directory = opendir(argv[i])))
 			{
-				if ((ret = stat(argv[i], &buf)) < 0)
+				if ((ret = lstat(argv[i], &buf)) < 0)
 					is_error(argv[i], "is not an available directory");
 				else
 				{
@@ -111,18 +112,21 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 {
 	DIR				*directory;
 	struct dirent	*file;
+	//struct stat		buf;
 	char 			*path;
-	unsigned char	isdir;
 	int 			j;
+	//	int 			ret;
 
 	j = 0;
-	isdir = 4;
+	//isdir = 4;
+	//ret = 0;
 	directory = opendir(curr_arg->name);
 	//printf("sub_file found\n");
 	while ((file = readdir(directory)))
 	{
-		if (file->d_type == isdir && (file->d_name[0] != '.' ||
-			(file->d_name[1] && file->d_name[1] != '.' && grp->options[a] == true))) // warning a modifier si le dir est _name
+		//ret = stat(file->d_name, &buf)
+		if (file->d_type == DT_DIR && (file->d_name[0] != '.' ||
+			(file->d_name[1] && file->d_name[1] != '.' && grp->options[a] == true)))
 		{
 			//printf("sub_dir found %s\n", file->d_name);
 			path = JOIN(curr_arg->name, "/");
@@ -143,7 +147,7 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 	int 	j;
 
 	j = 0;
-	sub_dir = (char **)malloc(sizeof(char *) * 1000); // find out pour la taille !
+	sub_dir = (char **)malloc(sizeof(char *) * 10000); // find out pour la taille !
 	curr_arg = arg_organizer(i, grp, argc, argv);
 	while (curr_arg != NULL)
 	{
@@ -154,6 +158,8 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 			if (grp->options[R] == true)
 				j = dir_topen(grp, curr_arg, &sub_dir);
 			j > 0 ? manage_dir(-1, grp, j, sub_dir) : 0;
+			while (j--)
+				REMOVE(&sub_dir[j]);
 			j = 0;
 
 		}
@@ -165,7 +171,7 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 
 int		main(int argc, char **argv)
 {
-	t_group *grp;
+	t_group *grp = NULL;
 	int i = 0;
 
 	grp = init_grp();

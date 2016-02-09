@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   lst_lib.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:19:30 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/08 16:51:07 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/09 04:39:41 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-/*void	delete_dir(t_group *grp)
+void	delete_dir(t_group *grp)
 {
 	t_dir *file;
 
-	file = grp->first_dir;
+	file = grp->dir_organize;
 	while (file != NULL)
 	{
 		if (file->name)
@@ -26,7 +26,7 @@
 	}
 	grp->first_dir = NULL;
 	grp->curr_first_dir = NULL;
-}*/
+}
 
 t_dir	*init_dir(char *name)
 {
@@ -82,7 +82,7 @@ void	organize_dir(int isopt, t_group *grp, char *name)
 	grp->curr_dir = new;
 }
 
-void	delete_dir(t_group *grp)
+/*void	delete_dir(t_group *grp)
 {
 	t_dir *file;
 
@@ -96,7 +96,7 @@ void	delete_dir(t_group *grp)
 	}
 	grp->first_dir = NULL;
 	grp->curr_first_dir = NULL;
-}
+}*/
 
 char	*manage_time(char *data)
 {
@@ -112,14 +112,23 @@ char	*manage_time(char *data)
 	return (SDUP(data));
 }
 
-char	*manage_rights(struct stat buf)
+char	*manage_rights(char *file, struct stat buf)
 {
 	char *rights;
 	mode_t val;
 
 	rights = NEW(10);
-	val=(buf.st_mode & ~S_IFMT);
-	if (S_IFDIR & (buf.st_mode)) rights[0] = 'd'; else rights[0] = '-';
+	switch (buf.st_mode & S_IFMT) {
+    case S_IFBLK:  printf("périphérique de bloc\n");      break;
+    case S_IFCHR:  printf("périphérique de caractère\n"); break;
+    case S_IFDIR:  rights[0] = 'd'  ;              		  break;
+    case S_IFIFO:  printf("FIFO/tube\n");                 break;
+    case S_IFLNK:  rights[0] = 'l';           			  break;
+    case S_IFREG:  rights[0] = '-';         			  break;
+    case S_IFSOCK: rights[0] = 's';                   	  break;
+    default:       rights[0] = '?';;                 	  break;
+    }
+    val=(buf.st_mode & ~S_IFMT);
 	if (val & S_IRUSR) rights[1] = 'r'; else rights[1] = '-';
 	if (val & S_IWUSR) rights[2] = 'w'; else rights[2] = '-';
 	if (val & S_IXUSR) rights[3] = 'x'; else rights[3] = '-';
@@ -132,20 +141,36 @@ char	*manage_rights(struct stat buf)
 	return (rights);
 }
 
-t_dir	*init_file(char *file, struct stat buf)
+t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 {
 	t_dir *new;
+	char *actualpath = NEW(1024);
+	//char actualpath[2056];
+
+	char *add;
 	struct passwd *usr;
 	struct group *grpid;
+	ssize_t len;
 
-	usr   = getpwuid(buf.st_uid);
+	len		= 0;
+	usr		= getpwuid(buf.st_uid);
 	grpid = getgrgid(buf.st_gid);
 	new = (t_dir *)malloc(sizeof(t_dir));
 	if (!(new))
 		exit(0);
-	new->name = SDUP(file);
+	if (grp->options[l] && 
+		S_ISLNK(buf.st_mode) && ((len = readlink(grp->chemin, actualpath, 1024)) != -1))
+	{	
+		 actualpath[len] = '\0';
+		 add = JOIN(file, " -> ");
+		 new->name = JOIN(add, actualpath);
+		 REMOVE(&actualpath); REMOVE(&add); REMOVE(&grp->chemin);
+	}
+
+	else
+		new->name = SDUP(file);
 	new->blocks = (int)buf.st_blocks;
-	new->rights = manage_rights(buf);
+	new->rights = manage_rights(file, buf);
 	new->last_stat = manage_time(ctime(&buf.st_ctime));
 	new->last_access = manage_time(ctime(&buf.st_atime));
 	new->last_modif = manage_time(ctime(&buf.st_mtime));
@@ -166,7 +191,7 @@ void	organize_file(int perm, t_group *grp, char *file, struct stat buf)
 
 	//printf("ret = %d\n", perm);
 	if (perm == 0)
-		new = init_file(file, buf);
+		new = init_file(grp, file, buf);
 	else
 	{
 		new = init_dir(file);
@@ -218,6 +243,7 @@ t_group	*init_grp(void)
 	grp->curr_dir = NULL;
 	grp->dir_organize = NULL;
 	grp->diropen = 0;
+	grp->chemin = NULL;
 	grp->options = (int *)malloc(sizeof(int) * 10);
 	grp->root = (char **)malloc(sizeof(char *) * 1);
 	grp->root[0] = SDUP(".");

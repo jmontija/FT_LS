@@ -24,6 +24,8 @@ SRCS			+=	srcs/lst_lib.c
 SRCS			+=	srcs/ft_ls_lib.c
 SRCS			+=	srcs/prelauncher.c
 SRCS			+=	srcs/launcher.c
+SRCS			+=	srcs/opt-l.c
+SRCS			+=	srcs/define_space.c
 
 OBJS			=	$(SRCS:srcs/%.c=srco/%.o)
 
