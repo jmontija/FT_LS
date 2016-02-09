@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 23:36:54 by julio             #+#    #+#             */
-/*   Updated: 2016/02/09 05:38:46 by julio            ###   ########.fr       */
+/*   Updated: 2016/02/09 06:17:38 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,46 +70,6 @@ void	define_status(t_group *grp, char *arg, struct stat buf)
 	}
 }
 
-t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
-{
-	DIR				*directory;
-	t_dir 			*in_order;
-	struct stat		buf;
-	int 			ret;
-	int				dir_opened = 0;
-	char			*error;
-
-	while (++i < argc)
-	{
-		if (*argv[i] == '-' &&
-			grp->diropen == 0 && manage_opt(grp, argv[i]) == true)
-			organize_dir(1, grp, argv[i]);
-		else
-		{
-			// warning: avant d'afficher les erreurs il faut les trier lexicographiquemt !
-			if (!(directory = opendir(argv[i])))
-			{
-				if ((ret = lstat(argv[i], &buf)) < 0)
-					perror(argv[i]); // is_error(argv[i], "is not an available directory");
-				else
-					define_status(grp, argv[i], buf);	
-			}
-			else
-			{
-				organize_dir(0, grp, argv[i]);
-				closedir(directory);
-				dir_opened += 1;
-			}
-			grp->diropen += 1;
-		}
-	}
-	show_file(grp, dir_opened);
-	in_order = grp->dir_organize;
-	grp->dir_organize = NULL;
-	grp->curr_dir = NULL;
-	return (in_order);
-}
-
 /* essayer de faire un mix entre file_organiser et dir_topen */
 
 int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
@@ -147,6 +107,45 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 	return (j);
 }
 
+t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
+{
+	DIR				*directory;
+	t_dir 			*in_order;
+	struct stat		buf;
+	int 			ret;
+	int				dir_opened = 0;
+	char			*error;
+
+	while (++i < argc)
+	{
+		if (*argv[i] == '-' && grp->diropen == 0 )
+			manage_opt(grp, argv[i]);
+		else
+		{
+			// warning: avant d'afficher les erreurs il faut les trier lexicographiquemt !
+			if (!(directory = opendir(argv[i])))
+			{
+				if ((ret = lstat(argv[i], &buf)) < 0)
+					is_error(argv[i], "is not an available directory");
+				else
+					define_status(grp, argv[i], buf);	
+			}
+			else
+			{
+				organize_dir(0, grp, argv[i]);
+				closedir(directory);
+				dir_opened += 1;
+			}
+			grp->diropen += 1;
+		}
+	}
+	show_file(grp, dir_opened);
+	in_order = grp->dir_organize;
+	grp->dir_organize = NULL;
+	grp->curr_dir = NULL;
+	return (in_order);
+}
+
 void		manage_dir(int i, t_group *grp, int argc, char **argv)
 {
 	t_dir 	*curr_arg;
@@ -156,21 +155,16 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 	j = 0;
 	sub_dir = (char **)malloc(sizeof(char *) * 10000); // find out pour la taille !
 	curr_arg = arg_organizer(i, grp, argc, argv);
-	// argv = fichier + dossier = segfv
 	while (curr_arg != NULL)
 	{
-		if (curr_arg->isopt == false)
-		{
-			//printf("checking: %s\n", curr_arg->name);
-			file_organizer(grp, curr_arg);
-			if (grp->options[R] == true)
-				j = dir_topen(grp, curr_arg, &sub_dir);
-			j > 0 ? manage_dir(-1, grp, j, sub_dir) : 0;
-			while (j--)
-				REMOVE(&sub_dir[j]);
-			j = 0;
-
-		}
+		//printf("checking: %s\n", curr_arg->name);
+		file_organizer(grp, curr_arg);
+		if (grp->options[R] == true)
+			j = dir_topen(grp, curr_arg, &sub_dir);
+		j > 0 ? manage_dir(-1, grp, j, sub_dir) : 0;
+		while (j--)
+			REMOVE(&sub_dir[j]);
+		j = 0;
 		curr_arg = curr_arg->next;
 	}
 	if (grp->diropen == false)
