@@ -6,13 +6,13 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:19:30 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/09 04:39:41 by julio            ###   ########.fr       */
+/*   Updated: 2016/02/09 05:37:31 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-void	delete_dir(t_group *grp)
+// penser a supprimer !
+/*void	delete_dir(t_group *grp)
 {
 	t_dir *file;
 
@@ -26,7 +26,7 @@ void	delete_dir(t_group *grp)
 	}
 	grp->first_dir = NULL;
 	grp->curr_first_dir = NULL;
-}
+}*/
 
 t_dir	*init_dir(char *name)
 {
@@ -82,7 +82,7 @@ void	organize_dir(int isopt, t_group *grp, char *name)
 	grp->curr_dir = new;
 }
 
-/*void	delete_dir(t_group *grp)
+	void	delete_dir(t_group *grp)
 {
 	t_dir *file;
 
@@ -96,7 +96,7 @@ void	organize_dir(int isopt, t_group *grp, char *name)
 	}
 	grp->first_dir = NULL;
 	grp->curr_first_dir = NULL;
-}*/
+}
 
 char	*manage_time(char *data)
 {
@@ -145,8 +145,6 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 {
 	t_dir *new;
 	char *actualpath = NEW(1024);
-	//char actualpath[2056];
-
 	char *add;
 	struct passwd *usr;
 	struct group *grpid;
@@ -164,6 +162,7 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 		 actualpath[len] = '\0';
 		 add = JOIN(file, " -> ");
 		 new->name = JOIN(add, actualpath);
+
 		 REMOVE(&actualpath); REMOVE(&add); REMOVE(&grp->chemin);
 	}
 

@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/31 23:36:54 by julio             #+#    #+#             */
-/*   Updated: 2016/02/09 03:42:47 by julio            ###   ########.fr       */
+/*   Updated: 2016/02/09 05:38:46 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	file_organizer(t_group *grp, t_dir *curr_arg)
 
 	if (!(directory = opendir(curr_arg->name)))
 	{
-		perror("WTF!!!!!!!!!!");
-		//exit(0);
+		perror("WTF!");
+		exit(0);
 	}
 	while ((file = readdir(directory)))
 	{
@@ -57,6 +57,19 @@ void	show_file(t_group *grp, int dir_opened)
 	}
 }
 
+void	define_status(t_group *grp, char *arg, struct stat buf)
+{
+	grp->chemin = SDUP(arg);
+	if (S_ISREG(buf.st_mode) || S_ISLNK(buf.st_mode))
+		organize_file(0, grp, arg, buf);
+	else
+	{
+		if (grp->diropen > 0)
+			ft_putchar('\n');
+		perror(arg);
+	}
+}
+
 t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 {
 	DIR				*directory;
@@ -77,18 +90,9 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 			if (!(directory = opendir(argv[i])))
 			{
 				if ((ret = lstat(argv[i], &buf)) < 0)
-					is_error(argv[i], "is not an available directory");
+					perror(argv[i]); // is_error(argv[i], "is not an available directory");
 				else
-				{
-					if (S_ISREG(buf.st_mode))
-						organize_file(0, grp, argv[i], buf);
-					else
-					{
-						if (grp->diropen > 0)
-							ft_putchar('\n');
-						perror(argv[i]);
-					}
-				}
+					define_status(grp, argv[i], buf);	
 			}
 			else
 			{
@@ -118,13 +122,16 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 	//	int 			ret;
 
 	j = 0;
-	//isdir = 4;
 	//ret = 0;
-	directory = opendir(curr_arg->name);
-	//printf("sub_file found\n");
+	//if (directory = opendir(curr_arg->name);
+	if (!(directory = opendir(curr_arg->name)))
+	{
+		perror("WTF!");
+		exit(0);
+	}	
 	while ((file = readdir(directory)))
 	{
-		//ret = stat(file->d_name, &buf)
+		//ret = lstat(file->d_name, &buf)
 		if (file->d_type == DT_DIR && (file->d_name[0] != '.' ||
 			(file->d_name[1] && file->d_name[1] != '.' && grp->options[a] == true)))
 		{
@@ -149,6 +156,7 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 	j = 0;
 	sub_dir = (char **)malloc(sizeof(char *) * 10000); // find out pour la taille !
 	curr_arg = arg_organizer(i, grp, argc, argv);
+	// argv = fichier + dossier = segfv
 	while (curr_arg != NULL)
 	{
 		if (curr_arg->isopt == false)
