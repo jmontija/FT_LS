@@ -21,7 +21,6 @@ void show_total_blocks(t_group *grp, t_dir *file)
 			total += file->blocks;
 		if (file->isopt == 2)
 			total = -1;
-		//printf("%s: %d\n", file->name, file->blocks);
 		file = file->next;
 	}
 	if ((total == 0 && grp->options[a] == false) || total == -1)

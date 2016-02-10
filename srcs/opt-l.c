@@ -32,7 +32,7 @@ void	opt_l(t_group *grp, t_dir *file)
 	int len_file_grpid   = LEN(file->gid);
 	int len_file_link    = ft_nblen(file->slink);
 	int len_file_size    = ft_nblen(file->size);
-	
+
 	s_grp = define_space(grp, file);
 	ft_putstr(file->rights);
 	ft_putstr("  ");
@@ -41,7 +41,7 @@ void	opt_l(t_group *grp, t_dir *file)
 	ft_putnbr(file->slink);
 	ft_putchar(' ');
 	ft_putstr(file->uid);
-	while (len_file_uid++ < s_grp->uid_space + 1)
+	while (len_file_uid++ < s_grp->uid_space + 2)
 		ft_putchar(' ');
 	ft_putstr(file->gid);
 	while (len_file_grpid++ < s_grp->grpid_space + 2)

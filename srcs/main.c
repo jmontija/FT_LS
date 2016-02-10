@@ -12,6 +12,8 @@
 
 // ATTENTION : wrapper.app et authserver sont verrouiller a checker lors de louverture:
 // 	sur ces cas ls fait comme si il avait les droits et affiche un fichier vide
+	//wtf file
+//nfs/sgoinfre/goinfre/Apps/Atom.app/Contents/Resources/app/node_modules/markdown-preview/spec/fixtures//subdir
 
 #include "ft_ls.h"
 #include <errno.h>
@@ -42,16 +44,16 @@ void	file_organizer(t_group *grp, t_dir *curr_arg)
 	}
 	closedir(directory);
 	launcher(grp, curr_arg->name);
-	delete_dir(grp);
+	delete_files(grp);
 }
 
 void	show_file(t_group *grp, int dir_opened)
 {
-	// fichier apeller par les arguments dans le shell
+	// fichier apelle par les arguments dans le shell
 	if (grp->curr_first_dir != NULL)
 	{
 		launcher(grp, NULL);
-		delete_dir(grp);
+		delete_files(grp);
 		if (dir_opened > 0)
 			ft_putchar('\n');
 	}
@@ -63,11 +65,7 @@ void	define_status(t_group *grp, char *arg, struct stat buf)
 	if (S_ISREG(buf.st_mode) || S_ISLNK(buf.st_mode))
 		organize_file(0, grp, arg, buf);
 	else
-	{
-		if (grp->diropen > 0)
-			ft_putchar('\n');
 		perror(arg);
-	}
 }
 
 /* essayer de faire un mix entre file_organiser et dir_topen */
@@ -76,14 +74,12 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 {
 	DIR				*directory;
 	struct dirent	*file;
-	//struct stat		buf;
+	struct stat		buf;
+	char			*path_file;
 	char 			*path;
 	int 			j;
-	//	int 			ret;
 
 	j = 0;
-	//ret = 0;
-	//if (directory = opendir(curr_arg->name);
 	if (!(directory = opendir(curr_arg->name)))
 	{
 		perror("WTF!");
@@ -91,19 +87,21 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 	}	
 	while ((file = readdir(directory)))
 	{
-		//ret = lstat(file->d_name, &buf)
-		if (file->d_type == DT_DIR && (file->d_name[0] != '.' ||
+		if ((file->d_name[0] != '.' ||
 			(file->d_name[1] && file->d_name[1] != '.' && grp->options[a] == true)))
 		{
-			//printf("sub_dir found %s\n", file->d_name);
 			path = JOIN(curr_arg->name, "/");
-			(*sub_dir)[j] = JOIN(path, file->d_name);
-			REMOVE(&path);
-			j++;
+			path_file = JOIN(path, file->d_name);
+			lstat(path_file, &buf);
+			if (S_ISDIR(buf.st_mode))
+			{
+				(*sub_dir)[j] = SDUP(path_file); //ft_putstr("is_dir: "); ft_putendl((*sub_dir)[j]);
+				j++;
+			}
+			REMOVE(&path); REMOVE(&path_file);
 		}
 	}
 	closedir(directory);
-	//printf("Sub_diR->%s/ = %d\n", curr_arg->name, j);
 	return (j);
 }
 
@@ -118,7 +116,7 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 
 	while (++i < argc)
 	{
-		if (*argv[i] == '-' && grp->diropen == 0 )
+		if (*argv[i] == '-' && grp->diropen == 0)
 			manage_opt(grp, argv[i]);
 		else
 		{
@@ -167,6 +165,9 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 		j = 0;
 		curr_arg = curr_arg->next;
 	}
+	/* 
+	delete_dir(grp); delete grp->dir_organize here
+	*/
 	if (grp->diropen == false)
 		manage_dir(-1, grp, 1, grp->root);
 }

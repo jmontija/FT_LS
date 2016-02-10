@@ -12,21 +12,29 @@
 
 #include "ft_ls.h"
 // penser a supprimer !
-/*void	delete_dir(t_group *grp)
+void	delete_dir(t_group *grp)
 {
 	t_dir *file;
 
 	file = grp->dir_organize;
 	while (file != NULL)
 	{
-		if (file->name)
-			REMOVE(&file->name);
+		REMOVE(&file->name);
+		REMOVE(&file->rights);
+		REMOVE(&file->last_stat);
+		REMOVE(&file->last_access);
+		REMOVE(&file->last_modif);
+		REMOVE(&file->uid);
+		REMOVE(&file->gid);
+		file->slink = 0;
+		file->size = 0;
+		file->blocks = 0;
 		//ft_memdel((void *)file);
 		file = file->next;
 	}
-	grp->first_dir = NULL;
-	grp->curr_first_dir = NULL;
-}*/
+	grp->dir_organize = NULL;
+	grp->curr_dir = NULL;
+}
 
 t_dir	*init_dir(char *name)
 {
@@ -37,6 +45,15 @@ t_dir	*init_dir(char *name)
 		exit(0);
 	new->name = SDUP(name);
 	new->isopt = false;
+	new->rights = NULL;
+	new->last_stat = NULL;
+	new->last_access = NULL;
+	new->last_modif = NULL;
+	new->uid = NULL;
+	new->gid = NULL;
+	new->blocks = 0;
+	new->slink = 0;
+	new->size = 0;
 	new->next = NULL;
 	return (new);
 }
@@ -82,22 +99,6 @@ void	organize_dir(int isopt, t_group *grp, char *name)
 	grp->curr_dir = new;
 }
 
-	void	delete_dir(t_group *grp)
-{
-	t_dir *file;
-
-	file = grp->first_dir;
-	while (file != NULL)
-	{
-		if (file->name)
-			REMOVE(&file->name);
-		//ft_memdel((void *)file);
-		file = file->next;
-	}
-	grp->first_dir = NULL;
-	grp->curr_first_dir = NULL;
-}
-
 char	*manage_time(char *data)
 {
 	int i = -1;
@@ -119,17 +120,17 @@ char	*manage_rights(char *file, struct stat buf)
 
 	rights = NEW(10);
 	switch (buf.st_mode & S_IFMT) {
-    case S_IFBLK:  printf("périphérique de bloc\n");      break;
-    case S_IFCHR:  printf("périphérique de caractère\n"); break;
-    case S_IFDIR:  rights[0] = 'd'  ;              		  break;
-    case S_IFIFO:  printf("FIFO/tube\n");                 break;
-    case S_IFLNK:  rights[0] = 'l';           			  break;
-    case S_IFREG:  rights[0] = '-';         			  break;
-    case S_IFSOCK: rights[0] = 's';                   	  break;
-    default:       rights[0] = '?';;                 	  break;
+    case S_IFBLK:  rights[0] = 'b';break;
+    case S_IFCHR:  rights[0] = 'c';break;
+    case S_IFDIR:  rights[0] = 'd';break;
+    case S_IFIFO:  rights[0] = 'p';break;
+    case S_IFLNK:  rights[0] = 'l';break;
+    case S_IFREG:  rights[0] = '-';break;
+    case S_IFSOCK: rights[0] = 's';break;
+    default:       rights[0] = '?';break;
     }
     val=(buf.st_mode & ~S_IFMT);
-	if (val & S_IRUSR) rights[1] = 'r'; else rights[1] = '-';
+	(val & S_IRUSR) ? (rights[1] = 'r' ) : (rights[1] = '-');
 	if (val & S_IWUSR) rights[2] = 'w'; else rights[2] = '-';
 	if (val & S_IXUSR) rights[3] = 'x'; else rights[3] = '-';
 	if (val & S_IRGRP) rights[4] = 'r'; else rights[4] = '-';
@@ -141,6 +142,30 @@ char	*manage_rights(char *file, struct stat buf)
 	return (rights);
 }
 
+void	delete_files(t_group *grp)
+{
+	t_dir *file;
+
+	file = grp->first_dir;
+	while (file != NULL)
+	{
+		REMOVE(&file->name);
+		REMOVE(&file->rights);
+		REMOVE(&file->last_stat);
+		REMOVE(&file->last_access);
+		REMOVE(&file->last_modif);
+		REMOVE(&file->uid);
+		REMOVE(&file->gid);
+		file->slink = 0;
+		file->size = 0;
+		file->blocks = 0;
+		//ft_memdel((void *)file);
+		file = file->next;
+	}
+	grp->first_dir = NULL;
+	grp->curr_first_dir = NULL;
+}
+
 t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 {
 	t_dir *new;
@@ -150,8 +175,8 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 	struct group *grpid;
 	ssize_t len;
 
-	len		= 0;
-	usr		= getpwuid(buf.st_uid);
+	len	= 0;
+	usr	= getpwuid(buf.st_uid);
 	grpid = getgrgid(buf.st_gid);
 	new = (t_dir *)malloc(sizeof(t_dir));
 	if (!(new))
@@ -230,6 +255,16 @@ void	organize_file(int perm, t_group *grp, char *file, struct stat buf)
 	grp->curr_first_dir = new;
 }
 
+void	init_opt(t_group *grp)
+{
+	int i;
+
+	i = -1;
+	grp->options = (int *)malloc(sizeof(int) * 10);
+	while (++i < 10)
+		grp->options[i] = false;
+}
+
 t_group	*init_grp(void)
 {
 	t_group *grp;
@@ -242,9 +277,9 @@ t_group	*init_grp(void)
 	grp->curr_dir = NULL;
 	grp->dir_organize = NULL;
 	grp->diropen = 0;
-	grp->chemin = NULL;
-	grp->options = (int *)malloc(sizeof(int) * 10);
+	grp->chemin = NULL; 
 	grp->root = (char **)malloc(sizeof(char *) * 1);
 	grp->root[0] = SDUP(".");
+	init_opt(grp);
 	return (grp);
 }
