@@ -47,6 +47,7 @@ typedef struct		s_dir
 	char			*gid;
 	int 			slink;
 	int				size;
+	int				size_min;
 	t_bool			isopt;
 	struct s_dir	*next;
 }					t_dir;

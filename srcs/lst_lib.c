@@ -19,6 +19,7 @@ void	delete_dir(t_group *grp)
 	file = grp->dir_organize;
 	while (file != NULL)
 	{
+		//printf("deleting -> %s\n", file->name);
 		REMOVE(&file->name);
 		REMOVE(&file->rights);
 		REMOVE(&file->last_stat);
@@ -29,6 +30,7 @@ void	delete_dir(t_group *grp)
 		file->slink = 0;
 		file->size = 0;
 		file->blocks = 0;
+		file->size_min = -1;
 		//ft_memdel((void *)file);
 		file = file->next;
 	}
@@ -39,7 +41,7 @@ void	delete_dir(t_group *grp)
 t_dir	*init_dir(char *name)
 {
 	t_dir *new;
-
+	//printf("initing -> %s\n", name);
 	new = (t_dir *)malloc(sizeof(t_dir));
 	if (!(new))
 		exit(0);
@@ -54,6 +56,7 @@ t_dir	*init_dir(char *name)
 	new->blocks = 0;
 	new->slink = 0;
 	new->size = 0;
+	new->size_min = -1;
 	new->next = NULL;
 	return (new);
 }
@@ -158,6 +161,7 @@ void	delete_files(t_group *grp)
 		REMOVE(&file->gid);
 		file->slink = 0;
 		file->size = 0;
+		file->size_min = -1;
 		file->blocks = 0;
 		//ft_memdel((void *)file);
 		file = file->next;
@@ -190,7 +194,6 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 
 		 REMOVE(&actualpath); REMOVE(&add); REMOVE(&grp->chemin);
 	}
-
 	else
 		new->name = SDUP(file);
 	new->blocks = (int)buf.st_blocks;
@@ -200,8 +203,18 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 	new->last_modif = manage_time(ctime(&buf.st_mtime));
 	new->uid = SDUP(usr->pw_name);
 	if (grpid != NULL) new->gid = SDUP(grpid->gr_name); else new->gid = SDUP("101");
+
 	new->slink = (int)buf.st_nlink;
-	new->size = (int)buf.st_size;
+	if (S_ISCHR(buf.st_mode) || S_ISBLK(buf.st_mode))
+	{
+		new->size = (int)major(buf.st_rdev);
+		new->size_min = (int)minor(buf.st_rdev);
+	}
+	else
+	{
+		new->size = (int)buf.st_size;
+		new->size_min = -1;
+	}
 	new->isopt = false;
 	new->next = NULL;
 	return (new);

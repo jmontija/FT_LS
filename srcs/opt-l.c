@@ -49,6 +49,13 @@ void	opt_l(t_group *grp, t_dir *file)
 	while (len_file_size++ < s_grp->size_space)
 		ft_putchar(' ');
 	ft_putnbr(file->size);
+	if (file->size_min >= 0)
+	{
+		ft_putchar(',');
+		ft_putstr("  ");
+		ft_putnbr(file->size_min);
+		ft_putchar('\t');
+	}
 	/* attention un espace au debut du last_modif dû au strchr qui renvois la chaine a l'espace avec l'espace */
 	ft_putstr(file->last_modif);
 	ft_putchar(' ');
