@@ -16,7 +16,6 @@
 //nfs/sgoinfre/goinfre/Apps/Atom.app/Contents/Resources/app/node_modules/markdown-preview/spec/fixtures//subdir
 
 #include "ft_ls.h"
-#include <errno.h>
 
 void	file_organizer(t_group *grp, t_dir *curr_arg)
 {
@@ -147,12 +146,14 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 void		manage_dir(int i, t_group *grp, int argc, char **argv)
 {
 	t_dir 	*curr_arg;
+	//t_dir	*trash;
 	char	**sub_dir = NULL;
 	int 	j;
 
 	j = 0;
-	sub_dir = (char **)malloc(sizeof(char *) * 10000); // find out pour la taille !
+	sub_dir = (char **)malloc(sizeof(char *) * 10000); //find out pour la taille !
 	curr_arg = arg_organizer(i, grp, argc, argv);
+	//trash = curr_arg;
 	while (curr_arg != NULL)
 	{
 		//printf("checking: %s\n", curr_arg->name);
@@ -165,7 +166,7 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 		j = 0;
 		curr_arg = curr_arg->next;
 	}
-	//delete_dir(grp); faire un tmp pour stocker la valeur et pas la perdre !
+	//delete_dir(trash);
 	if (grp->diropen == false)
 		manage_dir(-1, grp, 1, grp->root);
 }
