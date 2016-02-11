@@ -30,7 +30,7 @@ void show_total_blocks(t_group *grp, t_dir *file)
 	ft_putchar('\n');
 }
 
-int		opt_1(t_group *grp, char *opt)
+int		display_files(t_group *grp, char *opt)
 {
 	t_dir 	*file;
 	int 	ret;
@@ -69,7 +69,7 @@ int	launcher(t_group *grp, char *opt)
 		ft_putendl(":");
 		space += 1;
 	}
-	if (opt_1(grp, opt) == -1)
+	if (display_files(grp, opt) == -1)
 	{	
 		ft_putstr("permission denied -> ");
 		ft_putendl(strrchr(opt, '/') + 1);

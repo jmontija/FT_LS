@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-void	opt_OE(t_dir	*new, t_dir **first, t_dir **curr)
+void	opt_1(t_dir	*new, t_dir **first, t_dir **curr)
 {
 	t_dir	*last_other;
 	t_dir	*other;
@@ -22,7 +22,6 @@ void	opt_OE(t_dir	*new, t_dir **first, t_dir **curr)
 		other = *first;
 		if (strcmp(new->name, other->name) < 0)
 		{
-			//printf("%s becomes *first element\n", new->name);
 			*first = new;
 			new->next = other;
 			return ;
@@ -31,7 +30,6 @@ void	opt_OE(t_dir	*new, t_dir **first, t_dir **curr)
 		{
 			if (strcmp(new->name, other->name) < 0)
 			{
-				//printf("insert %s between %s & %s\n", new->name, last_other->name, other->name);
 				last_other->next = new;
 				new->next = other;
 				return ;
@@ -40,49 +38,81 @@ void	opt_OE(t_dir	*new, t_dir **first, t_dir **curr)
 			other = other->next;
 		}
 		(*curr)->next = new;
-		//printf("%s becomes last element\n", new->name);
 	}
 	else
-	{
-		//printf("entrance: %s becomes *first element\n", new->name);
 		 *first = new;
-	}
 	*curr = new;
 }
 
-void	opt_t(t_dir	*new, t_dir **first, t_dir **curr)
+void	opt_t2(t_dir *new, t_dir **first, t_dir **curr)
 {
+	t_dir	*last_other;
+	t_dir	*other;
 
-}
-
-/*void reverse(struct node** head_ref)
-{
-    struct node* prev   = NULL;
-    struct node* current = *head_ref;
-    struct node* next;
-    while (current != NULL)
-    {
-        next  = current->next;  
-        current->next = prev;   
-        prev = current;
-        current = next;
-    }
-    *head_ref = prev;
-}*/
-
-void	opt_r(t_dir	*new, t_dir **first, t_dir **curr)
-{
-
-}
-
-int	 sort_launcher(t_group *grp, t_dir *new, t_dir **first, t_dir **curr)
-{
-	if (grp->options[t] || grp->options[r])
+	if (*curr != NULL)
 	{
-		//grp->options[t] = true ? opt_t(new, first, curr) : NULL;
-		//grp->options[r] = true ? opt_r(new, first, curr) : NULL;
+		other = *first;
+		if (strncmp(new->last_modif, other->last_modif, 5) < 0)
+		{
+			*first = new;
+			new->next = other;
+			return ;
+		}
+		while (other != NULL)
+		{
+			if (strncmp(new->last_modif, other->last_modif, 5) < 0)
+			{
+				last_other->next = new;
+				new->next = other;
+				return ;
+			}
+			last_other = other;
+			other = other->next;
+		}
+		(*curr)->next = new;
 	}
 	else
-		opt_OE(new, first, curr);
-	return (1);
+		 *first = new;
+	*curr = new;
+}
+
+void	opt_t(t_dir **first)
+{
+	t_dir	*other = *first;
+	t_dir	*curr = NULL;
+	t_dir 	*wtf = NULL;
+
+	while (other != NULL)
+	{
+		
+		if (other->last_modif)
+		{
+			//printf("%s %s\n", other->name, other->last_modif);
+			opt_t2(other, first, &curr);
+		}
+		other = other->next;
+	}
+	//*first = wtf;
+}
+
+void	opt_r(t_dir **first)
+{
+	t_dir	*last_other = NULL;
+	t_dir	*other = *first;
+	t_dir	*next;
+
+	while (other != NULL)
+    {
+        next  = other->next;  
+        other->next = last_other;   
+        last_other = other;
+        other = next;
+    }
+    *first = last_other;
+}
+
+void	 sort_launcher(t_group *grp, t_dir **first)
+{
+	(grp->options[t] == true) ? opt_t(first) : NULL;
+	(grp->options[r] == true) ? opt_r(first) : NULL;
 }

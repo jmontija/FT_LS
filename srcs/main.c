@@ -42,29 +42,9 @@ void	file_organizer(t_group *grp, t_dir *curr_arg)
 		organize_file(ret, grp, file->d_name, buf);
 	}
 	closedir(directory);
+	sort_launcher(grp, &grp->first_dir);
 	launcher(grp, curr_arg->name);
 	delete_files(grp);
-}
-
-void	show_file(t_group *grp, int dir_opened)
-{
-	// fichier apelle par les arguments dans le shell
-	if (grp->curr_first_dir != NULL)
-	{
-		launcher(grp, NULL);
-		delete_files(grp);
-		if (dir_opened > 0)
-			ft_putchar('\n');
-	}
-}
-
-void	define_status(t_group *grp, char *arg, struct stat buf)
-{
-	grp->chemin = SDUP(arg);
-	if (S_ISREG(buf.st_mode) || S_ISLNK(buf.st_mode))
-		organize_file(0, grp, arg, buf);
-	else
-		perror(arg);
 }
 
 /* essayer de faire un mix entre file_organiser et dir_topen */
@@ -104,6 +84,28 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 	return (j);
 }
 
+void	show_file(t_group *grp, int dir_opened)
+{
+	// fichier apelle par les arguments dans le shell
+	if (grp->curr_first_dir != NULL)
+	{
+		sort_launcher(grp, &grp->first_dir);
+		launcher(grp, NULL);
+		delete_files(grp);
+		if (dir_opened > 0)
+			ft_putchar('\n');
+	}
+}
+
+void	define_status(t_group *grp, char *arg, struct stat buf)
+{
+	grp->chemin = SDUP(arg);
+	if (S_ISREG(buf.st_mode) || S_ISLNK(buf.st_mode))
+		organize_file(0, grp, arg, buf);
+	else
+		perror(arg);
+}
+
 t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 {
 	DIR				*directory;
@@ -137,6 +139,7 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 		}
 	}
 	show_file(grp, dir_opened);
+	sort_launcher(grp, &grp->dir_organize);
 	in_order = grp->dir_organize;
 	grp->dir_organize = NULL;
 	grp->curr_dir = NULL;

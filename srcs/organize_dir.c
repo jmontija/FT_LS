@@ -71,6 +71,5 @@ void	organize_dir(int isopt, t_group *grp, char *name)
 
 	new = init_dir(name);
 	new->isopt = isopt;
-	sort_launcher(grp, new, &grp->dir_organize, &grp->curr_dir);
-
+	opt_1(new, &grp->dir_organize, &grp->curr_dir);
 }

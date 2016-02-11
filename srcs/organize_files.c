@@ -136,7 +136,6 @@ void	organize_file(int perm, t_group *grp, char *file, struct stat buf)
 {
 	t_dir	*new;
 
-	//printf("ret = %d\n", perm);
 	if (perm == 0)
 		new = init_file(grp, file, buf);
 	else
@@ -144,6 +143,5 @@ void	organize_file(int perm, t_group *grp, char *file, struct stat buf)
 		new = init_dir(file);
 		new->isopt = 2;
 	}
-	sort_launcher(grp, new, &grp->first_dir, &grp->curr_first_dir);
-
+	opt_1(new, &grp->first_dir, &grp->curr_first_dir);
 }
