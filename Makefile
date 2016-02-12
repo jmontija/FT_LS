@@ -12,7 +12,7 @@
 
 
 NAME			=	ft_ls
-COMPIL			=	gcc -g
+COMPIL			=	gcc -g -Werror -Wextra -Wall
 
 LIB_PATH		=	libft/
 LIB				=	$(LIB_PATH)libft.a

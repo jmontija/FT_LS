@@ -32,7 +32,7 @@ void	adjust_opt(t_group *grp, char opt)
 
 int		isvalid_opt(t_group *grp, char opt)
 {
-	int i = -1;
+	size_t i = -1;
 	char *text;
 	char *ls_options;
 
@@ -48,8 +48,7 @@ int		isvalid_opt(t_group *grp, char opt)
 
 int		manage_opt(t_group *grp, char *opt)
 {
-	char *g_opt;
-	int i;
+	size_t i;
 
 	i = 0;
 	while(++i < LEN(opt))

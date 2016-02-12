@@ -33,7 +33,7 @@ void	opt_l(t_group *grp, t_dir *file)
 	int len_file_link    = ft_nblen(file->slink);
 	int len_file_size    = ft_nblen(file->size);
 
-	s_grp = define_space(grp, file);
+	s_grp = define_space(grp);
 	ft_putstr(file->rights);
 	ft_putstr("  ");
 	while (len_file_link++ < s_grp->link_space)

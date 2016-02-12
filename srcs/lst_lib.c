@@ -33,6 +33,7 @@ t_dir	*copy_file(t_dir *cpy)
 	new->rights = SDUP(cpy->rights);
 	new->last_stat = SDUP(cpy->last_stat);
 	new->last_access = SDUP(cpy->last_access);
+	new->last_modif_int = cpy->last_modif_int;
 	new->last_modif = SDUP(cpy->last_modif);
 	new->uid = SDUP(cpy->uid);
 	new->gid = SDUP(cpy->gid);

@@ -44,6 +44,7 @@ typedef struct		s_dir
 	char			*last_stat;
 	char			*last_access;
 	char			*last_modif;
+	time_t			last_modif_int;
 	char			*uid;
 	char			*gid;
 	int 			slink;
@@ -77,7 +78,7 @@ typedef struct		s_space
 t_group		*init_grp(void);
 t_dir		*init_dir(char *name, struct stat buf);
 t_dir		*copy_file(t_dir *tocopy);
-t_space		*define_space(t_group *grp, t_dir *file);
+t_space		*define_space(t_group *grp);
 void		is_error(char *who, char *what);
 void		organize_dir(int filter, t_group *grp, char *name, struct stat buf);
 void		organize_file(int perm, t_group *grp, char *file, struct stat buf);

@@ -44,7 +44,7 @@ void	opt_1(t_dir	*new, t_dir **first, t_dir **curr)
 	*curr = new;
 }
 
-int			ft_cmp_month(char *s1, char *s2)
+/*int			ft_cmp_month(char *s1, char *s2)
 {
 	int i = -1;
 	int month_s1 = -1;
@@ -53,55 +53,43 @@ int			ft_cmp_month(char *s1, char *s2)
 
 	while (++i < 12)
 	{
-		(strcmp(s1, month[i]) == 0) ? (month_s1 = i) : (month_s1 = month_s1);
-		(strcmp(s2, month[i]) == 0) ? (month_s2 = i) : (month_s2 = month_s2);
+		(strcmp(s1, month[i]) == 0) ? (month_s1 = i) : 0;
+		(strcmp(s2, month[i]) == 0) ? (month_s2 = i) : 0;
 	}
 	// try -> /opt/local/var/macports/sources/rsync.macports.org/release/tarballs/ports/security
-	if (month_s1 < month_s2)
-		return (-1);
+	if (month_s1 > month_s2)
+		return (1);
 	return (0);
 }
 
 int			ft_cmp_date(char *s1, char *s2)
 {
-	char *tmp;
-	char *tmp2;
-	if (ft_strcmp(strrchr(s1, ' '), strrchr(s2, ' ')) < 0)
-		return (-1);
+	char *tmp = NULL;
+	char *tmp2 = NULL;
+	if (strcmp(strrchr(s1, ' '), strrchr(s2, ' ')) < 0)
+		return (1);
 	tmp = SUB(s1, 1, 3); tmp2 = SUB(s2, 1, 3);
-	printf("same year or sooner %s -> %s\n", tmp, tmp2);
-	if (ft_cmp_month(tmp, tmp2) < 0)
+	///printf("same year or sooner %s -> %s\n", tmp, tmp2);
+	if (ft_cmp_month(tmp, tmp2) > 0)
+	{
+		printf("most recent month %s -> %s\n", tmp, tmp2);
+		REMOVE(&tmp); REMOVE(&tmp2);
 		return (-1);
+	}
+	printf("same month or sooner %s -> %s\n", tmp, tmp2);
 	REMOVE(&tmp); REMOVE(&tmp2);
 	tmp = SUB(s1, 5, 2); tmp2 = SUB(s2, 5, 2);
-	printf("same month or sooner %s -> %s\n", tmp, tmp2);
-	if (ft_strcmp(tmp, tmp2) < 0)
-		return (-1);
-	REMOVE(&tmp); REMOVE(&tmp2);
-	return (0);
-}
-
-t_dir		*sort_dates(t_dir *tmp, t_dir *lst)
-{
-	t_dir		*tmp2;
-
-	if (!lst)
-		return (tmp);
-	if ((ft_cmp_date(tmp->last_modif, lst->last_modif)) == 0)
+	if (ft_strcmp(tmp, tmp2) > 0)
 	{
-		tmp->next = lst;
-		return (tmp);
+		printf("most recent day/hours %s -> %s\n", tmp, tmp2);
+		REMOVE(&tmp); REMOVE(&tmp2);
+		return (-1);
 	}
-	tmp2 = lst;
-	while (lst->next && ft_cmp_date(tmp->last_modif, (lst->next)->last_modif) == -1)
-		lst = lst->next;
-	if (lst->next)
-		tmp->next = lst->next;
-	lst->next = tmp;
-	return (tmp2);
-}
+	REMOVE(&tmp); REMOVE(&tmp2);
+	return (1);
+}*/
 
-/*void	opt_test(t_dir	*new, t_dir **first, t_dir **curr)
+void	opt_test(t_dir	*new, t_dir **first, t_dir **curr)
 {
 	t_dir	*last_other;
 	t_dir	*other;
@@ -109,29 +97,32 @@ t_dir		*sort_dates(t_dir *tmp, t_dir *lst)
 	if (*curr != NULL)
 	{
 		other = *first;
-		if ((ft_cmp_date(new->last_modif, other->last_modif)) < 0)
+		if (new->last_modif_int - other->last_modif_int > 0)
 		{
 			*first = new;
 			new->next = other;
+			//printf("FIRST %s\n", new->name);
 			return ;
 		}
 		while (other != NULL)
 		{
-			if ((ft_cmp_date(new->last_modif, other->last_modif)) < 0)
+			if (new->last_modif_int - other->last_modif_int > 0)
 			{
 				last_other->next = new;
 				new->next = other;
+				//printf("BEETWEEN %s\n", new->name);
 				return ;
 			}
 			last_other = other;
 			other = other->next;
 		}
+		//printf("LAST %s\n", new->name);
 		(*curr)->next = new;
 	}
 	else
 		 *first = new;
 	*curr = new;
-}*/
+}
 
 t_dir	*opt_t(t_dir *first)
 {
@@ -144,8 +135,7 @@ t_dir	*opt_t(t_dir *first)
 	while (first)
 	{
 		tmp2 = copy_file(first);
-		tmp = sort_dates(tmp2, tmp);
-		//opt_test(tmp2, &tmp, &curr);
+		opt_test(tmp2, &tmp, &curr);
 		first = first->next;
 	}
 	return (tmp);

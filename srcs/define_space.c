@@ -55,7 +55,7 @@ void	len_space_size(t_group *grp, t_space *s_grp)
 void	len_space_uid(t_group *grp, t_space *s_grp)
 {
 	t_dir *test;
-	size_t i;
+	int i;
 
 	s_grp->uid_space = 0;
 	test = grp->first_dir;
@@ -63,7 +63,7 @@ void	len_space_uid(t_group *grp, t_space *s_grp)
 	{
 		if (test->uid)
 		{
-			i = LEN(test->uid);
+			i = (int)LEN(test->uid);
 			if (i > s_grp->uid_space)
 				s_grp->uid_space = i;
 		}
@@ -77,7 +77,7 @@ void	len_space_uid(t_group *grp, t_space *s_grp)
 void	len_space_grpid(t_group *grp, t_space *s_grp)
 {
 	t_dir *test;
-	size_t i;
+	int i;
 
 	s_grp->grpid_space = 0;
 	test = grp->first_dir;
@@ -85,7 +85,7 @@ void	len_space_grpid(t_group *grp, t_space *s_grp)
 	{
 		if (test->gid)
 		{
-			i = LEN(test->gid);
+			i = (int)LEN(test->gid);
 			if (i > s_grp->grpid_space)
 				s_grp->grpid_space = i;
 		}
@@ -94,7 +94,7 @@ void	len_space_grpid(t_group *grp, t_space *s_grp)
 	//printf("grpid_max %d\n", s_grp->grpid_space);
 }
 
-t_space		*define_space(t_group *grp, t_dir *file)
+t_space		*define_space(t_group *grp)
 {
 	t_space *s_grp = NULL;
 

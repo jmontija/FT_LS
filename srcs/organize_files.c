@@ -14,7 +14,7 @@
 
 char	*manage_time(char *data)
 {
-	int i = -1;
+	size_t i = -1;
 	while (++i < LEN(data))
 	{
 		if (data[i] == '\n')
@@ -26,7 +26,7 @@ char	*manage_time(char *data)
 	return (SDUP(data));
 }
 
-char	*manage_rights(char *file, struct stat buf)
+char	*manage_rights(struct stat buf)
 {
 	char *rights;
 	mode_t val;
@@ -109,9 +109,10 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 	else
 		new->name = SDUP(file);
 	new->blocks = (int)buf.st_blocks;
-	new->rights = manage_rights(file, buf);
+	new->rights = manage_rights(buf);
 	new->last_stat = manage_time(ctime(&buf.st_ctime));
 	new->last_access = manage_time(ctime(&buf.st_atime));
+	new->last_modif_int = buf.st_mtime;
 	new->last_modif = manage_time(ctime(&buf.st_mtime));
 	new->uid = SDUP(usr->pw_name);
 	if (grpid != NULL) new->gid = SDUP(grpid->gr_name); else new->gid = SDUP("101");
