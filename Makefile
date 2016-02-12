@@ -21,7 +21,6 @@ LIB_LINK		=	-L $(LIB_PATH) -lft
 INCLUDES		=	-I $(LIB_PATH) -I ./includes
 SRCS			+=	srcs/main.c
 SRCS			+=	srcs/lst_lib.c
-SRCS			+=	srcs/ft_ls_lib.c
 SRCS			+=	srcs/launcher.c
 SRCS			+=	srcs/organize_dir.c
 SRCS			+=	srcs/organize_files.c

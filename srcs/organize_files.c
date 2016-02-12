@@ -22,7 +22,8 @@ char	*manage_time(char *data)
 	}
 	data[i] = '\0';
 	data = ft_strchr(data, ' ');
-	data = ft_strncpy(NEW(13), data, 13);
+	//data = ft_strncpy(NEW(13), data, 13);
+	//printf("%s\n", data);
 	return (SDUP(data));
 }
 
@@ -140,7 +141,7 @@ void	organize_file(int perm, t_group *grp, char *file, struct stat buf)
 		new = init_file(grp, file, buf);
 	else
 	{
-		new = init_dir(file);
+		new = init_dir(file, buf);
 		new->isopt = 2;
 	}
 	opt_1(new, &grp->first_dir, &grp->curr_first_dir);

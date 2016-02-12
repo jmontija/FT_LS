@@ -40,7 +40,7 @@ void	delete_dir(t_dir *trash)
 	//grp->curr_dir = NULL;
 }
 
-t_dir	*init_dir(char *name)
+t_dir	*init_dir(char *name, struct stat buf)
 {
 	t_dir *new;
 	//printf("initing -> %s\n", name);
@@ -52,7 +52,7 @@ t_dir	*init_dir(char *name)
 	new->rights = NULL;
 	new->last_stat = NULL;
 	new->last_access = NULL;
-	new->last_modif = NULL;
+	new->last_modif = manage_time(ctime(&buf.st_mtime));
 	new->uid = NULL;
 	new->gid = NULL;
 	new->blocks = 0;
@@ -63,13 +63,13 @@ t_dir	*init_dir(char *name)
 	return (new);
 }
 
-void	organize_dir(int isopt, t_group *grp, char *name)
+void	organize_dir(int isopt, t_group *grp, char *name, struct stat buf)
 {
 	t_dir	*last_other;
 	t_dir	*other;
 	t_dir	*new;
 
-	new = init_dir(name);
+	new = init_dir(name, buf);
 	new->isopt = isopt;
 	opt_1(new, &grp->dir_organize, &grp->curr_dir);
 }

@@ -33,7 +33,7 @@
 
 enum {false, true};
 enum {R, t, r, l, a};
-
+enum {jan, feb, mar, apr, may, jun, jul, aug, sept, oct, nov, dec};
 typedef int			t_bool;
 
 typedef struct		s_dir
@@ -75,16 +75,18 @@ typedef struct		s_space
 }					t_space;
 
 t_group		*init_grp(void);
-t_dir		*init_dir(char *name);
+t_dir		*init_dir(char *name, struct stat buf);
+t_dir		*copy_file(t_dir *tocopy);
 t_space		*define_space(t_group *grp, t_dir *file);
 void		is_error(char *who, char *what);
-void		organize_dir(int filter, t_group *grp, char *name);
+void		organize_dir(int filter, t_group *grp, char *name, struct stat buf);
 void		organize_file(int perm, t_group *grp, char *file, struct stat buf);
 void		delete_dir(t_dir *trash);
 void		delete_files(t_group *grp);
 void	 	sort_launcher(t_group *grp, t_dir **first);
 void		opt_1(t_dir	*new, t_dir **first, t_dir **curr);
 void		opt_l(t_group *grp, t_dir *file);
+char		*manage_time(char *data);
 int			manage_opt(t_group *grp, char *opt);
 int			launcher(t_group *grp, char *opt);
 int			ft_nblen(int nb);

@@ -86,7 +86,7 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 
 void	show_file(t_group *grp, int dir_opened)
 {
-	// fichier apelle par les arguments dans le shell
+	// fichier apellé par les arguments dans le shell
 	if (grp->curr_first_dir != NULL)
 	{
 		sort_launcher(grp, &grp->first_dir);
@@ -131,7 +131,9 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 			}
 			else
 			{
-				organize_dir(0, grp, argv[i]);
+				if ((ret = lstat(argv[i], &buf)) < 0)
+					is_error(argv[i], "is not an available directory");
+				organize_dir(0, grp, argv[i], buf);
 				closedir(directory);
 				dir_opened += 1;
 			}

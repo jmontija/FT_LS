@@ -22,6 +22,28 @@ void	init_opt(t_group *grp)
 		grp->options[i] = false;
 }
 
+t_dir	*copy_file(t_dir *cpy)
+{
+	t_dir *new;
+	new = (t_dir *)malloc(sizeof(t_dir));
+	if (!(new) || !cpy)
+		return (NULL);
+	new->name = SDUP(cpy->name);
+	new->isopt = cpy->isopt;
+	new->rights = SDUP(cpy->rights);
+	new->last_stat = SDUP(cpy->last_stat);
+	new->last_access = SDUP(cpy->last_access);
+	new->last_modif = SDUP(cpy->last_modif);
+	new->uid = SDUP(cpy->uid);
+	new->gid = SDUP(cpy->gid);
+	new->blocks = cpy->blocks;
+	new->slink = cpy->slink;
+	new->size = cpy->size;
+	new->size_min = cpy->size_min;
+	new->next = NULL;
+	return (new);
+}
+
 t_group	*init_grp(void)
 {
 	t_group *grp;
