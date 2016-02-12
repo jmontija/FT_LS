@@ -6,7 +6,7 @@
 /*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 01:00:29 by julio             #+#    #+#             */
-/*   Updated: 2016/02/09 03:23:39 by julio            ###   ########.fr       */
+/*   Updated: 2016/02/12 05:46:07 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	opt_l(t_group *grp, t_dir *file)
 		ft_putnbr(file->size_min);
 		ft_putchar('\t');
 	}
+	ft_putchar(' ');
 	/* attention un espace au debut du last_modif dû au strchr qui renvois la chaine a l'espace avec l'espace */
 	ft_putstr(file->last_modif);
 	ft_putchar(' ');

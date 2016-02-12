@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   organize_files.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmontija <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 05:18:05 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/10 05:18:07 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/02/12 05:50:14 by julio            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*manage_time(char *data)
 		if (data[i] == '\n')
 			data[i] = '\0';
 	}
-	data[i] = '\0';
 	data = ft_strchr(data, ' ');
 	//data = ft_strncpy(NEW(13), data, 13);
 	//printf("%s\n", data);
