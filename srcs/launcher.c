@@ -70,7 +70,7 @@ int	launcher(t_group *grp, char *opt)
 		space += 1;
 	}
 	if (display_files(grp, opt) == -1)
-	{	
+	{
 		ft_putstr("permission denied -> ");
 		ft_putendl(strrchr(opt, '/') + 1);
 	}

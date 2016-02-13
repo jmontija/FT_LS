@@ -14,11 +14,11 @@
 
 char 	*display_years(struct stat buf, char *data)
 {
-	time_t	act_time = time(0);;
-	time_t 	s_month = 15552000;
-	char 	*years = NULL;  
-	char 	*md = NULL; 	
-	
+	time_t	act_time = time(0);
+	time_t 	s_month = 15778800;
+	char 	*years = NULL;
+	char 	*md = NULL;
+
 	if (buf.st_mtime < (act_time - s_month))
 	{
 		years = strrchr(data, ' ');
@@ -115,9 +115,9 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 	new = (t_dir *)malloc(sizeof(t_dir));
 	if (!(new))
 		exit(0);
-	if (grp->options[l] && 
+	if (grp->options[l] &&
 		S_ISLNK(buf.st_mode) && ((len = readlink(grp->chemin, actualpath, 1024)) != -1))
-	{	
+	{
 		 actualpath[len] = '\0';
 		 add = JOIN(file, " -> ");
 		 new->name = JOIN(add, actualpath);

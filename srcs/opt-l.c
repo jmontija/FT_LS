@@ -35,8 +35,7 @@ void	opt_l(t_group *grp, t_dir *file)
 
 	s_grp = define_space(grp);
 	ft_putstr(file->rights);
-	ft_putstr("  ");
-	while (len_file_link++ < s_grp->link_space)
+	while (len_file_link++ < s_grp->link_space + 2)
 		ft_putchar(' ');
 	ft_putnbr(file->slink);
 	ft_putchar(' ');

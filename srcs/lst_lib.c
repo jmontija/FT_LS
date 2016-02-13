@@ -57,7 +57,7 @@ t_group	*init_grp(void)
 	grp->curr_dir = NULL;
 	grp->dir_organize = NULL;
 	grp->diropen = 0;
-	grp->chemin = NULL; 
+	grp->chemin = NULL;
 	grp->root = (char **)malloc(sizeof(char *) * 1);
 	grp->root[0] = SDUP(".");
 	init_opt(grp);

@@ -149,8 +149,8 @@ void	opt_r(t_dir **first)
 
 	while (other != NULL)
     {
-        next  = other->next;  
-        other->next = last_other;   
+        next  = other->next;
+        other->next = last_other;
         last_other = other;
         other = next;
     }

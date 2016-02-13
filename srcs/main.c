@@ -63,7 +63,7 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 	{
 		perror("WTF!");
 		exit(0);
-	}	
+	}
 	while ((file = readdir(directory)))
 	{
 		if ((file->d_name[0] != '.' ||
@@ -127,7 +127,7 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 				if ((ret = lstat(argv[i], &buf)) < 0)
 					is_error(argv[i], "is not an available directory");
 				else
-					define_status(grp, argv[i], buf);	
+					define_status(grp, argv[i], buf);
 			}
 			else
 			{
