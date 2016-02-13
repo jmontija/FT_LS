@@ -12,17 +12,35 @@
 
 #include "ft_ls.h"
 
+char 	*display_years(struct stat buf, char *data)
+{
+	time_t	act_time = time(0);;
+	time_t 	s_month = 15552000;
+	char 	*years = NULL;  
+	char 	*md = NULL; 	
+	
+	if (buf.st_mtime < (act_time - s_month))
+	{
+		years = strrchr(data, ' ');
+		md = SUB(data, 0, 7);
+		data = ft_strjoin(md, " ");
+		data = ft_strjoin(data, years);
+	}
+	else
+		data = ft_strncpy(NEW(13), data, 13);
+	return (data);
+}
+
 char	*manage_time(char *data)
 {
 	size_t i = -1;
+
 	while (++i < LEN(data))
 	{
 		if (data[i] == '\n')
 			data[i] = '\0';
 	}
 	data = ft_strchr(data, ' ');
-	//data = ft_strncpy(NEW(13), data, 13);
-	//printf("%s\n", data);
 	return (SDUP(data));
 }
 
@@ -58,7 +76,7 @@ char	*manage_rights(struct stat buf)
 void	delete_files(t_group *grp)
 {
 	t_dir *file;
-	//t_dir *tmp = NULL;
+	//t_dir *trash = NULL;
 
 	file = grp->first_dir;
 	while (file != NULL)
@@ -74,9 +92,9 @@ void	delete_files(t_group *grp)
 		file->size = 0;
 		file->size_min = -1;
 		file->blocks = 0;
-		//tmp = file;
+		//trash = file;
 		file = file->next;
-		//ft_memdel((void *)tmp);
+		//ft_memdel((void *)trash);
 	}
 	grp->first_dir = NULL;
 	grp->curr_first_dir = NULL;
@@ -114,6 +132,7 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 	new->last_access = manage_time(ctime(&buf.st_atime));
 	new->last_modif_int = buf.st_mtime;
 	new->last_modif = manage_time(ctime(&buf.st_mtime));
+	new->last_modif = display_years(buf, new->last_modif);
 	new->uid = SDUP(usr->pw_name);
 	if (grpid != NULL) new->gid = SDUP(grpid->gr_name); else new->gid = SDUP("101");
 
