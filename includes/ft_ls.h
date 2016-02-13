@@ -22,6 +22,8 @@
 # include <pwd.h>
 # include <grp.h>
 # include <time.h>
+# include <sys/xattr.h>
+# include <sys/acl.h>
 # include "libft.h"
 
 # define NEW(x)			(ft_strnew(x))

@@ -44,32 +44,43 @@ char	*manage_time(char *data)
 	return (SDUP(data));
 }
 
-char	*manage_rights(struct stat buf)
+char	*manage_rights(t_group *grp, struct stat buf)
 {
-	char *rights;
-	mode_t val;
+	char 		*rights;
+	ssize_t		buflen = 0;
+	mode_t		val;
+	acl_t		acl;
 
 	rights = NEW(10);
-	switch (buf.st_mode & S_IFMT) {
-    case S_IFBLK:  rights[0] = 'b';break;
-    case S_IFCHR:  rights[0] = 'c';break;
-    case S_IFDIR:  rights[0] = 'd';break;
-    case S_IFIFO:  rights[0] = 'p';break;
-    case S_IFLNK:  rights[0] = 'l';break;
-    case S_IFREG:  rights[0] = '-';break;
-    case S_IFSOCK: rights[0] = 's';break;
-    default:       rights[0] = '?';break;
-    }
+	S_ISBLK(buf.st_mode)  ? rights[0] = 'b' : 0;
+	S_ISCHR(buf.st_mode)  ? rights[0] = 'c' : 0;
+	S_ISDIR(buf.st_mode)  ? rights[0] = 'd' : 0;
+	S_ISFIFO(buf.st_mode) ? rights[0] = 'p' : 0;
+	S_ISLNK(buf.st_mode)  ? rights[0] = 'l' : 0;
+	S_ISREG(buf.st_mode)  ? rights[0] = '-' : 0;
+	S_ISSOCK(buf.st_mode) ? rights[0] = 's' : 0;
     val=(buf.st_mode & ~S_IFMT);
-	(val & S_IRUSR) ? (rights[1] = 'r' ) : (rights[1] = '-');
-	if (val & S_IWUSR) rights[2] = 'w'; else rights[2] = '-';
-	if (val & S_IXUSR) rights[3] = 'x'; else rights[3] = '-';
-	if (val & S_IRGRP) rights[4] = 'r'; else rights[4] = '-';
-	if (val & S_IWGRP) rights[5] = 'w'; else rights[5] = '-';
-	if (val & S_IXGRP) rights[6] = 'x'; else rights[6] = '-';
-	if (val & S_IROTH) rights[7] = 'r'; else rights[7] = '-';
-	if (val & S_IWOTH) rights[8] = 'w'; else rights[8] = '-';
-	if (val & S_IXOTH) rights[9] = 'x'; else rights[9] = '-';
+	(val & S_IRUSR) ? (rights[1] = 'r') : (rights[1] = '-');
+	(val & S_IWUSR) ? (rights[2] = 'w') : (rights[2] = '-');
+	(val & S_IXUSR) ? (rights[3] = 'x') : (rights[3] = '-');
+	(val & S_IRGRP) ? (rights[4] = 'r') : (rights[4] = '-');
+	(val & S_IWGRP) ? (rights[5] = 'w') : (rights[5] = '-');
+	(val & S_IXGRP) ? (rights[6] = 'x') : (rights[6] = '-');
+	(val & S_IROTH) ? (rights[7] = 'r') : (rights[7] = '-');
+	(val & S_IWOTH) ? (rights[8] = 'w') : (rights[8] = '-');
+	(val & S_IXOTH) ? (rights[9] = 'x') : (rights[9] = '-');
+	if (val & S_ISVTX)
+		rights[10] = 't';
+	else
+		(val & S_IXOTH) ? (rights[10] = 'x') : (rights[10] = '-');
+	buflen = listxattr(grp->chemin, NULL, 0, 0);
+	acl = acl_get_file(grp->chemin, ACL_TYPE_EXTENDED);
+	if (buflen > 0)
+		rights[10] = '@';
+	else if (acl)
+		rights[10] = '+';
+	else
+		rights[10] = ' ';
 	return (rights);
 }
 
@@ -127,7 +138,7 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 	else
 		new->name = SDUP(file);
 	new->blocks = (int)buf.st_blocks;
-	new->rights = manage_rights(buf);
+	new->rights = manage_rights(grp, buf);
 	new->last_stat = manage_time(ctime(&buf.st_ctime));
 	new->last_access = manage_time(ctime(&buf.st_atime));
 	new->last_modif_int = buf.st_mtime;

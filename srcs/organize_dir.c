@@ -43,7 +43,6 @@ void	delete_dir(t_dir *trash)
 t_dir	*init_dir(char *name, struct stat buf)
 {
 	t_dir *new;
-	//printf("initing -> %s\n", name);
 	new = (t_dir *)malloc(sizeof(t_dir));
 	if (!(new))
 		exit(0);
