@@ -71,7 +71,7 @@ char	*manage_rights(t_group *grp, struct stat buf)
 	char 		*rights;
 	mode_t		val;
 
-	rights = NEW(10);
+	rights = NEW(11);
 	S_ISBLK(buf.st_mode)  ? rights[0] = 'b' : 0;
 	S_ISCHR(buf.st_mode)  ? rights[0] = 'c' : 0;
 	S_ISDIR(buf.st_mode)  ? rights[0] = 'd' : 0;

@@ -15,19 +15,34 @@
 void show_total_blocks(t_group *grp, t_dir *file)
 {
 	int total = 0;
+	int count = 0;
 	while (file != NULL)
 	{
-		if (file->name[0] != '.' || grp->options[a] == true)
+		if ((file->name[0] != '.' || grp->options[a] == true) && file->isopt != 2)
 			total += file->blocks;
-		if (file->isopt == 2)
-			total = -1;
+		count++;
 		file = file->next;
 	}
-	if ((total == 0 && grp->options[a] == false) || total == -1)
+	if (total == 0 && count == 2 && grp->options[a] == false)
 		return ;
 	ft_putstr("total ");
 	ft_putnbr(total);
 	ft_putchar('\n');
+}
+
+void	display_errors(t_dir *file)
+{
+
+	while (file != NULL)
+	{
+		if (file->isopt == 2)
+		{
+			perror(ft_strjoin("ft_ls: ", file->name));
+			/*ft_putstr("permission denied -> ");
+			ft_putendl(file->name);*/
+		}
+		file = file->next;
+	}
 }
 
 int		display_files(t_group *grp, char *opt)
@@ -37,6 +52,7 @@ int		display_files(t_group *grp, char *opt)
 
 	ret = 0;
 	file = grp->first_dir;
+	display_errors(file);
 	if (grp->options[l] == true && opt != NULL)
 		show_total_blocks(grp, file);
 	while (file != NULL)
@@ -45,12 +61,8 @@ int		display_files(t_group *grp, char *opt)
 		{
 			if (grp->options[l] == true && file->isopt != 2)
 				opt_l(grp, file);
-			else if (file->isopt == 2)
-			{
-				ft_putstr("permission denied -> ");
-				ret = -1;
-			}
-			ft_putendl(file->name);
+			if (file->isopt != 2)
+				ft_putendl(file->name);
 		}
 		file = file->next;
 	}
@@ -71,10 +83,6 @@ int	launcher(t_group *grp, char *opt)
 	}
 	else if (grp->options[R] == true)
 		space += 1;
-	if (display_files(grp, opt) == -1)
-	{
-		ft_putstr("permission denied -> ");
-		ft_putendl(strrchr(opt, '/') + 1);
-	}
+	display_files(grp, opt);
 	return (0);
 }

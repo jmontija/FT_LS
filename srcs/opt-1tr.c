@@ -12,24 +12,6 @@
 
 #include "ft_ls.h"
 
-/*int			ft_cmp_month(char *s1, char *s2)
-{
-	int i = -1;
-	int month_s1 = -1;
-	int month_s2 = -1;
-	char **month = ft_strsplit("Jan/Feb/Mar/Apr/May/Jun/Jul/Aug/Sep/Oct/Nov/Dec/", '/');
-
-	while (++i < 12)
-	{
-		(strcmp(s1, month[i]) == 0) ? (month_s1 = i) : 0;
-		(strcmp(s2, month[i]) == 0) ? (month_s2 = i) : 0;
-	}
-	// try -> /opt/local/var/macports/sources/rsync.macports.org/release/tarballs/ports/security
-	if (month_s1 > month_s2)
-		return (1);
-	return (0);
-}*/
-
 void	opt_1(t_dir	*new, t_dir **first, t_dir **curr)
 {
 	t_dir	*last_other;
@@ -96,27 +78,29 @@ void	opt_test(t_dir	*new, t_dir **first, t_dir **curr)
 
 t_dir	*opt_t(t_dir *first)
 {
-	t_dir *tmp;
-	t_dir *tmp2;
+	t_dir *first_new;
+	t_dir *cpy;
 	t_dir *curr;
 
 	curr = NULL;
-	tmp = NULL;
+	first_new = NULL;
 	while (first)
 	{
-		tmp2 = copy_file(first);
-		opt_test(tmp2, &tmp, &curr);
+		cpy = copy_file(first);
+		opt_test(cpy, &first_new, &curr);
 		first = first->next;
 	}
-	return (tmp);
+	return (first_new);
 }
 
 t_dir	*opt_r(t_dir *first)
 {
-	t_dir	*last_other = NULL;
-	t_dir	*other = first;
+	t_dir	*last_other;
+	t_dir	*other;
 	t_dir	*next;
 
+	last_other = NULL;
+	other = first;
 	while (other != NULL)
     {
         next  = other->next;

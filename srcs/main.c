@@ -113,7 +113,6 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 	struct stat		buf;
 	int 			ret;
 	int				dir_opened = 0;
-	//char			*error;
 
 	while (++i < argc)
 	{
