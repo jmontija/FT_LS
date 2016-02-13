@@ -176,7 +176,7 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 		manage_dir(-1, grp, 1, grp->root);
 }
 
-/* A faire: trier lexico graphiquement les erreurs
+/* A faire: trier lexico graphiquement les erreurs*/
 
 int		main(int argc, char **argv)
 {
