@@ -61,7 +61,7 @@ int	launcher(t_group *grp, char *opt)
 {
 	static int space = 0;
 
-	if ((grp->diropen > 1 || grp->options[R] == true) && opt != NULL)
+	if (grp->diropen > 1  && opt != NULL)
 	{
 		if (space != 0)
 			ft_putchar('\n');
@@ -69,6 +69,8 @@ int	launcher(t_group *grp, char *opt)
 		ft_putendl(":");
 		space += 1;
 	}
+	else if (grp->options[R] == true)
+		space += 1;
 	if (display_files(grp, opt) == -1)
 	{
 		ft_putstr("permission denied -> ");

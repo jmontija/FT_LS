@@ -1,13 +1,13 @@
 1d0
 < /opt:
 5c4
-< drwxr-xr-x   4 root  wheel   136 Jan 21 21:37 .
+< drwxr-xr-x   4 root  wheel   136 Jan 30 18:11 .
 ---
-> drwxr-xr-x@  4 root  wheel   136 Jan 21 21:37 .
+> drwxr-xr-x@  4 root  wheel   136 Jan 30 18:11 .
 20c19
-< drwxr-xr-x    4 root  wheel   136 Jan 21 21:37 ..
+< drwxr-xr-x    4 root  wheel   136 Jan 30 18:11 ..
 ---
-> drwxr-xr-x@   4 root  wheel   136 Jan 21 21:37 ..
+> drwxr-xr-x@   4 root  wheel   136 Jan 30 18:11 ..
 90c89
 < -rw-r--r--   1 root  admin   5709 Oct 23 10:37 ltdl.h
 ---
@@ -287,6 +287,6 @@
 ---
 > -rwxr-xr-t    1 root  admin  14362932 Oct 23 11:05 emacs-24.5
 125873c125872
-< drwxr-xr-x   4 root  wheel  136 Jan 21 21:37 ..
+< drwxr-xr-x   4 root  wheel  136 Jan 30 18:11 ..
 ---
-> drwxr-xr-x@  4 root  wheel  136 Jan 21 21:37 ..
+> drwxr-xr-x@  4 root  wheel  136 Jan 30 18:11 ..
