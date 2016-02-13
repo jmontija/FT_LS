@@ -32,10 +32,13 @@ void	opt_l(t_group *grp, t_dir *file)
 	int len_file_grpid   = LEN(file->gid);
 	int len_file_link    = ft_nblen(file->slink);
 	int len_file_size    = ft_nblen(file->size);
+	int len_file_size_min = ft_nblen(file->size_min);
 
 	s_grp = define_space(grp);
 	ft_putstr(file->rights);
-	while (len_file_link++ < s_grp->link_space + 2)
+	if (grp->ismaj_min == false)
+		ft_putchar(' ');
+	while (len_file_link++ < s_grp->link_space + 1)
 		ft_putchar(' ');
 	ft_putnbr(file->slink);
 	ft_putchar(' ');
@@ -43,19 +46,26 @@ void	opt_l(t_group *grp, t_dir *file)
 	while (len_file_uid++ < s_grp->uid_space + 2)
 		ft_putchar(' ');
 	ft_putstr(file->gid);
-	while (len_file_grpid++ < s_grp->grpid_space + 2)
+	while (len_file_grpid++ < s_grp->grpid_space)
 		ft_putchar(' ');
 	while (len_file_size++ < s_grp->size_space)
 		ft_putchar(' ');
+	len_file_size = ft_nblen(file->size);
+	if (grp->ismaj_min == true)
+		ft_putchar(' ');
+	else
+		ft_putstr("  ");
+	if (file->size_min < 0 && grp->ismaj_min)
+		while (len_file_size++ < s_grp->size_space * 2 - 2)
+			ft_putchar(' ');
 	ft_putnbr(file->size);
 	if (file->size_min >= 0)
 	{
 		ft_putchar(',');
-		ft_putstr("  ");
+		while (len_file_size_min++ < s_grp->size_min_space + 1)
+			ft_putchar(' ');
 		ft_putnbr(file->size_min);
-		ft_putchar('\t');
 	}
-	//ft_putchar(' ');
 	/* attention un espace au debut du last_modif dû au strchr qui renvois la chaine a l'espace avec l'espace */
 	ft_putstr(file->last_modif);
 	ft_putchar(' ');

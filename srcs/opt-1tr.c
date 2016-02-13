@@ -12,6 +12,24 @@
 
 #include "ft_ls.h"
 
+/*int			ft_cmp_month(char *s1, char *s2)
+{
+	int i = -1;
+	int month_s1 = -1;
+	int month_s2 = -1;
+	char **month = ft_strsplit("Jan/Feb/Mar/Apr/May/Jun/Jul/Aug/Sep/Oct/Nov/Dec/", '/');
+
+	while (++i < 12)
+	{
+		(strcmp(s1, month[i]) == 0) ? (month_s1 = i) : 0;
+		(strcmp(s2, month[i]) == 0) ? (month_s2 = i) : 0;
+	}
+	// try -> /opt/local/var/macports/sources/rsync.macports.org/release/tarballs/ports/security
+	if (month_s1 > month_s2)
+		return (1);
+	return (0);
+}*/
+
 void	opt_1(t_dir	*new, t_dir **first, t_dir **curr)
 {
 	t_dir	*last_other;
@@ -44,51 +62,6 @@ void	opt_1(t_dir	*new, t_dir **first, t_dir **curr)
 	*curr = new;
 }
 
-/*int			ft_cmp_month(char *s1, char *s2)
-{
-	int i = -1;
-	int month_s1 = -1;
-	int month_s2 = -1;
-	char **month = ft_strsplit("Jan/Feb/Mar/Apr/May/Jun/Jul/Aug/Sep/Oct/Nov/Dec/", '/');
-
-	while (++i < 12)
-	{
-		(strcmp(s1, month[i]) == 0) ? (month_s1 = i) : 0;
-		(strcmp(s2, month[i]) == 0) ? (month_s2 = i) : 0;
-	}
-	// try -> /opt/local/var/macports/sources/rsync.macports.org/release/tarballs/ports/security
-	if (month_s1 > month_s2)
-		return (1);
-	return (0);
-}
-
-int			ft_cmp_date(char *s1, char *s2)
-{
-	char *tmp = NULL;
-	char *tmp2 = NULL;
-	if (strcmp(strrchr(s1, ' '), strrchr(s2, ' ')) < 0)
-		return (1);
-	tmp = SUB(s1, 1, 3); tmp2 = SUB(s2, 1, 3);
-	///printf("same year or sooner %s -> %s\n", tmp, tmp2);
-	if (ft_cmp_month(tmp, tmp2) > 0)
-	{
-		printf("most recent month %s -> %s\n", tmp, tmp2);
-		REMOVE(&tmp); REMOVE(&tmp2);
-		return (-1);
-	}
-	printf("same month or sooner %s -> %s\n", tmp, tmp2);
-	REMOVE(&tmp); REMOVE(&tmp2);
-	tmp = SUB(s1, 5, 2); tmp2 = SUB(s2, 5, 2);
-	if (ft_strcmp(tmp, tmp2) > 0)
-	{
-		printf("most recent day/hours %s -> %s\n", tmp, tmp2);
-		REMOVE(&tmp); REMOVE(&tmp2);
-		return (-1);
-	}
-	REMOVE(&tmp); REMOVE(&tmp2);
-	return (1);
-}*/
-
 void	opt_test(t_dir	*new, t_dir **first, t_dir **curr)
 {
 	t_dir	*last_other;
@@ -101,7 +74,6 @@ void	opt_test(t_dir	*new, t_dir **first, t_dir **curr)
 		{
 			*first = new;
 			new->next = other;
-			//printf("FIRST %s\n", new->name);
 			return ;
 		}
 		while (other != NULL)
@@ -110,13 +82,11 @@ void	opt_test(t_dir	*new, t_dir **first, t_dir **curr)
 			{
 				last_other->next = new;
 				new->next = other;
-				//printf("BEETWEEN %s\n", new->name);
 				return ;
 			}
 			last_other = other;
 			other = other->next;
 		}
-		//printf("LAST %s\n", new->name);
 		(*curr)->next = new;
 	}
 	else
@@ -141,10 +111,10 @@ t_dir	*opt_t(t_dir *first)
 	return (tmp);
 }
 
-void	opt_r(t_dir **first)
+t_dir	*opt_r(t_dir *first)
 {
 	t_dir	*last_other = NULL;
-	t_dir	*other = *first;
+	t_dir	*other = first;
 	t_dir	*next;
 
 	while (other != NULL)
@@ -154,11 +124,11 @@ void	opt_r(t_dir **first)
         last_other = other;
         other = next;
     }
-    *first = last_other;
+    return (last_other);
 }
 
 void	 sort_launcher(t_group *grp, t_dir **first)
 {
 	(grp->options[t] == true) ? *first = opt_t(*first) : NULL;
-	(grp->options[r] == true) ? opt_r(first) : NULL;
+	(grp->options[r] == true) ? *first = opt_r(*first) : NULL;
 }

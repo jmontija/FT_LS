@@ -56,10 +56,3 @@ int		manage_opt(t_group *grp, char *opt)
 			return (false);
 	return (true);
 }
-
-/*
-	if -rt = -1tr
-	if -rta = -1tra
-	if -rtal = -1tral
-	if -rtalR = -Rtral
- 						*/

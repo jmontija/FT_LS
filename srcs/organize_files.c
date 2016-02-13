@@ -139,6 +139,8 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 	new->slink = (int)buf.st_nlink;
 	if (S_ISCHR(buf.st_mode) || S_ISBLK(buf.st_mode))
 	{
+		if (grp->ismaj_min == false)
+			grp->ismaj_min = true;
 		new->size = (int)major(buf.st_rdev);
 		new->size_min = (int)minor(buf.st_rdev);
 	}

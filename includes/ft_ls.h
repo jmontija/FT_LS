@@ -58,6 +58,7 @@ typedef struct		s_group
 {
 	t_bool			diropen;
 	t_bool			*options;
+	t_bool			ismaj_min;
 	char			*chemin;
 	char			**root;
 	struct s_dir	*dir_organize;
@@ -73,6 +74,7 @@ typedef struct		s_space
 	int		uid_space;
 	int		grpid_space;
 	int		size_space;
+	int		size_min_space;
 }					t_space;
 
 t_group		*init_grp(void);
