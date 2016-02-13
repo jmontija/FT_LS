@@ -36,8 +36,6 @@ void	opt_l(t_group *grp, t_dir *file)
 
 	s_grp = define_space(grp);
 	ft_putstr(file->rights);
-	if (grp->ismaj_min == false)
-		ft_putchar(' ');
 	while (len_file_link++ < s_grp->link_space + 1)
 		ft_putchar(' ');
 	ft_putnbr(file->slink);
@@ -46,7 +44,7 @@ void	opt_l(t_group *grp, t_dir *file)
 	while (len_file_uid++ < s_grp->uid_space + 2)
 		ft_putchar(' ');
 	ft_putstr(file->gid);
-	while (len_file_grpid++ < s_grp->grpid_space)
+	while (len_file_grpid++ < s_grp->grpid_space - 1)
 		ft_putchar(' ');
 	while (len_file_size++ < s_grp->size_space)
 		ft_putchar(' ');
@@ -66,7 +64,6 @@ void	opt_l(t_group *grp, t_dir *file)
 			ft_putchar(' ');
 		ft_putnbr(file->size_min);
 	}
-	/* attention un espace au debut du last_modif dû au strchr qui renvois la chaine a l'espace avec l'espace */
 	ft_putstr(file->last_modif);
 	ft_putchar(' ');
 	ft_memdel((void*)&s_grp);
