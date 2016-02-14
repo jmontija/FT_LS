@@ -15,11 +15,11 @@
 char 	*display_years(struct stat buf, char *data)
 {
 	time_t	act_time = time(0);
-	time_t 	s_month = 15778800;
+	time_t 	s_month = act_time - 15724800;
 	char 	*years = NULL;
 	char 	*md = NULL;
 
-	if (buf.st_mtime < (act_time - s_month))
+	if (buf.st_mtime <= s_month)
 	{
 		years = strrchr(data, ' ');
 		md = SUB(data, 0, 7);
@@ -44,17 +44,13 @@ char	*manage_time(char *data)
 	return (SDUP(data));
 }
 
-char	get_acl_attr(t_group *grp, mode_t val)
+char	get_acl_attr(t_group *grp)
 {
 	char		rights;
 	ssize_t		buflen;
 	acl_t		acl;
 
 	buflen = 0;
-	if (val & S_ISVTX)
-		rights = 't';
-	else
-		(val & S_IXOTH) ? (rights = 'x') : (rights = '-');
 	buflen = listxattr(grp->chemin, NULL, 0, 0);
 	acl = acl_get_file(grp->chemin, ACL_TYPE_EXTENDED);
 	if (buflen > 0)
@@ -89,7 +85,8 @@ char	*manage_rights(t_group *grp, struct stat buf)
 	(val & S_IROTH) ? (rights[7] = 'r') : (rights[7] = '-');
 	(val & S_IWOTH) ? (rights[8] = 'w') : (rights[8] = '-');
 	(val & S_IXOTH) ? (rights[9] = 'x') : (rights[9] = '-');
-	rights[10] = get_acl_attr(grp, val);
+	(val & S_ISVTX) ? (rights[9] = 't') : 0;
+	rights[10] = get_acl_attr(grp);
 	return (rights);
 }
 

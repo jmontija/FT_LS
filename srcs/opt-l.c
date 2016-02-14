@@ -44,17 +44,15 @@ void	opt_l(t_group *grp, t_dir *file)
 	while (len_file_uid++ < s_grp->uid_space + 2)
 		ft_putchar(' ');
 	ft_putstr(file->gid);
-	while (len_file_grpid++ < s_grp->grpid_space - 1)
+	while (len_file_grpid++ < s_grp->grpid_space)
 		ft_putchar(' ');
 	while (len_file_size++ < s_grp->size_space)
 		ft_putchar(' ');
 	len_file_size = ft_nblen(file->size);
-	if (grp->ismaj_min == true)
-		ft_putchar(' ');
-	else
+	if (grp->ismaj_min == false)
 		ft_putstr("  ");
 	if (file->size_min < 0 && grp->ismaj_min)
-		while (len_file_size++ < s_grp->size_space * 2 - 2)
+		while (len_file_size++ < s_grp->size_space + 2)
 			ft_putchar(' ');
 	ft_putnbr(file->size);
 	if (file->size_min >= 0)
