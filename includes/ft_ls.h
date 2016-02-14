@@ -14,6 +14,7 @@
 # define FT_LS_H
 
 # include <stdio.h>
+# include "libft.h"
 
 # include <dirent.h>
 # include <sys/types.h>
@@ -24,7 +25,6 @@
 # include <time.h>
 # include <sys/xattr.h>
 # include <sys/acl.h>
-# include "libft.h"
 
 # define NEW(x)			(ft_strnew(x))
 # define LEN(x)			(ft_strlen(x))
@@ -34,8 +34,7 @@
 # define REMOVE(x)		(ft_strdel(x))
 
 enum {false, true};
-enum {R, t, r, l, a};
-enum {jan, feb, mar, apr, may, jun, jul, aug, sept, oct, nov, dec};
+enum {R, t, r, l, a, f, g, d};
 typedef int			t_bool;
 
 typedef struct		s_dir
@@ -91,6 +90,7 @@ void		delete_files(t_group *grp);
 void	 	sort_launcher(t_group *grp, t_dir **first);
 void		opt_1(t_dir	*new, t_dir **first, t_dir **curr);
 void		opt_l(t_group *grp, t_dir *file);
+void		opt_f(t_dir *new, t_dir **first, t_dir **curr);
 char		*manage_time(char *data);
 int			manage_opt(t_group *grp, char *opt);
 int			launcher(t_group *grp, char *opt);

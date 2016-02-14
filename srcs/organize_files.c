@@ -177,7 +177,6 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 void	organize_file(int perm, t_group *grp, char *file, struct stat buf)
 {
 	t_dir	*new;
-
 	if (perm == 0)
 		new = init_file(grp, file, buf);
 	else
@@ -185,5 +184,8 @@ void	organize_file(int perm, t_group *grp, char *file, struct stat buf)
 		new = init_dir(file, buf);
 		new->isopt = 2;
 	}
-	opt_1(new, &grp->first_dir, &grp->curr_first_dir);
+	if (grp->options[f] == true)
+		opt_f(new, &grp->first_dir, &grp->curr_first_dir);
+	else
+		opt_1(new, &grp->first_dir, &grp->curr_first_dir);
 }

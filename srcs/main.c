@@ -99,7 +99,7 @@ void	show_file(t_group *grp, int dir_opened)
 void	define_status(t_group *grp, char *arg, struct stat buf)
 {
 	grp->chemin = SDUP(arg);
-	if (S_ISREG(buf.st_mode) || S_ISLNK(buf.st_mode))
+	if (S_ISREG(buf.st_mode) || S_ISLNK(buf.st_mode) || grp->options[d] == true)
 		organize_file(0, grp, arg, buf);
 	else if (S_ISDIR(buf.st_mode))
 		organize_dir(2, grp, arg, buf);
@@ -120,7 +120,7 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 		else
 		{
 			// warning: avant d'afficher les erreurs il faut les trier lexicographiquemt !
-			if (!(directory = opendir(argv[i])))
+			if (!(directory = opendir(argv[i])) || grp->options[d] == true)
 			{
 				if ((ret = lstat(argv[i], &buf)) < 0)
 					is_error(argv[i], "is not an available directory");

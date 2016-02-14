@@ -12,16 +12,6 @@
 
 #include "ft_ls.h"
 
-void	init_opt(t_group *grp)
-{
-	int i;
-
-	i = -1;
-	grp->options = (int *)malloc(sizeof(int) * 10);
-	while (++i < 10)
-		grp->options[i] = false;
-}
-
 t_dir	*copy_file(t_dir *cpy)
 {
 	t_dir *new;
@@ -43,6 +33,16 @@ t_dir	*copy_file(t_dir *cpy)
 	new->size_min = cpy->size_min;
 	new->next = NULL;
 	return (new);
+}
+
+void	init_opt(t_group *grp)
+{
+	int i;
+
+	i = -1;
+	grp->options = (int *)malloc(sizeof(int) * 10);
+	while (++i < 10)
+		grp->options[i] = false;
 }
 
 t_group	*init_grp(void)

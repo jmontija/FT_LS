@@ -18,12 +18,12 @@ void show_total_blocks(t_group *grp, t_dir *file)
 	int count = 0;
 	while (file != NULL)
 	{
-		if ((file->name[0] != '.' || grp->options[a] == true) && file->isopt != 2)
+		if ((file->name[0] != '.' || grp->options[a] == true || grp->options[f] == true) && file->isopt != 2)
 			total += file->blocks;
 		count++;
 		file = file->next;
 	}
-	if (total == 0 && count == 2 && grp->options[a] == false)
+	if (total == 0 && count == 2 && grp->options[a] == false && grp->options[f] == false)
 		return ;
 	ft_putstr("total ");
 	ft_putnbr(total);
@@ -53,13 +53,13 @@ int		display_files(t_group *grp, char *opt)
 	ret = 0;
 	file = grp->first_dir;
 	display_errors(file);
-	if (grp->options[l] == true && opt != NULL)
+	if ((grp->options[l] == true || grp->options[g] == true) && opt != NULL)
 		show_total_blocks(grp, file);
 	while (file != NULL)
 	{
-		if (file->name[0] != '.' || grp->options[a] == true)
+		if (file->name[0] != '.' || grp->options[a] == true || grp->options[f] == true || grp->options[d] == true)
 		{
-			if (grp->options[l] == true && file->isopt != 2)
+			if ((grp->options[l] == true || grp->options[g] == true) && file->isopt != 2)
 				opt_l(grp, file);
 			if (file->isopt != 2)
 				ft_putendl(file->name);

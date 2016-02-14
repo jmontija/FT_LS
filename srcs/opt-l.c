@@ -40,9 +40,12 @@ void	opt_l(t_group *grp, t_dir *file)
 		ft_putchar(' ');
 	ft_putnbr(file->slink);
 	ft_putchar(' ');
-	ft_putstr(file->uid);
-	while (len_file_uid++ < s_grp->uid_space + 2)
-		ft_putchar(' ');
+	if (grp->options[g] == false)
+	{
+		ft_putstr(file->uid);
+		while (len_file_uid++ < s_grp->uid_space + 2)
+			ft_putchar(' ');
+	}
 	ft_putstr(file->gid);
 	while (len_file_grpid++ < s_grp->grpid_space)
 		ft_putchar(' ');

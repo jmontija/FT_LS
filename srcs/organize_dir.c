@@ -69,5 +69,8 @@ void	organize_dir(int isopt, t_group *grp, char *name, struct stat buf)
 
 	new = init_dir(name, buf);
 	new->isopt = isopt;
-	opt_1(new, &grp->dir_organize, &grp->curr_dir);
+	if (grp->options[f] == true)
+		opt_f(new, &grp->dir_organize, &grp->curr_dir);
+	else
+		opt_1(new, &grp->dir_organize, &grp->curr_dir);
 }

@@ -12,6 +12,15 @@
 
 #include "ft_ls.h"
 
+void	opt_f(t_dir *new, t_dir **first, t_dir **curr)
+{
+	if (*curr != NULL)
+		(*curr)->next = new;
+	else
+		*first = new;
+	*curr = new;
+}
+
 void	opt_1(t_dir	*new, t_dir **first, t_dir **curr)
 {
 	t_dir	*last_other;
@@ -113,6 +122,7 @@ t_dir	*opt_r(t_dir *first)
 
 void	 sort_launcher(t_group *grp, t_dir **first)
 {
+	if (grp->options[f] == true) return;
 	(grp->options[t] == true) ? *first = opt_t(*first) : NULL;
 	(grp->options[r] == true) ? *first = opt_r(*first) : NULL;
 }

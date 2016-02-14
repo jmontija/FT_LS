@@ -78,6 +78,7 @@ SRC += ft_wordnb.c
 
 SRCO = $(SRC:.c=.o)
 CC = gcc
+INCLUDES = -I ./includes
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
@@ -85,7 +86,7 @@ all: $(NAME)
 re: fclean all
 
 .c.o:
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(INCLUDES) $(CFLAGS) -o $@ -c $<
 
 $(NAME): $(SRCO)
 	ar rc $@ $^

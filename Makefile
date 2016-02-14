@@ -12,22 +12,22 @@
 
 
 NAME			=	ft_ls
-COMPIL			=	gcc -g -Werror -Wextra -Wall
+COMPIL			=	gcc -Werror -Wextra -Wall
 
 LIB_PATH		=	libft/
 LIB				=	$(LIB_PATH)libft.a
 LIB_LINK		=	-L $(LIB_PATH) -lft
 
-INCLUDES		=	-I $(LIB_PATH) -I ./includes
+INCLUDES		=	-I $(LIB_PATH)/includes -I ./includes
 SRCS			+=	srcs/main.c
 SRCS			+=	srcs/lst_lib.c
 SRCS			+=	srcs/launcher.c
 SRCS			+=	srcs/organize_dir.c
 SRCS			+=	srcs/organize_files.c
 SRCS			+=	srcs/opt_set.c
+SRCS			+=	srcs/opt-1tr.c
 SRCS			+=	srcs/opt-l.c
 SRCS			+=	srcs/define_space.c
-SRCS			+=	srcs/opt-1tr.c
 
 OBJS			=	$(SRCS:srcs/%.c=srco/%.o)
 
