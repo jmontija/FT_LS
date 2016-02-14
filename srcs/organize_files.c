@@ -165,6 +165,7 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 	}
 	else
 	{
+		grp->ismaj_min = false;
 		new->size = (int)buf.st_size;
 		new->size_min = -1;
 	}
