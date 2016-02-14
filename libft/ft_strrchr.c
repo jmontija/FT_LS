@@ -22,7 +22,7 @@ char	*ft_strrchr(const char *s, int c)
 	while (len >= 0 && s[len] != occ)
 		len--;
 	if (len < 0)
-		return (0);
+		return ((char *)s);
 	else
 		return ((char *)s + len);
 	return (NULL);

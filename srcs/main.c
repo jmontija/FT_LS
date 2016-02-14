@@ -28,8 +28,10 @@ void	file_organizer(t_group *grp, t_dir *curr_arg)
 
 	if (!(directory = opendir(curr_arg->name)))
 	{
-		perror("WTF!");
-		exit(0);
+		if (grp->diropen > 1)
+			ft_putchar('\n');
+		perror(curr_arg->name);
+		return ;
 	}
 	while ((file = readdir(directory)))
 	{
@@ -60,10 +62,7 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 
 	j = 0;
 	if (!(directory = opendir(curr_arg->name)))
-	{
-		perror("WTF!");
-		exit(0);
-	}
+		return (-1);
 	while ((file = readdir(directory)))
 	{
 		if ((file->d_name[0] != '.' ||
@@ -102,8 +101,8 @@ void	define_status(t_group *grp, char *arg, struct stat buf)
 	grp->chemin = SDUP(arg);
 	if (S_ISREG(buf.st_mode) || S_ISLNK(buf.st_mode))
 		organize_file(0, grp, arg, buf);
-	else
-		perror(arg);
+	else if (S_ISDIR(buf.st_mode))
+		organize_dir(2, grp, arg, buf);
 }
 
 t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
@@ -165,7 +164,7 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 		if (grp->options[R] == true)
 			j = dir_topen(grp, curr_arg, &sub_dir);
 		j > 0 ? manage_dir(-1, grp, j, sub_dir) : 0;
-		while (j--)
+		while (j > 0 && j--)
 			REMOVE(&sub_dir[j]);
 		j = 0;
 		curr_arg = curr_arg->next;
