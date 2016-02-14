@@ -79,9 +79,11 @@ char	*manage_rights(t_group *grp, struct stat buf)
 	(val & S_IRUSR) ? (rights[1] = 'r') : (rights[1] = '-');
 	(val & S_IWUSR) ? (rights[2] = 'w') : (rights[2] = '-');
 	(val & S_IXUSR) ? (rights[3] = 'x') : (rights[3] = '-');
+	(val & S_ISUID) ? (rights[3] = 's') : 0;
 	(val & S_IRGRP) ? (rights[4] = 'r') : (rights[4] = '-');
 	(val & S_IWGRP) ? (rights[5] = 'w') : (rights[5] = '-');
 	(val & S_IXGRP) ? (rights[6] = 'x') : (rights[6] = '-');
+	(val & S_ISGID) ? (rights[6] = 's') : 0;
 	(val & S_IROTH) ? (rights[7] = 'r') : (rights[7] = '-');
 	(val & S_IWOTH) ? (rights[8] = 'w') : (rights[8] = '-');
 	(val & S_IXOTH) ? (rights[9] = 'x') : (rights[9] = '-');

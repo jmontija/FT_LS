@@ -49,8 +49,7 @@ void	opt_l(t_group *grp, t_dir *file)
 	while (len_file_size++ < s_grp->size_space)
 		ft_putchar(' ');
 	len_file_size = ft_nblen(file->size);
-	if (grp->ismaj_min == false)
-		ft_putstr("  ");
+	(grp->ismaj_min == false) ? ft_putstr("  ") : ft_putchar(' ');
 	if (file->size_min < 0 && grp->ismaj_min)
 		while (len_file_size++ < s_grp->size_space + 2)
 			ft_putchar(' ');

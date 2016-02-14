@@ -1,8 +1,78 @@
-17,18c17,18
-< -rw-r--r--    1 jmontija  2015_paris       0 Feb 14 02:01 try
-< -rw-r--r--    1 jmontija  2015_paris   45758 Feb 14 02:00 try2
+85c85
+< -r-xr-xr-x     1 root   wheel     83520 Jan 14 03:11 at
 ---
-> -rw-r--r--    1 jmontija  2015_paris   45750 Feb 14 02:01 try
-> -rw-r--r--    1 jmontija  2015_paris       0 Feb 14 02:01 try2
-949a950
-> ./oekd:
+> -r-sr-xr-x     1 root   wheel     83520 Jan 14 03:11 at
+87,88c87,88
+< -r-xr-xr-x     1 root   wheel     83520 Jan 14 03:11 atq
+< -r-xr-xr-x     1 root   wheel     83520 Jan 14 03:11 atrm
+---
+> -r-sr-xr-x     1 root   wheel     83520 Jan 14 03:11 atq
+> -r-sr-xr-x     1 root   wheel     83520 Jan 14 03:11 atrm
+103c103
+< -r-xr-xr-x     1 root   wheel     83520 Jan 14 03:11 batch
+---
+> -r-sr-xr-x     1 root   wheel     83520 Jan 14 03:11 batch
+193c193
+< -rwxr-xr-x     1 root   wheel     39024 Dec  3 07:36 crontab
+---
+> -rwsr-xr-x     1 root   wheel     39024 Dec  3 07:36 crontab
+521c521
+< -r-xr-xr-x     1 root   wheel     76336 Jan 14 03:13 login
+---
+> -r-sr-xr-x     1 root   wheel     76336 Jan 14 03:13 login
+613c613
+< -r-xr-xr-x     1 root   wheel     52560 Jan 14 03:13 newgrp
+---
+> -r-sr-xr-x     1 root   wheel     52560 Jan 14 03:13 newgrp
+791c791
+< -r-xr-xr-x     1 root   wheel     23488 Dec  3 07:36 quota
+---
+> -r-sr-xr-x     1 root   wheel     23488 Dec  3 07:36 quota
+918,919c918,919
+< -rwxr-xr-x     1 root   wheel     25312 Dec  3 07:35 su
+< -r-x--x--x     1 root   wheel    168448 Dec  3 07:35 sudo
+---
+> -rwsr-xr-x     1 root   wheel     25312 Dec  3 07:35 su
+> -r-s--x--x     1 root   wheel    168448 Dec  3 07:35 sudo
+975c975
+< -r-xr-xr-x     1 root   wheel     87952 Dec  3 07:35 top
+---
+> -r-sr-xr-x     1 root   wheel     87952 Dec  3 07:35 top
+1033c1033
+< -r-xr-xr-x     1 root   tty       24704 Dec  3 07:35 wall
+---
+> -r-xr-sr-x     1 root   tty       24704 Dec  3 07:35 wall
+1048c1048
+< -r-xr-xr-x     1 root   tty       23808 Dec  3 07:35 write
+---
+> -r-xr-sr-x     1 root   tty       23808 Dec  3 07:35 write
+1103a1104
+> /usr/bin/wrapper.app:
+4716c4717
+< -r-xr-xr-x    1 root  wheel  61616 Jan 14 03:09 sadc
+---
+> -r-sr-xr-x    1 root  wheel  61616 Jan 14 03:09 sadc
+4917c4918
+< -r-xr-xr-x    1 root  wheel    23360 Jan 14 03:13 authopen
+---
+> -r-sr-xr-x    1 root  wheel    23360 Jan 14 03:13 authopen
+5029c5030
+< -rwx--x--x    1 root  wheel    18848 Jan 14 03:11 security_authtrampoline
+---
+> -rws--x--x    1 root  wheel    18848 Jan 14 03:11 security_authtrampoline
+10585c10586
+< -rwxr-xr-x    1 root   _postdrop    199296 Dec  3 07:36 postdrop
+---
+> -rwxr-sr-x    1 root   _postdrop    199296 Dec  3 07:36 postdrop
+10592c10593
+< -rwxr-xr-x    1 root   _postdrop    230848 Dec  3 07:35 postqueue
+---
+> -rwxr-sr-x    1 root   _postdrop    230848 Dec  3 07:35 postqueue
+10661,10662c10662,10663
+< -r-xr-xr-x    1 root   wheel         37952 Jan 14 03:12 traceroute
+< -r-xr-xr-x    1 root   wheel         33616 Jan 14 03:13 traceroute6
+---
+> -r-sr-xr-x    1 root   wheel         37952 Jan 14 03:12 traceroute
+> -r-sr-xr-x    1 root   wheel         33616 Jan 14 03:13 traceroute6
+10686a10688
+> /usr/sbin/authserver:
