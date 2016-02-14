@@ -82,10 +82,10 @@ lrwxr-xr-x     1 root   wheel        73 Jan  4 01:45 apt -> /System/Library/Fram
 -rwxr-xr-x     1 root   wheel     18176 Jan 14 03:12 asa
 -rwxr-xr-x     1 root   wheel    126688 Dec  3 07:35 asctl
 -rwxr-xr-x     1 root   wheel    762016 Dec  3 07:36 assetutil
--r-xr-xr-x     1 root   wheel     83520 Jan 14 03:11 at
+-r-sr-xr-x     1 root   wheel     83520 Jan 14 03:11 at
 -rwxr-xr-x     1 root   wheel    135504 Jan 14 03:12 atos
--r-xr-xr-x     1 root   wheel     83520 Jan 14 03:11 atq
--r-xr-xr-x     1 root   wheel     83520 Jan 14 03:11 atrm
+-r-sr-xr-x     1 root   wheel     83520 Jan 14 03:11 atq
+-r-sr-xr-x     1 root   wheel     83520 Jan 14 03:11 atrm
 -rwxr-xr-x     1 root   wheel     28800 Jan 14 03:13 atsutil
 -rwxr-xr-x     1 root   wheel     70276 Dec  3 15:20 audiodevice
 -rwxr-xr-x     1 root   wheel     38624 Dec  3 07:35 automator
@@ -100,7 +100,7 @@ lrwxr-xr-x     1 root   wheel        73 Jan  4 01:45 apt -> /System/Library/Fram
 -rwxr-xr-x     1 root   wheel     23136 Dec  3 07:35 base64
 -rwxr-xr-x     1 root   wheel     18208 Dec  3 07:36 basename
 -r-xr-xr-x     1 root   wheel      6574 Aug 23 00:39 bashbug
--r-xr-xr-x     1 root   wheel     83520 Jan 14 03:11 batch
+-r-sr-xr-x     1 root   wheel     83520 Jan 14 03:11 batch
 -rwxr-xr-x     1 root   wheel     85008 Dec  3 07:35 bc
 -rwxr-xr-x    15 root   wheel       190 Aug 23 00:35 bg
 -rwxr-xr-x     1 root   wheel     18128 Dec  3 07:35 biff
@@ -190,7 +190,7 @@ lrwxr-xr-x     1 root   wheel         5 Oct 18 16:27 cc -> clang
 -r-xr-xr-x     1 root   wheel       871 Aug 23 06:02 crc325.18
 -rwxr-xr-x     1 root   wheel       342 Aug 27 01:58 creatbyproc.d
 -rwxr-xr-x     1 root   wheel     34752 Jan 14 03:11 crlrefresh
--rwxr-xr-x     1 root   wheel     39024 Dec  3 07:36 crontab
+-rwsr-xr-x     1 root   wheel     39024 Dec  3 07:36 crontab
 -rwxr-xr-x     1 root   wheel     14990 Aug 23 04:27 csdiagnose
 -rwxr-xr-x     1 root   wheel    562064 Dec  3 07:36 csgather
 -rwxr-xr-x     1 root   wheel     23888 Dec  3 07:36 csplit
@@ -518,7 +518,7 @@ lrwxr-xr-x     1 root   wheel         5 Oct 18 16:27 llvm-gcc -> clang
 -rwxr-xr-x     1 root   wheel     23296 Dec  3 07:35 locate
 -rwxr-xr-x     1 root   wheel     57536 Jan 14 03:13 lockstat
 -r-xr-xr-x     1 root   wheel     18720 Dec  3 07:36 logger
--r-xr-xr-x     1 root   wheel     76336 Jan 14 03:13 login
+-r-sr-xr-x     1 root   wheel     76336 Jan 14 03:13 login
 -rwxr-xr-x     1 root   wheel     18080 Dec  3 07:36 logname
 -rwxr-xr-x     1 root   wheel     18720 Dec  3 07:36 look
 -rwxr-xr-x     1 root   wheel     50592 Dec  3 07:35 lookbib
@@ -610,7 +610,7 @@ lrwxr-xr-x     1 root   wheel        82 Jan  4 01:45 native2ascii -> /System/Lib
 -rwxr-xr-x     1 root   wheel      3656 Oct 24 01:59 net-snmp-create-v3-user
 -rwxr-xr-x     1 root   wheel     61424 Dec  3 07:36 nettop
 lrwxr-xr-x     1 root   wheel        16 Oct 18 16:27 newaliases -> ../sbin/sendmail
--r-xr-xr-x     1 root   wheel     52560 Jan 14 03:13 newgrp
+-r-sr-xr-x     1 root   wheel     52560 Jan 14 03:13 newgrp
 -rwxr-xr-x     1 root   wheel      4376 Aug 27 01:58 newproc.d
 -r-xr-xr-x     1 root   wheel     45008 Dec  3 07:36 nfsstat
 -rwxr-xr-x     1 root   wheel     18320 Dec  3 07:36 nice
@@ -788,7 +788,7 @@ lrwxr-xr-x     1 root   wheel        76 Oct 18 16:27 pythonw2.7 -> ../../System/
 lrwxr-xr-x     1 root   wheel       100 Oct 18 16:27 qlmanage -> ../../System/Library/Frameworks/QuickLook.framework/Resources/quicklookd.app/Contents/MacOS/qlmanage
 -rwxr-xr-x     1 root   wheel     54976 Jan 14 03:11 qtdefaults
 -rwxr-xr-x     1 root   wheel     82496 Jan 14 03:13 qtmodernizer
--r-xr-xr-x     1 root   wheel     23488 Dec  3 07:36 quota
+-r-sr-xr-x     1 root   wheel     23488 Dec  3 07:36 quota
 -r-xr-xr-x     1 root   wheel       549 Aug 23 02:07 rails
 -r-xr-xr-x     1 root   wheel      1370 Aug 23 02:07 rake
 -rwxr-xr-x     1 root   wheel     18176 Jan 14 03:13 ranlib
@@ -915,8 +915,8 @@ lrwxr-xr-x     1 root   wheel        59 Oct 18 16:27 snfsdefrag -> /System/Libra
 -rwxr-xr-x    35 root   wheel       811 Aug 23 06:02 stty.pl
 -r-xr-xr-x     1 root   wheel       277 Aug 23 06:02 stty5.16.pl
 -r-xr-xr-x     1 root   wheel       277 Aug 23 06:02 stty5.18.pl
--rwxr-xr-x     1 root   wheel     25312 Dec  3 07:35 su
--r-x--x--x     1 root   wheel    168448 Dec  3 07:35 sudo
+-rwsr-xr-x     1 root   wheel     25312 Dec  3 07:35 su
+-r-s--x--x     1 root   wheel    168448 Dec  3 07:35 sudo
 -rwxr-xr-x     1 root   wheel     22576 Dec  3 07:35 sum
 -rwxr-xr-x     1 root   wheel     18176 Jan 14 03:12 svn
 -rwxr-xr-x     1 root   wheel     18176 Jan 14 03:13 svnadmin
@@ -972,7 +972,7 @@ lrwxr-xr-x     1 root   wheel        43 Oct 18 16:27 tkcon -> ../../System/Libra
 -rwxr-xr-x     1 root   wheel    279680 Dec  3 07:35 tmutil
 lrwxr-xr-x     1 root   wheel        79 Jan  4 01:45 tnameserv -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/tnameserv
 -rwxr-xr-x     1 root   wheel     24560 Dec  3 07:36 toe
--r-xr-xr-x     1 root   wheel     87952 Dec  3 07:35 top
+-r-sr-xr-x     1 root   wheel     87952 Dec  3 07:35 top
 -rwxr-xr-x     1 root   wheel    103040 Dec  3 07:35 tops
 -rwxr-xr-x     1 root   wheel      4619 Aug 27 01:58 topsyscall
 -rwxr-xr-x     1 root   wheel      2950 Aug 27 01:58 topsysproc
@@ -1030,7 +1030,7 @@ lrwxr-xr-x     1 root   wheel         3 Oct 18 16:27 vimdiff -> vim
 -rwxr-xr-x     1 root   wheel     72416 Jan 14 03:11 vmmap32
 -rwxr-xr-x     1 root   wheel     24096 Dec  3 07:35 w
 -rwxr-xr-x    15 root   wheel       190 Aug 23 00:35 wait
--r-xr-xr-x     1 root   tty       24704 Dec  3 07:35 wall
+-r-xr-sr-x     1 root   tty       24704 Dec  3 07:35 wall
 -rwxr-xr-x     1 root   wheel     22976 Dec  3 07:36 wc
 -rwxr-xr-x     1 root   wheel     28672 Dec  3 07:36 wdutil
 -rwxr-xr-x     1 root   wheel      4013 Aug 27 01:58 weblatency.d
@@ -1045,7 +1045,7 @@ lrwxr-xr-x     1 root   wheel         7 Oct 18 16:27 wish -> wish8.5
 -r-xr-xr-x     1 root   wheel       127 Aug 23 04:51 wish8.4
 -r-xr-xr-x     1 root   wheel       127 Aug 23 04:54 wish8.5
 drwx------     3 root   wheel       102 Jan  5 10:23 wrapper.app
--r-xr-xr-x     1 root   tty       23808 Dec  3 07:35 write
+-r-xr-sr-x     1 root   tty       23808 Dec  3 07:35 write
 lrwxr-xr-x     1 root   wheel        75 Jan  4 01:45 wsgen -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/wsgen
 lrwxr-xr-x     1 root   wheel        78 Jan  4 01:45 wsimport -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/wsimport
 -rwxr-xr-x     1 root   wheel     38032 Dec  3 07:35 xar
@@ -4713,7 +4713,7 @@ drwxr-xr-x    5 root  wheel    170 Jan 25 13:13 .
 drwxr-xr-x  291 root  wheel   9894 Jan 25 13:14 ..
 -rwxr-xr-x    1 root  wheel   1131 Aug 27 01:59 sa1
 -rwxr-xr-x    1 root  wheel   1208 Aug 27 01:59 sa2
--r-xr-xr-x    1 root  wheel  61616 Jan 14 03:09 sadc
+-r-sr-xr-x    1 root  wheel  61616 Jan 14 03:09 sadc
 
 /usr/lib/sasl2:
 total 1152
@@ -4914,7 +4914,7 @@ drwxr-xr-x    3 root  wheel      102 Aug 23 02:49 SmartCardServices
 drwxr-xr-x  108 root  wheel     3672 Jan  4 02:14 apache2
 -rwxr-xr-x    1 root  wheel    81440 Dec  3 07:36 applessdstatistics
 -rwxr-xr-x    1 root  wheel    57424 Jan 14 03:11 atrun
--r-xr-xr-x    1 root  wheel    23360 Jan 14 03:13 authopen
+-r-sr-xr-x    1 root  wheel    23360 Jan 14 03:13 authopen
 -rwxr-xr-x    1 root  wheel    23952 Jan 14 03:10 autofsd
 -rwxr-xr-x    1 root  wheel   129344 Jan 14 03:12 automountd
 -rwxr-xr-x    1 root  wheel   616608 Dec  3 07:35 awacsd
@@ -5026,7 +5026,7 @@ drwxr-xr-x   45 root  wheel     1530 Jan  4 02:14 postfix
 -rwxr-xr-x    1 root  wheel  1182736 Jan 14 03:13 secd
 -rwxr-xr-x    1 root  wheel    46512 Dec  3 07:36 secinitd
 -rwxr-xr-x    1 root  wheel     1635 Aug 23 04:27 security-checksystem
--rwx--x--x    1 root  wheel    18848 Jan 14 03:11 security_authtrampoline
+-rws--x--x    1 root  wheel    18848 Jan 14 03:11 security_authtrampoline
 -rwxr-xr-x    1 root  wheel    62512 Jan 14 03:10 securityd_service
 -rwxr-xr-x    1 root  wheel    79440 Dec  3 07:36 sftp-server
 -rwxr-xr-x    1 root  wheel  1237552 Dec  3 07:36 sharingd
@@ -10582,14 +10582,14 @@ lrwxr-xr-x    1 root   wheel            59 Oct 18 16:27 cvversions -> /System/Li
 -rwxr-xr-x    1 root   wheel        229680 Dec  3 07:36 postalias
 -rwxr-xr-x    1 root   wheel        129072 Dec  3 07:36 postcat
 -rwxr-xr-x    1 root   wheel        335792 Dec  3 07:36 postconf
--rwxr-xr-x    1 root   _postdrop    199296 Dec  3 07:36 postdrop
+-rwxr-sr-x    1 root   _postdrop    199296 Dec  3 07:36 postdrop
 -rwxr-xr-x    1 root   wheel        119328 Dec  3 07:35 postfix
 -rwxr-xr-x    1 root   wheel        124832 Dec  3 07:35 postkick
 -rwxr-xr-x    1 root   wheel        124512 Dec  3 07:35 postlock
 -rwxr-xr-x    1 root   wheel        119520 Dec  3 07:35 postlog
 -rwxr-xr-x    1 root   wheel        233008 Dec  3 07:36 postmap
 -rwxr-xr-x    1 root   wheel        133360 Dec  3 07:36 postmulti
--rwxr-xr-x    1 root   _postdrop    230848 Dec  3 07:35 postqueue
+-rwxr-sr-x    1 root   _postdrop    230848 Dec  3 07:35 postqueue
 -rwxr-xr-x    1 root   wheel        133952 Dec  3 07:36 postsuper
 -r-xr-xr-x    1 root   wheel        349136 Jan 14 03:12 pppd
 -rwxr-xr-x    1 root   wheel         18768 Dec  3 07:36 praudit
@@ -10658,8 +10658,8 @@ lrwxr-xr-x    1 root   wheel            59 Oct 18 16:27 snmetadump -> /System/Li
 -rwxr-xr-x    1 root   wheel        860608 Dec  3 07:36 tcpdump
 -r-xr-xr-x    1 root   wheel         54784 Dec  3 07:36 timed
 -r-xr-xr-x    1 root   wheel         32976 Dec  3 07:36 timedc
--r-xr-xr-x    1 root   wheel         37952 Jan 14 03:12 traceroute
--r-xr-xr-x    1 root   wheel         33616 Jan 14 03:13 traceroute6
+-r-sr-xr-x    1 root   wheel         37952 Jan 14 03:12 traceroute
+-r-sr-xr-x    1 root   wheel         33616 Jan 14 03:13 traceroute6
 -rwxr-xr-x    1 root   wheel         25504 Dec  3 07:36 universalaccessd
 -rwxr-xr-x    1 root   wheel         23760 Dec  3 07:35 unsetpassword
 -rwxr-xr-x    1 root   wheel        377024 Jan 14 03:12 usernoted
