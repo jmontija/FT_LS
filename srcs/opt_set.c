@@ -31,6 +31,7 @@ void	adjust_opt(t_group *grp, char opt)
 	opt == 'f' ? grp->options[f] = true : 0;
 	opt == 'g' ? grp->options[g] = true : 0;
 	opt == 'd' ? grp->options[d] = true : 0;
+	/* bonus facile -> -oA */
 }
 
 int		isvalid_opt(t_group *grp, char opt)
@@ -40,12 +41,12 @@ int		isvalid_opt(t_group *grp, char opt)
 	char *ls_options;
 
 	adjust_opt(grp, opt);
-	ls_options = SDUP("alrRtfgd");
+	ls_options = SDUP("adfglrRt");
 	text = NEW(2); text[0] = '-'; text[1] = opt; text[2] = '\0';
 	while (++i < LEN(ls_options))
 		if (opt == ls_options[i])
 			return (1);
-	is_error(text, "illegal ft_ls option or not asked\nusage: ft_ls [-alrRtfgd] [file ...]");
+	is_error(text, "illegal ft_ls option or not asked\nusage: ft_ls [-adfglrRt] [file ...]");
 	exit(0);
 }
 
