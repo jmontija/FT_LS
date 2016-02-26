@@ -21,7 +21,7 @@ void	opt_f(t_dir *new, t_dir **first, t_dir **curr)
 	*curr = new;
 }
 
-void	opt_1(t_dir	*new, t_dir **first, t_dir **curr)
+void	opt_1(t_dir *new, t_dir **first, t_dir **curr)
 {
 	t_dir	*last_other;
 	t_dir	*other;
@@ -49,11 +49,11 @@ void	opt_1(t_dir	*new, t_dir **first, t_dir **curr)
 		(*curr)->next = new;
 	}
 	else
-		 *first = new;
+		*first = new;
 	*curr = new;
 }
 
-void	opt_test(t_dir	*new, t_dir **first, t_dir **curr)
+void	opt_test(t_dir *new, t_dir **first, t_dir **curr)
 {
 	t_dir	*last_other;
 	t_dir	*other;
@@ -81,7 +81,7 @@ void	opt_test(t_dir	*new, t_dir **first, t_dir **curr)
 		(*curr)->next = new;
 	}
 	else
-		 *first = new;
+		*first = new;
 	*curr = new;
 }
 
@@ -111,18 +111,19 @@ t_dir	*opt_r(t_dir *first)
 	last_other = NULL;
 	other = first;
 	while (other != NULL)
-    {
-        next  = other->next;
-        other->next = last_other;
-        last_other = other;
-        other = next;
-    }
-    return (last_other);
+	{
+		next = other->next;
+		other->next = last_other;
+		last_other = other;
+		other = next;
+	}
+	return (last_other);
 }
 
-void	 sort_launcher(t_group *grp, t_dir **first)
+void	sort_launcher(t_group *grp, t_dir **first)
 {
-	if (grp->options[f] == true) return;
+	if (grp->options[f] == true)
+		return ;
 	(grp->options[t] == true) ? *first = opt_t(*first) : NULL;
 	(grp->options[r] == true) ? *first = opt_r(*first) : NULL;
 }

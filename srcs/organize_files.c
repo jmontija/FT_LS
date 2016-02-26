@@ -12,13 +12,17 @@
 
 #include "ft_ls.h"
 
-char 	*display_years(struct stat buf, char *data)
+char	*display_years(struct stat buf, char *data)
 {
-	time_t	act_time = time(0);
-	time_t 	s_month = act_time - 15724800;
-	char 	*years = NULL;
-	char 	*md = NULL;
+	time_t	act_time;
+	time_t	s_month;
+	char	*years;
+	char	*md;
 
+	act_time = time(0);
+	s_month = act_time - 15724800;
+	years = NULL;
+	md = NULL;
 	if (buf.st_mtime <= s_month)
 	{
 		years = strrchr(data, ' ');
@@ -33,8 +37,9 @@ char 	*display_years(struct stat buf, char *data)
 
 char	*manage_time(char *data)
 {
-	size_t i = -1;
+	size_t	i;
 
+	i = -1;
 	while (++i < LEN(data))
 	{
 		if (data[i] == '\n')
@@ -62,20 +67,28 @@ char	get_acl_attr(t_group *grp)
 	return (rights);
 }
 
+char	get_type(struct stat buf)
+{
+	char type;
+
+	S_ISBLK(buf.st_mode) ? type = 'b' : 0;
+	S_ISCHR(buf.st_mode) ? type = 'c' : 0;
+	S_ISDIR(buf.st_mode) ? type = 'd' : 0;
+	S_ISFIFO(buf.st_mode) ? type = 'p' : 0;
+	S_ISLNK(buf.st_mode) ? type = 'l' : 0;
+	S_ISREG(buf.st_mode) ? type = '-' : 0;
+	S_ISSOCK(buf.st_mode) ? type = 's' : 0;
+	return (type);
+}
+
 char	*manage_rights(t_group *grp, struct stat buf)
 {
-	char 		*rights;
+	char		*rights;
 	mode_t		val;
 
 	rights = NEW(11);
-	S_ISBLK(buf.st_mode)  ? rights[0] = 'b' : 0;
-	S_ISCHR(buf.st_mode)  ? rights[0] = 'c' : 0;
-	S_ISDIR(buf.st_mode)  ? rights[0] = 'd' : 0;
-	S_ISFIFO(buf.st_mode) ? rights[0] = 'p' : 0;
-	S_ISLNK(buf.st_mode)  ? rights[0] = 'l' : 0;
-	S_ISREG(buf.st_mode)  ? rights[0] = '-' : 0;
-	S_ISSOCK(buf.st_mode) ? rights[0] = 's' : 0;
-    val=(buf.st_mode & ~S_IFMT);
+	val = (buf.st_mode & ~S_IFMT);
+	rights[0] = get_type(buf);
 	(val & S_IRUSR) ? (rights[1] = 'r') : (rights[1] = '-');
 	(val & S_IWUSR) ? (rights[2] = 'w') : (rights[2] = '-');
 	(val & S_IXUSR) ? (rights[3] = 'x') : (rights[3] = '-');
@@ -94,7 +107,7 @@ char	*manage_rights(t_group *grp, struct stat buf)
 
 void	delete_files(t_group *grp)
 {
-	t_dir *file;
+	t_dir	*file;
 	//t_dir *trash = NULL;
 
 	file = grp->first_dir;
@@ -119,32 +132,61 @@ void	delete_files(t_group *grp)
 	grp->curr_first_dir = NULL;
 }
 
+char	*name_file(t_group *grp, char *file, struct stat buf)
+{
+	char	*actualpath;
+	char	*add;
+	char	*name;
+	ssize_t	len;
+
+	actualpath = NEW(1024);
+	name = NULL;
+	len = 0;
+	if (grp->options[l] &&
+		S_ISLNK(buf.st_mode) &&
+		((len = readlink(grp->chemin, actualpath, 1024)) != -1))
+	{
+		actualpath[len] = '\0';
+		add = JOIN(file, " -> ");
+		name = JOIN(add, actualpath);
+		REMOVE(&actualpath);
+		REMOVE(&add);
+		REMOVE(&grp->chemin);
+	}
+	else
+		name = SDUP(file);
+	return (name);
+}
+
+void	majmin_file(t_group *grp, t_dir **new, struct stat buf)
+{
+	if (S_ISCHR(buf.st_mode) || S_ISBLK(buf.st_mode))
+	{
+		if (grp->ismaj_min == false)
+			grp->ismaj_min = true;
+		(*new)->size = (int)major(buf.st_rdev);
+		(*new)->size_min = (int)minor(buf.st_rdev);
+	}
+	else
+	{
+		grp->ismaj_min = false;
+		(*new)->size = (int)buf.st_size;
+		(*new)->size_min = -1;
+	}
+}
+
 t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 {
-	t_dir *new;
-	char *actualpath = NEW(1024);
-	char *add;
+	t_dir	*new;
 	struct passwd *usr;
 	struct group *grpid;
-	ssize_t len;
 
-	len	= 0;
-	usr	= getpwuid(buf.st_uid);
+	usr = getpwuid(buf.st_uid);
 	grpid = getgrgid(buf.st_gid);
 	new = (t_dir *)malloc(sizeof(t_dir));
 	if (!(new))
 		exit(0);
-	if (grp->options[l] &&
-		S_ISLNK(buf.st_mode) && ((len = readlink(grp->chemin, actualpath, 1024)) != -1))
-	{
-		 actualpath[len] = '\0';
-		 add = JOIN(file, " -> ");
-		 new->name = JOIN(add, actualpath);
-
-		 REMOVE(&actualpath); REMOVE(&add); REMOVE(&grp->chemin);
-	}
-	else
-		new->name = SDUP(file);
+	new->name = name_file(grp, file, buf);
 	new->blocks = (int)buf.st_blocks;
 	new->rights = manage_rights(grp, buf);
 	new->last_stat = manage_time(ctime(&buf.st_ctime));
@@ -153,30 +195,18 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 	new->last_modif = manage_time(ctime(&buf.st_mtime));
 	new->last_modif = display_years(buf, new->last_modif);
 	new->uid = SDUP(usr->pw_name);
-	if (grpid != NULL) new->gid = SDUP(grpid->gr_name); else new->gid = SDUP("101");
-
+	(grpid != NULL) ? (new->gid = SDUP(grpid->gr_name)) : (new->gid = SDUP("101"));
 	new->slink = (int)buf.st_nlink;
-	if (S_ISCHR(buf.st_mode) || S_ISBLK(buf.st_mode))
-	{
-		if (grp->ismaj_min == false)
-			grp->ismaj_min = true;
-		new->size = (int)major(buf.st_rdev);
-		new->size_min = (int)minor(buf.st_rdev);
-	}
-	else
-	{
-		grp->ismaj_min = false;
-		new->size = (int)buf.st_size;
-		new->size_min = -1;
-	}
 	new->isopt = false;
 	new->next = NULL;
+	majmin_file(grp, &new, buf);
 	return (new);
 }
 
 void	organize_file(int perm, t_group *grp, char *file, struct stat buf)
 {
 	t_dir	*new;
+
 	if (perm == 0)
 		new = init_file(grp, file, buf);
 	else

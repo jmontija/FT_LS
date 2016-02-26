@@ -15,6 +15,7 @@
 t_dir	*copy_file(t_dir *cpy)
 {
 	t_dir *new;
+
 	new = (t_dir *)malloc(sizeof(t_dir));
 	if (!(new) || !cpy)
 		return (NULL);

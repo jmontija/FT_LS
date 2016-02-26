@@ -10,11 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// ATTENTION : wrapper.app et authserver sont verrouiller a checker lors de louverture:
-// 	sur ces cas ls fait comme si il avait les droits et affiche un fichier vide
-	//wtf file
-//nfs/sgoinfre/goinfre/Apps/Atom.app/Contents/Resources/app/node_modules/markdown-preview/spec/fixtures//subdir
-
 #include "ft_ls.h"
 
 void	file_organizer(t_group *grp, t_dir *curr_arg)
@@ -38,7 +33,6 @@ void	file_organizer(t_group *grp, t_dir *curr_arg)
 		path_before = JOIN(curr_arg->name, "/");
 		path = JOIN(path_before, file->d_name);
 		ret = lstat(path, &buf);
-		//printf("retfile = %d %s\n", ret, path);
 		grp->chemin = SDUP(path);
 		REMOVE(&path); REMOVE(&path_before);
 		organize_file(ret, grp, file->d_name, buf);
@@ -73,7 +67,7 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 			lstat(path_file, &buf);
 			if (S_ISDIR(buf.st_mode))
 			{
-				(*sub_dir)[j] = SDUP(path_file); //ft_putstr("is_dir: "); ft_putendl((*sub_dir)[j]);
+				(*sub_dir)[j] = SDUP(path_file);
 				j++;
 			}
 			REMOVE(&path); REMOVE(&path_file);
@@ -85,7 +79,6 @@ int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
 
 void	show_file(t_group *grp, int dir_opened)
 {
-	// fichier apellé par les arguments dans le shell
 	if (grp->curr_first_dir != NULL)
 	{
 		sort_launcher(grp, &grp->first_dir);
@@ -119,7 +112,6 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 			manage_opt(grp, argv[i]);
 		else
 		{
-			// warning: avant d'afficher les erreurs il faut les trier lexicographiquemt !
 			if (!(directory = opendir(argv[i])) || grp->options[d] == true)
 			{
 				if ((ret = lstat(argv[i], &buf)) < 0)
@@ -159,7 +151,6 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 	//trash = curr_arg;
 	while (curr_arg != NULL)
 	{
-		//printf("checking: %s\n", curr_arg->name);
 		file_organizer(grp, curr_arg);
 		if (grp->options[R] == true)
 			j = dir_topen(grp, curr_arg, &sub_dir);
