@@ -25,8 +25,8 @@ SRCS			+=	srcs/launcher.c
 SRCS			+=	srcs/organize_dir.c
 SRCS			+=	srcs/organize_files.c
 SRCS			+=	srcs/opt_set.c
-SRCS			+=	srcs/opt-1tr.c
-SRCS			+=	srcs/opt-l.c
+SRCS			+=	srcs/opt_1tr.c
+SRCS			+=	srcs/opt_l.c
 SRCS			+=	srcs/define_space.c
 
 OBJS			=	$(SRCS:srcs/%.c=srco/%.o)

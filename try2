@@ -1,0 +1,401 @@
+total 193
+-rw-r--r--   1 jmontija  2015_paris      0 Feb 27 18:05 try2
+-rw-r--r--   1 jmontija  2015_paris  20408 Feb 27 18:03 try
+drwxr-xr-x   2 jmontija  2015_paris   4096 Feb 27 17:24 srcs
+drwxr-xr-x   2 jmontija  2015_paris   4096 Feb 27 17:54 srco
+drwxr-xr-x   3 jmontija  2015_paris   4096 Feb 27 17:01 libft
+drwxr-xr-x   2 jmontija  2015_paris   4096 Feb 26 13:47 includes
+-rwxr-xr-x   1 jmontija  2015_paris  24856 Feb 27 17:54 ft_ls
+-rw-r--r--   1 jmontija  2015_paris  22223 Feb 27 18:03 done
+-rw-r--r--   1 jmontija  2015_paris   1774 Feb 27 17:25 Makefile
+drwxr-xr-x   8 jmontija  2015_paris   4096 Feb 26 18:39 .git
+drwx------  14 jmontija  2015_paris   4096 Feb 27 17:58 ..
+drwxr-xr-x   7 jmontija  2015_paris   4096 Feb 27 17:48 .
+
+./srcs:
+total 71
+-rw-r--r--  1 jmontija  2015_paris  5558 Feb 26 17:42 organize_files.c
+-rw-r--r--  1 jmontija  2015_paris  2215 Feb 26 16:48 organize_dir.c
+-rw-r--r--  1 jmontija  2015_paris  1973 Feb 26 16:45 opt_set.c
+-rw-r--r--  1 jmontija  2015_paris  2390 Feb 26 18:15 opt_l.c
+-rw-r--r--  1 jmontija  2015_paris  2955 Feb 27 17:54 opt_1tr.c
+-rw-r--r--  1 jmontija  2015_paris  4605 Feb 27 17:32 main.c
+-rw-r--r--  1 jmontija  2015_paris  2028 Feb 26 16:45 lst_lib.c
+-rw-r--r--  1 jmontija  2015_paris  2397 Feb 26 17:46 launcher.c
+-rw-r--r--  1 jmontija  2015_paris  2708 Feb 26 17:52 define_space.c
+drwxr-xr-x  7 jmontija  2015_paris  4096 Feb 27 17:48 ..
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 27 17:24 .
+
+./srco:
+total 81
+-rw-r--r--  1 jmontija  2015_paris  5628 Feb 27 17:19 organize_files.o
+-rw-r--r--  1 jmontija  2015_paris  1856 Feb 27 17:19 organize_dir.o
+-rw-r--r--  1 jmontija  2015_paris  2136 Feb 27 17:19 opt_set.o
+-rw-r--r--  1 jmontija  2015_paris  2108 Feb 27 17:46 opt_l.o
+-rw-r--r--  1 jmontija  2015_paris  2532 Feb 27 17:54 opt_1tr.o
+-rw-r--r--  1 jmontija  2015_paris  2108 Feb 27 17:20 opt-l.o
+-rw-r--r--  1 jmontija  2015_paris  2564 Feb 27 17:21 opt-1tr.o
+-rw-r--r--  1 jmontija  2015_paris  4820 Feb 27 17:32 main.o
+-rw-r--r--  1 jmontija  2015_paris  1708 Feb 27 17:19 lst_lib.o
+-rw-r--r--  1 jmontija  2015_paris  2416 Feb 27 17:19 launcher.o
+-rw-r--r--  1 jmontija  2015_paris  2228 Feb 27 17:20 define_space.o
+drwxr-xr-x  7 jmontija  2015_paris  4096 Feb 27 17:48 ..
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 27 17:54 .
+
+./libft:
+total 445
+-rw-r--r--  1 jmontija  2015_paris  57216 Feb 27 17:01 libft.a
+drwxr-xr-x  2 jmontija  2015_paris   4096 Feb 26 13:47 includes
+-rw-r--r--  1 jmontija  2015_paris    900 Feb 27 17:01 ft_wordnb.o
+-rw-r--r--  1 jmontija  2015_paris   1214 Feb 26 13:47 ft_wordnb.c
+-rw-r--r--  1 jmontija  2015_paris    656 Feb 27 17:01 ft_toupper.o
+-rw-r--r--  1 jmontija  2015_paris    990 Feb 26 13:47 ft_toupper.c
+-rw-r--r--  1 jmontija  2015_paris    656 Feb 27 17:01 ft_tolower.o
+-rw-r--r--  1 jmontija  2015_paris    990 Feb 26 13:47 ft_tolower.c
+-rw-r--r--  1 jmontija  2015_paris   1204 Feb 27 17:01 ft_strtrim.o
+-rw-r--r--  1 jmontija  2015_paris   1328 Feb 26 13:47 ft_strtrim.c
+-rw-r--r--  1 jmontija  2015_paris    832 Feb 27 17:01 ft_strsub.o
+-rw-r--r--  1 jmontija  2015_paris   1118 Feb 26 13:47 ft_strsub.c
+-rw-r--r--  1 jmontija  2015_paris    740 Feb 27 17:01 ft_strstr.o
+-rw-r--r--  1 jmontija  2015_paris   1009 Feb 26 13:47 ft_strstr.c
+-rw-r--r--  1 jmontija  2015_paris   1876 Feb 27 17:01 ft_strsplit.o
+-rw-r--r--  1 jmontija  2015_paris   2203 Feb 26 13:47 ft_strsplit.c
+-rw-r--r--  1 jmontija  2015_paris    800 Feb 27 17:01 ft_strrchr.o
+-rw-r--r--  1 jmontija  2015_paris   1145 Feb 26 13:47 ft_strrchr.c
+-rw-r--r--  1 jmontija  2015_paris    908 Feb 27 17:01 ft_strnstr.o
+-rw-r--r--  1 jmontija  2015_paris   1230 Feb 26 13:47 ft_strnstr.c
+-rw-r--r--  1 jmontija  2015_paris    676 Feb 27 17:01 ft_strnew.o
+-rw-r--r--  1 jmontija  2015_paris    978 Feb 26 13:47 ft_strnew.c
+-rw-r--r--  1 jmontija  2015_paris    740 Feb 27 17:01 ft_strnequ.o
+-rw-r--r--  1 jmontija  2015_paris   1040 Feb 26 13:47 ft_strnequ.c
+-rw-r--r--  1 jmontija  2015_paris    808 Feb 27 17:01 ft_strncpy.o
+-rw-r--r--  1 jmontija  2015_paris   1151 Feb 26 13:47 ft_strncpy.c
+-rw-r--r--  1 jmontija  2015_paris    848 Feb 27 17:01 ft_strncmp.o
+-rwxr-xr-x  1 jmontija  2015_paris   1154 Feb 26 13:47 ft_strncmp.c
+-rw-r--r--  1 jmontija  2015_paris    808 Feb 27 17:01 ft_strncat.o
+-rw-r--r--  1 jmontija  2015_paris   1127 Feb 26 13:47 ft_strncat.c
+-rw-r--r--  1 jmontija  2015_paris    868 Feb 27 17:01 ft_strmapi.o
+-rw-r--r--  1 jmontija  2015_paris   1186 Feb 26 13:47 ft_strmapi.c
+-rw-r--r--  1 jmontija  2015_paris    860 Feb 27 17:01 ft_strmap.o
+-rw-r--r--  1 jmontija  2015_paris   1158 Feb 26 13:47 ft_strmap.c
+-rw-r--r--  1 jmontija  2015_paris    668 Feb 27 17:01 ft_strlen.o
+-rw-r--r--  1 jmontija  2015_paris   1010 Feb 26 13:47 ft_strlen.c
+-rw-r--r--  1 jmontija  2015_paris    928 Feb 27 17:01 ft_strlcat.o
+-rw-r--r--  1 jmontija  2015_paris   1219 Feb 26 13:47 ft_strlcat.c
+-rw-r--r--  1 jmontija  2015_paris    916 Feb 27 17:01 ft_strjoin.o
+-rw-r--r--  1 jmontija  2015_paris   1167 Feb 26 13:47 ft_strjoin.c
+-rw-r--r--  1 jmontija  2015_paris    736 Feb 27 17:01 ft_striteri.o
+-rw-r--r--  1 jmontija  2015_paris   1055 Feb 26 13:47 ft_striteri.c
+-rw-r--r--  1 jmontija  2015_paris    728 Feb 27 17:01 ft_striter.o
+-rw-r--r--  1 jmontija  2015_paris   1028 Feb 26 13:47 ft_striter.c
+-rw-r--r--  1 jmontija  2015_paris    728 Feb 27 17:01 ft_strequ.o
+-rw-r--r--  1 jmontija  2015_paris   1025 Feb 26 13:47 ft_strequ.c
+-rw-r--r--  1 jmontija  2015_paris    840 Feb 27 17:01 ft_strdup.o
+-rw-r--r--  1 jmontija  2015_paris   1161 Feb 26 13:47 ft_strdup.c
+-rw-r--r--  1 jmontija  2015_paris    684 Feb 27 17:01 ft_strdel.o
+-rw-r--r--  1 jmontija  2015_paris    984 Feb 26 13:47 ft_strdel.c
+-rw-r--r--  1 jmontija  2015_paris    700 Feb 27 17:01 ft_strcpy.o
+-rwxr-xr-x  1 jmontija  2015_paris   1058 Feb 26 13:47 ft_strcpy.c
+-rw-r--r--  1 jmontija  2015_paris    772 Feb 27 17:01 ft_strcmp.o
+-rwxr-xr-x  1 jmontija  2015_paris   1100 Feb 26 13:47 ft_strcmp.c
+-rw-r--r--  1 jmontija  2015_paris    732 Feb 27 17:01 ft_strclr.o
+-rw-r--r--  1 jmontija  2015_paris    977 Feb 26 13:47 ft_strclr.c
+-rw-r--r--  1 jmontija  2015_paris    784 Feb 27 17:01 ft_strchr.o
+-rw-r--r--  1 jmontija  2015_paris   1154 Feb 26 13:47 ft_strchr.c
+-rw-r--r--  1 jmontija  2015_paris    740 Feb 27 17:01 ft_strcat.o
+-rw-r--r--  1 jmontija  2015_paris   1003 Feb 26 13:47 ft_strcat.c
+-rw-r--r--  1 jmontija  2015_paris    748 Feb 27 17:01 ft_putstr_fd.o
+-rw-r--r--  1 jmontija  2015_paris    995 Feb 26 13:47 ft_putstr_fd.c
+-rw-r--r--  1 jmontija  2015_paris    668 Feb 27 17:01 ft_putstr.o
+-rw-r--r--  1 jmontija  2015_paris    967 Feb 26 13:47 ft_putstr.c
+-rw-r--r--  1 jmontija  2015_paris    816 Feb 27 17:01 ft_putnbr_fd.o
+-rw-r--r--  1 jmontija  2015_paris   1146 Feb 26 13:47 ft_putnbr_fd.c
+-rw-r--r--  1 jmontija  2015_paris    668 Feb 27 17:01 ft_putnbr.o
+-rw-r--r--  1 jmontija  2015_paris    959 Feb 26 13:47 ft_putnbr.c
+-rw-r--r--  1 jmontija  2015_paris    728 Feb 27 17:01 ft_putendl_fd.o
+-rw-r--r--  1 jmontija  2015_paris   1006 Feb 26 13:47 ft_putendl_fd.c
+-rw-r--r--  1 jmontija  2015_paris    668 Feb 27 17:01 ft_putendl.o
+-rw-r--r--  1 jmontija  2015_paris    969 Feb 26 13:47 ft_putendl.c
+-rw-r--r--  1 jmontija  2015_paris    688 Feb 27 17:01 ft_putchar_fd.o
+-rw-r--r--  1 jmontija  2015_paris    970 Feb 26 13:47 ft_putchar_fd.c
+-rw-r--r--  1 jmontija  2015_paris    676 Feb 27 17:01 ft_putchar.o
+-rw-r--r--  1 jmontija  2015_paris    962 Feb 26 13:47 ft_putchar.c
+-rw-r--r--  1 jmontija  2015_paris    724 Feb 27 17:01 ft_power.o
+-rw-r--r--  1 jmontija  2015_paris   1133 Feb 26 13:47 ft_power.c
+-rw-r--r--  1 jmontija  2015_paris    684 Feb 27 17:01 ft_memset.o
+-rw-r--r--  1 jmontija  2015_paris   1104 Feb 26 13:47 ft_memset.c
+-rw-r--r--  1 jmontija  2015_paris    824 Feb 27 17:01 ft_memmove.o
+-rw-r--r--  1 jmontija  2015_paris   1224 Feb 26 13:47 ft_memmove.c
+-rw-r--r--  1 jmontija  2015_paris    684 Feb 27 17:01 ft_memdel.o
+-rw-r--r--  1 jmontija  2015_paris    984 Feb 26 13:47 ft_memdel.c
+-rw-r--r--  1 jmontija  2015_paris    700 Feb 27 17:01 ft_memcpy.o
+-rw-r--r--  1 jmontija  2015_paris   1188 Feb 26 13:47 ft_memcpy.c
+-rw-r--r--  1 jmontija  2015_paris    748 Feb 27 17:01 ft_memcmp.o
+-rw-r--r--  1 jmontija  2015_paris   1195 Feb 26 13:47 ft_memcmp.c
+-rw-r--r--  1 jmontija  2015_paris    724 Feb 27 17:01 ft_memchr.o
+-rw-r--r--  1 jmontija  2015_paris   1133 Feb 26 13:47 ft_memchr.c
+-rw-r--r--  1 jmontija  2015_paris    872 Feb 27 17:01 ft_memccpy.o
+-rw-r--r--  1 jmontija  2015_paris   1351 Feb 26 13:47 ft_memccpy.c
+-rw-r--r--  1 jmontija  2015_paris    780 Feb 27 17:01 ft_memalloc.o
+-rw-r--r--  1 jmontija  2015_paris   1099 Feb 26 13:47 ft_memalloc.c
+-rw-r--r--  1 jmontija  2015_paris    904 Feb 27 17:01 ft_lstnew.o
+-rw-r--r--  1 jmontija  2015_paris   1384 Feb 26 13:47 ft_lstnew.c
+-rw-r--r--  1 jmontija  2015_paris    772 Feb 27 17:01 ft_lstmap.o
+-rw-r--r--  1 jmontija  2015_paris   1185 Feb 26 13:47 ft_lstmap.c
+-rw-r--r--  1 jmontija  2015_paris    688 Feb 27 17:01 ft_lstiter.o
+-rw-r--r--  1 jmontija  2015_paris   1057 Feb 26 13:47 ft_lstiter.c
+-rw-r--r--  1 jmontija  2015_paris    716 Feb 27 17:01 ft_lstdelone.o
+-rw-r--r--  1 jmontija  2015_paris   1081 Feb 26 13:47 ft_lstdelone.c
+-rw-r--r--  1 jmontija  2015_paris    740 Feb 27 17:01 ft_lstdel.o
+-rw-r--r--  1 jmontija  2015_paris   1080 Feb 26 13:47 ft_lstdel.c
+-rw-r--r--  1 jmontija  2015_paris    676 Feb 27 17:01 ft_lstadd.o
+-rw-r--r--  1 jmontija  2015_paris   1069 Feb 26 13:47 ft_lstadd.c
+-rw-r--r--  1 jmontija  2015_paris   1000 Feb 27 17:01 ft_len_nospace.o
+-rw-r--r--  1 jmontija  2015_paris   1271 Feb 26 13:47 ft_len_nospace.c
+-rw-r--r--  1 jmontija  2015_paris   1260 Feb 27 17:01 ft_itoa.o
+-rwxr-xr-x  1 jmontija  2015_paris   1414 Feb 26 13:47 ft_itoa.c
+-rw-r--r--  1 jmontija  2015_paris    712 Feb 27 17:01 ft_isspace.o
+-rw-r--r--  1 jmontija  2015_paris   1055 Feb 26 13:47 ft_isspace.c
+-rw-r--r--  1 jmontija  2015_paris    804 Feb 27 17:01 ft_ispunct.o
+-rw-r--r--  1 jmontija  2015_paris   1022 Feb 26 13:47 ft_ispunct.c
+-rw-r--r--  1 jmontija  2015_paris    664 Feb 27 17:01 ft_isprint.o
+-rw-r--r--  1 jmontija  2015_paris    998 Feb 26 13:47 ft_isprint.c
+-rw-r--r--  1 jmontija  2015_paris    660 Feb 27 17:01 ft_ismaj.o
+-rw-r--r--  1 jmontija  2015_paris    104 Feb 26 13:47 ft_ismaj.c
+-rw-r--r--  1 jmontija  2015_paris    664 Feb 27 17:01 ft_isdigit.o
+-rw-r--r--  1 jmontija  2015_paris    999 Feb 26 13:47 ft_isdigit.c
+-rw-r--r--  1 jmontija  2015_paris    664 Feb 27 17:01 ft_isascii.o
+-rw-r--r--  1 jmontija  2015_paris    997 Feb 26 13:47 ft_isascii.c
+-rw-r--r--  1 jmontija  2015_paris    688 Feb 27 17:01 ft_isalpha.o
+-rwxr-xr-x  1 jmontija  2015_paris   1027 Feb 26 13:47 ft_isalpha.c
+-rw-r--r--  1 jmontija  2015_paris    712 Feb 27 17:01 ft_isalnum.o
+-rw-r--r--  1 jmontija  2015_paris   1055 Feb 26 13:47 ft_isalnum.c
+-rw-r--r--  1 jmontija  2015_paris    680 Feb 27 17:01 ft_bzero.o
+-rw-r--r--  1 jmontija  2015_paris    970 Feb 26 13:47 ft_bzero.c
+-rw-r--r--  1 jmontija  2015_paris   1028 Feb 27 17:01 ft_atoi.o
+-rw-r--r--  1 jmontija  2015_paris   1249 Feb 26 13:47 ft_atoi.c
+-rw-r--r--  1 jmontija  2015_paris   2459 Feb 26 13:47 Makefile
+drwxr-xr-x  7 jmontija  2015_paris   4096 Feb 27 17:48 ..
+drwxr-xr-x  3 jmontija  2015_paris   4096 Feb 27 17:01 .
+
+./libft/includes:
+total 24
+-rw-r--r--  1 jmontija  2015_paris  3948 Feb 26 13:47 libft.h
+drwxr-xr-x  3 jmontija  2015_paris  4096 Feb 27 17:01 ..
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 13:47 .
+
+./includes:
+total 22
+-rw-r--r--  1 jmontija  2015_paris  2866 Feb 27 17:19 ft_ls.h
+drwxr-xr-x  7 jmontija  2015_paris  4096 Feb 27 17:48 ..
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 13:47 .
+
+./.git:
+total 82
+drwxr-xr-x   5 jmontija  2015_paris  4096 Feb 26 13:47 refs
+-rw-r--r--   1 jmontija  2015_paris   107 Feb 26 13:47 packed-refs
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 objects
+drwxr-xr-x   3 jmontija  2015_paris  4096 Feb 26 13:47 logs
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 13:47 info
+-rw-r--r--   1 jmontija  2015_paris  6648 Feb 26 18:39 index
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 13:47 hooks
+-rw-r--r--   1 jmontija  2015_paris    73 Feb 26 13:47 description
+-rw-r--r--   1 jmontija  2015_paris   283 Feb 26 13:47 config
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 13:47 branches
+-rw-r--r--   1 jmontija  2015_paris    23 Feb 26 13:47 HEAD
+-rw-r--r--   1 jmontija  2015_paris    12 Feb 26 18:39 COMMIT_EDITMSG
+drwxr-xr-x   7 jmontija  2015_paris  4096 Feb 27 17:48 ..
+drwxr-xr-x   8 jmontija  2015_paris  4096 Feb 26 18:39 .
+
+./.git/refs:
+total 40
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 13:47 tags
+drwxr-xr-x  3 jmontija  2015_paris  4096 Feb 26 13:47 remotes
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 18:39 heads
+drwxr-xr-x  8 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x  5 jmontija  2015_paris  4096 Feb 26 13:47 .
+
+./.git/refs/tags:
+total 16
+drwxr-xr-x  5 jmontija  2015_paris  4096 Feb 26 13:47 ..
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 13:47 .
+
+./.git/refs/remotes:
+total 24
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 18:39 origin
+drwxr-xr-x  5 jmontija  2015_paris  4096 Feb 26 13:47 ..
+drwxr-xr-x  3 jmontija  2015_paris  4096 Feb 26 13:47 .
+
+./.git/refs/remotes/origin:
+total 18
+-rw-r--r--  1 jmontija  2015_paris    41 Feb 26 18:39 master
+-rw-r--r--  1 jmontija  2015_paris    32 Feb 26 13:47 HEAD
+drwxr-xr-x  3 jmontija  2015_paris  4096 Feb 26 13:47 ..
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 18:39 .
+
+./.git/refs/heads:
+total 17
+-rw-r--r--  1 jmontija  2015_paris    41 Feb 26 18:39 master
+drwxr-xr-x  5 jmontija  2015_paris  4096 Feb 26 13:47 ..
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 18:39 .
+
+./.git/objects:
+total 128
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 13:47 pack
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 13:47 info
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:39 f6
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 dc
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 cd
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:39 c1
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 ae
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 8d
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 77
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:39 4f
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 43
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 37
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 29
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 00
+drwxr-xr-x   8 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 .
+
+./.git/objects/pack:
+total 13043
+-r--r--r--   1 jmontija  2015_paris  6649617 Feb 26 18:39 pack-e5515ea15362fd3359e7d544c9edfe383c5d781e.pack
+-r--r--r--   1 jmontija  2015_paris    19916 Feb 26 13:47 pack-e5515ea15362fd3359e7d544c9edfe383c5d781e.idx
+drwxr-xr-x  16 jmontija  2015_paris     4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris     4096 Feb 26 13:47 .
+
+./.git/objects/info:
+total 16
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 13:47 .
+
+./.git/objects/f6:
+total 17
+-r--r--r--   1 jmontija  2015_paris   169 Feb 26 18:39 6fdcce17e67da95d5af9953e14f7fd3d4bbca3
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:39 .
+
+./.git/objects/dc:
+total 18
+-r--r--r--   1 jmontija  2015_paris   662 Feb 26 18:38 4f92dcb5e10662834ea68ec337f86c126907a1
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 .
+
+./.git/objects/cd:
+total 18
+-r--r--r--   1 jmontija  2015_paris   734 Feb 26 18:38 7d3e065905a186969cec6632f89f0abf1b613d
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 .
+
+./.git/objects/c1:
+total 17
+-r--r--r--   1 jmontija  2015_paris   304 Feb 26 18:39 cd9640b42ec2db5d6e9daeeb3d8645772a3d7f
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:39 .
+
+./.git/objects/ae:
+total 18
+-r--r--r--   1 jmontija  2015_paris   791 Feb 26 18:38 53d32874348ddc6d552ace1104d192f522057f
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 .
+
+./.git/objects/8d:
+total 20
+-r--r--r--   1 jmontija  2015_paris  1553 Feb 26 18:38 16f8cfc6c684d927905235fbbcb6a5fff0cf25
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 .
+
+./.git/objects/77:
+total 18
+-r--r--r--   1 jmontija  2015_paris   620 Feb 26 18:38 c07d403cc1f8827387ef7198637531c774fad7
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 .
+
+./.git/objects/4f:
+total 17
+-r--r--r--   1 jmontija  2015_paris   145 Feb 26 18:39 9ee3c26b8c24e77f1037c9108b11200fcae4fd
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:39 .
+
+./.git/objects/43:
+total 18
+-r--r--r--   1 jmontija  2015_paris   746 Feb 26 18:38 edb09da95c2f646bb5850c6d1b53241c4ca4ae
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 .
+
+./.git/objects/37:
+total 18
+-r--r--r--   1 jmontija  2015_paris   755 Feb 26 18:38 236678b31ff6ed865f04089acc071168300a1e
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 .
+
+./.git/objects/29:
+total 18
+-r--r--r--   1 jmontija  2015_paris   698 Feb 26 18:38 0433e7daec61b6ffe5664f2bc72f784b1568d0
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 .
+
+./.git/objects/00:
+total 20
+-r--r--r--   1 jmontija  2015_paris  1892 Feb 26 18:38 605ac17233a674a730332007a71c2ed6b3a075
+drwxr-xr-x  16 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x   2 jmontija  2015_paris  4096 Feb 26 18:38 .
+
+./.git/logs:
+total 25
+drwxr-xr-x  4 jmontija  2015_paris  4096 Feb 26 13:47 refs
+-rw-r--r--  1 jmontija  2015_paris   345 Feb 26 18:39 HEAD
+drwxr-xr-x  8 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x  3 jmontija  2015_paris  4096 Feb 26 13:47 .
+
+./.git/logs/refs:
+total 32
+drwxr-xr-x  3 jmontija  2015_paris  4096 Feb 26 13:47 remotes
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 13:47 heads
+drwxr-xr-x  3 jmontija  2015_paris  4096 Feb 26 13:47 ..
+drwxr-xr-x  4 jmontija  2015_paris  4096 Feb 26 13:47 .
+
+./.git/logs/refs/remotes:
+total 24
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 18:39 origin
+drwxr-xr-x  4 jmontija  2015_paris  4096 Feb 26 13:47 ..
+drwxr-xr-x  3 jmontija  2015_paris  4096 Feb 26 13:47 .
+
+./.git/logs/refs/remotes/origin:
+total 18
+-rw-r--r--  1 jmontija  2015_paris   155 Feb 26 18:39 master
+-rw-r--r--  1 jmontija  2015_paris   185 Feb 26 13:47 HEAD
+drwxr-xr-x  3 jmontija  2015_paris  4096 Feb 26 13:47 ..
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 18:39 .
+
+./.git/logs/refs/heads:
+total 17
+-rw-r--r--  1 jmontija  2015_paris   345 Feb 26 18:39 master
+drwxr-xr-x  4 jmontija  2015_paris  4096 Feb 26 13:47 ..
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 13:47 .
+
+./.git/info:
+total 17
+-rw-r--r--  1 jmontija  2015_paris   240 Feb 26 13:47 exclude
+drwxr-xr-x  8 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 13:47 .
+
+./.git/hooks:
+total 49
+-rwxr-xr-x  1 jmontija  2015_paris  3611 Feb 26 13:47 update.sample
+-rwxr-xr-x  1 jmontija  2015_paris  1239 Feb 26 13:47 prepare-commit-msg.sample
+-rwxr-xr-x  1 jmontija  2015_paris  4951 Feb 26 13:47 pre-rebase.sample
+-rwxr-xr-x  1 jmontija  2015_paris  1348 Feb 26 13:47 pre-push.sample
+-rwxr-xr-x  1 jmontija  2015_paris  1642 Feb 26 13:47 pre-commit.sample
+-rwxr-xr-x  1 jmontija  2015_paris   424 Feb 26 13:47 pre-applypatch.sample
+-rwxr-xr-x  1 jmontija  2015_paris   189 Feb 26 13:47 post-update.sample
+-rwxr-xr-x  1 jmontija  2015_paris   896 Feb 26 13:47 commit-msg.sample
+-rwxr-xr-x  1 jmontija  2015_paris   478 Feb 26 13:47 applypatch-msg.sample
+drwxr-xr-x  8 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 13:47 .
+
+./.git/branches:
+total 16
+drwxr-xr-x  8 jmontija  2015_paris  4096 Feb 26 18:39 ..
+drwxr-xr-x  2 jmontija  2015_paris  4096 Feb 26 13:47 .

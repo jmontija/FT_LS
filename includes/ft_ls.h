@@ -88,7 +88,7 @@ void		organize_file(int perm, t_group *grp, char *file, struct stat buf);
 void		delete_dir(t_dir *trash);
 void		delete_files(t_group *grp);
 void	 	sort_launcher(t_group *grp, t_dir **first);
-void		opt_1(t_dir	*new, t_dir **first, t_dir **curr);
+int			opt_1(t_dir	*new, t_dir **first, t_dir **curr);
 void		opt_l(t_group *grp, t_dir *file);
 void		opt_f(t_dir *new, t_dir **first, t_dir **curr);
 char		*manage_time(char *data);

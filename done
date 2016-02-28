@@ -1,0 +1,6 @@
+2,3c2,3
+< -rw-r--r--   1 jmontija  2015_paris  20408 Feb 27 18:05 try2
+< -rw-r--r--   1 jmontija  2015_paris      0 Feb 27 18:05 try
+---
+> -rw-r--r--   1 jmontija  2015_paris      0 Feb 27 18:05 try2
+> -rw-r--r--   1 jmontija  2015_paris  20408 Feb 27 18:03 try

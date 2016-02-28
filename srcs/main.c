@@ -12,68 +12,51 @@
 
 #include "ft_ls.h"
 
-void	file_organizer(t_group *grp, t_dir *curr_arg)
+void	create_file_list(t_group *grp, struct dirent *file, t_dir *curr_arg, char ***sub_dir, int *j)
 {
-	DIR				*directory;
-	struct dirent	*file;
 	struct stat		buf;
 	char			*path_before;
 	char			*path;
-	int 			ret;
+	int				ret;
 
+	path_before = JOIN(curr_arg->name, "/");
+	path = JOIN(path_before, file->d_name);
+	ret = lstat(path, &buf);
+	grp->chemin = SDUP(path);
+	organize_file(ret, grp, file->d_name, buf);
+	if (grp->options[R] == true && (file->d_name[0] != '.' ||
+	(file->d_name[1] && file->d_name[1] != '.' && grp->options[a] == true)))
+	{
+		if (S_ISDIR(buf.st_mode))
+		{
+			(*sub_dir)[*j] = SDUP(path);
+			*j += 1;
+		}
+	}
+	REMOVE(&path);
+	REMOVE(&path_before);
+}
+
+int	file_organizer(t_group *grp, t_dir *curr_arg, char ***sub_dir)
+{
+	DIR				*directory;
+	struct dirent	*file;
+	int				j;
+
+	j = 0;
 	if (!(directory = opendir(curr_arg->name)))
 	{
 		if (grp->diropen > 1)
 			ft_putchar('\n');
 		perror(curr_arg->name);
-		return ;
+		return (j);
 	}
 	while ((file = readdir(directory)))
-	{
-		path_before = JOIN(curr_arg->name, "/");
-		path = JOIN(path_before, file->d_name);
-		ret = lstat(path, &buf);
-		grp->chemin = SDUP(path);
-		REMOVE(&path); REMOVE(&path_before);
-		organize_file(ret, grp, file->d_name, buf);
-	}
+		create_file_list(grp, file, curr_arg, sub_dir, &j);
 	closedir(directory);
 	sort_launcher(grp, &grp->first_dir);
 	launcher(grp, curr_arg->name);
 	delete_files(grp);
-}
-
-/* essayer de faire un mix entre file_organiser et dir_topen */
-
-int		dir_topen(t_group *grp, t_dir *curr_arg, char ***sub_dir)
-{
-	DIR				*directory;
-	struct dirent	*file;
-	struct stat		buf;
-	char			*path_file;
-	char 			*path;
-	int 			j;
-
-	j = 0;
-	if (!(directory = opendir(curr_arg->name)))
-		return (-1);
-	while ((file = readdir(directory)))
-	{
-		if ((file->d_name[0] != '.' ||
-			(file->d_name[1] && file->d_name[1] != '.' && grp->options[a] == true)))
-		{
-			path = JOIN(curr_arg->name, "/");
-			path_file = JOIN(path, file->d_name);
-			lstat(path_file, &buf);
-			if (S_ISDIR(buf.st_mode))
-			{
-				(*sub_dir)[j] = SDUP(path_file);
-				j++;
-			}
-			REMOVE(&path); REMOVE(&path_file);
-		}
-	}
-	closedir(directory);
 	return (j);
 }
 
@@ -98,14 +81,23 @@ void	define_status(t_group *grp, char *arg, struct stat buf)
 		organize_dir(2, grp, arg, buf);
 }
 
-t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
+int		arg_dir(t_group *grp, struct stat buf, DIR *directory, char *arg)
+{
+	if (lstat(arg, &buf) < 0)
+		is_error(arg, "is not an available directory");
+	organize_dir(0, grp, arg, buf);
+	closedir(directory);
+	return (1);
+}
+
+int		arg_loop(int i, t_group *grp, int argc, char **argv)
 {
 	DIR				*directory;
-	t_dir 			*in_order;
 	struct stat		buf;
-	int 			ret;
-	int				dir_opened = 0;
+	int				ret;
+	int				dir_opened;
 
+	dir_opened = 0;
 	while (++i < argc)
 	{
 		if (*argv[i] == '-' && grp->diropen == 0)
@@ -120,16 +112,19 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 					define_status(grp, argv[i], buf);
 			}
 			else
-			{
-				if ((ret = lstat(argv[i], &buf)) < 0)
-					is_error(argv[i], "is not an available directory");
-				organize_dir(0, grp, argv[i], buf);
-				closedir(directory);
-				dir_opened += 1;
-			}
+				dir_opened = arg_dir(grp, buf, directory, argv[i]);
 			grp->diropen += 1;
 		}
 	}
+	return (dir_opened);
+}
+
+t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
+{
+	t_dir	*in_order;
+	int		dir_opened;
+
+	dir_opened = arg_loop(i, grp, argc, argv);
 	show_file(grp, dir_opened);
 	sort_launcher(grp, &grp->dir_organize);
 	in_order = grp->dir_organize;
@@ -140,20 +135,18 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 
 void		manage_dir(int i, t_group *grp, int argc, char **argv)
 {
-	t_dir 	*curr_arg;
+	t_dir	*curr_arg;
 	//t_dir	*trash;
-	char	**sub_dir = NULL;
-	int 	j;
+	char	**sub_dir;
+	int		j;
 
 	j = 0;
-	sub_dir = (char **)malloc(sizeof(char *) * 10000); //find out pour la taille !
+	sub_dir = (char **)malloc(sizeof(char *) * 10000);
 	curr_arg = arg_organizer(i, grp, argc, argv);
 	//trash = curr_arg;
 	while (curr_arg != NULL)
 	{
-		file_organizer(grp, curr_arg);
-		if (grp->options[R] == true)
-			j = dir_topen(grp, curr_arg, &sub_dir);
+		j = file_organizer(grp, curr_arg, &sub_dir);
 		j > 0 ? manage_dir(-1, grp, j, sub_dir) : 0;
 		while (j > 0 && j--)
 			REMOVE(&sub_dir[j]);
@@ -169,10 +162,9 @@ void		manage_dir(int i, t_group *grp, int argc, char **argv)
 
 int		main(int argc, char **argv)
 {
-	t_group *grp = NULL;
-	int i = 0;
+	t_group	*grp;
 
 	grp = init_grp();
-	manage_dir(i, grp, argc, argv);
+	manage_dir(0, grp, argc, argv);
 	return (0);
 }

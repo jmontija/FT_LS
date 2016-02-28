@@ -21,7 +21,21 @@ void	opt_f(t_dir *new, t_dir **first, t_dir **curr)
 	*curr = new;
 }
 
-void	opt_1(t_dir *new, t_dir **first, t_dir **curr)
+int	insert_first(t_dir *new, t_dir **first, t_dir *other)
+{
+	*first = new;
+	new->next = other;
+	return (1);
+}
+
+int	insert_mid(t_dir *new, t_dir *other, t_dir *last_other)
+{
+	last_other->next = new;
+	new->next = other;
+	return (2);
+}
+
+int	opt_1(t_dir *new, t_dir **first, t_dir **curr)
 {
 	t_dir	*last_other;
 	t_dir	*other;
@@ -30,19 +44,11 @@ void	opt_1(t_dir *new, t_dir **first, t_dir **curr)
 	{
 		other = *first;
 		if (strcmp(new->name, other->name) < 0)
-		{
-			*first = new;
-			new->next = other;
-			return ;
-		}
+			return (insert_first(new, first, other));
 		while (other != NULL)
 		{
 			if (strcmp(new->name, other->name) < 0)
-			{
-				last_other->next = new;
-				new->next = other;
-				return ;
-			}
+				return (insert_mid(new, other, last_other));
 			last_other = other;
 			other = other->next;
 		}
@@ -51,9 +57,10 @@ void	opt_1(t_dir *new, t_dir **first, t_dir **curr)
 	else
 		*first = new;
 	*curr = new;
+	return (1);
 }
 
-void	opt_test(t_dir *new, t_dir **first, t_dir **curr)
+int		opt_t(t_dir *new, t_dir **first, t_dir **curr)
 {
 	t_dir	*last_other;
 	t_dir	*other;
@@ -62,19 +69,11 @@ void	opt_test(t_dir *new, t_dir **first, t_dir **curr)
 	{
 		other = *first;
 		if (new->last_modif_int - other->last_modif_int > 0)
-		{
-			*first = new;
-			new->next = other;
-			return ;
-		}
+			return (insert_first(new, first, other));
 		while (other != NULL)
 		{
 			if (new->last_modif_int - other->last_modif_int > 0)
-			{
-				last_other->next = new;
-				new->next = other;
-				return ;
-			}
+				return (insert_mid(new, other, last_other));
 			last_other = other;
 			other = other->next;
 		}
@@ -83,9 +82,10 @@ void	opt_test(t_dir *new, t_dir **first, t_dir **curr)
 	else
 		*first = new;
 	*curr = new;
+	return (1);
 }
 
-t_dir	*opt_t(t_dir *first)
+t_dir	*opt_tsort(t_dir *first)
 {
 	t_dir *first_new;
 	t_dir *cpy;
@@ -96,7 +96,7 @@ t_dir	*opt_t(t_dir *first)
 	while (first)
 	{
 		cpy = copy_file(first);
-		opt_test(cpy, &first_new, &curr);
+		opt_t(cpy, &first_new, &curr);
 		first = first->next;
 	}
 	return (first_new);
@@ -124,6 +124,6 @@ void	sort_launcher(t_group *grp, t_dir **first)
 {
 	if (grp->options[f] == true)
 		return ;
-	(grp->options[t] == true) ? *first = opt_t(*first) : NULL;
+	(grp->options[t] == true) ? *first = opt_tsort(*first) : NULL;
 	(grp->options[r] == true) ? *first = opt_r(*first) : NULL;
 }
