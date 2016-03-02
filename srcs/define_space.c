@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_space.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 01:11:02 by julio             #+#    #+#             */
-/*   Updated: 2016/02/09 03:23:13 by julio            ###   ########.fr       */
+/*   Updated: 2016/03/02 19:24:44 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,17 +112,4 @@ void		len_space_grpid(t_group *grp, t_space *s_grp)
 		}
 		test = test->next;
 	}
-}
-
-t_space		*define_space(t_group *grp)
-{
-	t_space *s_grp;
-
-	s_grp = (t_space*)malloc(sizeof(t_space));
-	len_space_slink(grp, s_grp);
-	len_space_size(grp, s_grp);
-	len_space_size_min(grp, s_grp);
-	len_space_uid(grp, s_grp);
-	len_space_grpid(grp, s_grp);
-	return (s_grp);
 }

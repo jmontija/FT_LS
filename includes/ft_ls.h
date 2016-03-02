@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 06:13:10 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/09 03:31:39 by julio            ###   ########.fr       */
+/*   Updated: 2016/03/02 19:27:47 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,17 +80,25 @@ typedef struct		s_space
 
 t_group		*init_grp(void);
 t_dir		*init_dir(char *name, struct stat buf);
+t_dir		*init_file(t_group *grp, char *file, struct stat buf);
 t_dir		*copy_file(t_dir *tocopy);
-t_space		*define_space(t_group *grp);
+void		len_space_slink(t_group *grp, t_space *s_grp);
+void		len_space_size(t_group *grp, t_space *s_grp);
+void		len_space_size_min(t_group *grp, t_space *s_grp);
+void		len_space_uid(t_group *grp, t_space *s_grp);
+void		len_space_grpid(t_group *grp, t_space *s_grp);
 void		is_error(char *who, char *what);
+void		manage_dir(int i, t_group *grp, int argc, char **argv);
 void		organize_dir(int filter, t_group *grp, char *name, struct stat buf);
 void		organize_file(int perm, t_group *grp, char *file, struct stat buf);
 void		delete_dir(t_dir *trash);
 void		delete_files(t_group *grp);
 void	 	sort_launcher(t_group *grp, t_dir **first);
+int			arg_loop(int i, t_group *grp, int argc, char **argv);
 int			opt_1(t_dir	*new, t_dir **first, t_dir **curr);
 void		opt_l(t_group *grp, t_dir *file);
 void		opt_f(t_dir *new, t_dir **first, t_dir **curr);
+char		*manage_rights(t_group *grp, struct stat buf);
 char		*manage_time(char *data);
 int			manage_opt(t_group *grp, char *opt);
 int			launcher(t_group *grp, char *opt);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   opt-1tr.c                                          :+:      :+:    :+:   */
+/*   opt_1tr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 05:16:00 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/12 05:48:15 by julio            ###   ########.fr       */
+/*   Updated: 2016/03/02 19:12:50 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ void	opt_f(t_dir *new, t_dir **first, t_dir **curr)
 	*curr = new;
 }
 
-int	insert_first(t_dir *new, t_dir **first, t_dir *other)
+int		insert_first(t_dir *new, t_dir **first, t_dir *other)
 {
 	*first = new;
 	new->next = other;
 	return (1);
 }
 
-int	insert_mid(t_dir *new, t_dir *other, t_dir *last_other)
+int		insert_mid(t_dir *new, t_dir *other, t_dir *last_other)
 {
 	last_other->next = new;
 	new->next = other;
 	return (2);
 }
 
-int	opt_1(t_dir *new, t_dir **first, t_dir **curr)
+int		opt_1(t_dir *new, t_dir **first, t_dir **curr)
 {
 	t_dir	*last_other;
 	t_dir	*other;

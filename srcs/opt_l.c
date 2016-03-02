@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   opt-l.c                                            :+:      :+:    :+:   */
+/*   opt_l.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 01:00:29 by julio             #+#    #+#             */
-/*   Updated: 2016/02/12 05:46:07 by julio            ###   ########.fr       */
+/*   Updated: 2016/03/02 19:28:41 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ int		ft_nblen(int nb)
 			i++;
 	}
 	return (i);
+}
+
+t_space	*define_space(t_group *grp)
+{
+	t_space *s_grp;
+
+	s_grp = (t_space*)malloc(sizeof(t_space));
+	len_space_slink(grp, s_grp);
+	len_space_size(grp, s_grp);
+	len_space_size_min(grp, s_grp);
+	len_space_uid(grp, s_grp);
+	len_space_grpid(grp, s_grp);
+	return (s_grp);
 }
 
 void	opt_l_next(t_group *grp, t_space *s_grp, t_dir *file)

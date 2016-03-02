@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: julio <julio@student.42.fr>                +#+  +:+       +#+         #
+#    By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 17:28:13 by jmontija          #+#    #+#              #
-#    Updated: 2016/02/05 20:16:04 by julio            ###   ########.fr        #
+#    Updated: 2016/03/02 19:27:24 by jmontija         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,14 @@ LIB_LINK		=	-L $(LIB_PATH) -lft
 
 INCLUDES		=	-I $(LIB_PATH)/includes -I ./includes
 SRCS			+=	srcs/main.c
+SRCS			+=	srcs/manager.c
 SRCS			+=	srcs/lst_lib.c
 SRCS			+=	srcs/launcher.c
+SRCS			+=	srcs/organize_rights.c
 SRCS			+=	srcs/organize_dir.c
 SRCS			+=	srcs/organize_files.c
+SRCS			+=	srcs/sort_arg.c
+SRCS			+=	srcs/stuff_files.c
 SRCS			+=	srcs/opt_set.c
 SRCS			+=	srcs/opt_1tr.c
 SRCS			+=	srcs/opt_l.c
