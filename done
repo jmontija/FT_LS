@@ -1,218 +1,797 @@
-284,286c284,286
-< lrwxr-xr-x  1 root  admin    24 Sep  8 17:40 Sparkle -> Versions/Current/Sparkle
-< lrwxr-xr-x  1 root  admin    26 Sep  8 17:40 Resources -> Versions/Current/Resources
-< lrwxr-xr-x  1 root  admin    24 Sep  8 17:40 Headers -> Versions/Current/Headers
+8a9
+> -rw-r--r--   1 jmontija  2015_paris  33464 Mar  2 21:08 try
+12,13c13
+< -rw-r--r--   1 jmontija  2015_paris  33464 Mar  2 21:09 try2
+< -rw-r--r--   1 jmontija  2015_paris      0 Mar  2 21:09 try
 ---
-> lrwxr-xr-x@ 1 root  admin    24 Sep  8 17:40 Sparkle -> Versions/Current/Sparkle
-> lrwxr-xr-x@ 1 root  admin    26 Sep  8 17:40 Resources -> Versions/Current/Resources
-> lrwxr-xr-x@ 1 root  admin    24 Sep  8 17:40 Headers -> Versions/Current/Headers
-294c294
-< lrwxr-xr-x  1 root  admin     1 Sep  8 17:40 Current -> A
+> -rw-r--r--   1 jmontija  2015_paris      0 Mar  2 21:09 try2
+41,43d40
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 17:31 info
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 17:31 hooks
+< -rw-r--r--   1 jmontija  2015_paris    73 Mar  2 17:31 description
+45c42,44
+< drwxr-xr-x   5 jmontija  2015_paris  4096 Mar  2 17:31 refs
 ---
-> lrwxr-xr-x@ 1 root  admin     1 Sep  8 17:40 Current -> A
-6149a6150
-> /Applications/Thingz Arduino.app/Contents/Resources/Java/examples/BoutonAllumeLed:
-6150a6152
-> /Applications/Thingz Arduino.app/Contents/Resources/Java/examples/Clignottement:
-6151a6154
-> /Applications/Thingz Arduino.app/Contents/Resources/Java/examples/HappyBirthday:
-10744,10748c10747,10751
-< lrwxr-xr-x  1 root  admin   24 Sep 22 10:54 Sparkle -> Versions/Current/Sparkle
-< lrwxr-xr-x  1 root  admin   26 Sep 22 10:54 Resources -> Versions/Current/Resources
-< lrwxr-xr-x  1 root  admin   31 Sep 22 10:54 PrivateHeaders -> Versions/Current/PrivateHeaders
-< lrwxr-xr-x  1 root  admin   24 Sep 22 10:54 Modules -> Versions/Current/Modules
-< lrwxr-xr-x  1 root  admin   24 Sep 22 10:54 Headers -> Versions/Current/Headers
+> -rw-r--r--   1 jmontija  2015_paris    73 Mar  2 17:31 description
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 17:31 hooks
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 17:31 info
+46a46,47
+> drwxr-xr-x   5 jmontija  2015_paris  4096 Mar  2 17:31 refs
+> -rw-r--r--   1 jmontija  2015_paris    23 Mar  2 17:31 HEAD
+49,50d49
+< -rw-r--r--   1 jmontija  2015_paris    23 Mar  2 17:31 HEAD
+< drwxr-xr-x  57 jmontija  2015_paris  4096 Mar  2 20:32 objects
+52d50
+< -rw-r--r--   1 jmontija  2015_paris     4 Mar  2 20:32 COMMIT_EDITMSG
+53a52,53
+> -rw-r--r--   1 jmontija  2015_paris     4 Mar  2 20:32 COMMIT_EDITMSG
+> drwxr-xr-x  57 jmontija  2015_paris  4096 Mar  2 20:32 objects
+56,58c56,57
+< ./.git/info:
+< total 17
+< -rw-r--r--  1 jmontija  2015_paris   240 Mar  2 17:31 exclude
 ---
-> lrwxr-xr-x@ 1 root  admin   24 Sep 22 10:54 Sparkle -> Versions/Current/Sparkle
-> lrwxr-xr-x@ 1 root  admin   26 Sep 22 10:54 Resources -> Versions/Current/Resources
-> lrwxr-xr-x@ 1 root  admin   31 Sep 22 10:54 PrivateHeaders -> Versions/Current/PrivateHeaders
-> lrwxr-xr-x@ 1 root  admin   24 Sep 22 10:54 Modules -> Versions/Current/Modules
-> lrwxr-xr-x@ 1 root  admin   24 Sep 22 10:54 Headers -> Versions/Current/Headers
-10755c10758
-< lrwxr-xr-x  1 root  admin    1 Sep 22 10:54 Current -> A
+> ./.git/branches:
+> total 16
+64,70d62
+< -rwxr-xr-x  1 jmontija  2015_paris  3611 Mar  2 17:31 update.sample
+< -rwxr-xr-x  1 jmontija  2015_paris  1239 Mar  2 17:31 prepare-commit-msg.sample
+< -rwxr-xr-x  1 jmontija  2015_paris  4951 Mar  2 17:31 pre-rebase.sample
+< -rwxr-xr-x  1 jmontija  2015_paris  1348 Mar  2 17:31 pre-push.sample
+< -rwxr-xr-x  1 jmontija  2015_paris  1642 Mar  2 17:31 pre-commit.sample
+< -rwxr-xr-x  1 jmontija  2015_paris   424 Mar  2 17:31 pre-applypatch.sample
+< -rwxr-xr-x  1 jmontija  2015_paris   189 Mar  2 17:31 post-update.sample
+72a65,71
+> -rwxr-xr-x  1 jmontija  2015_paris   424 Mar  2 17:31 pre-applypatch.sample
+> -rwxr-xr-x  1 jmontija  2015_paris   189 Mar  2 17:31 post-update.sample
+> -rwxr-xr-x  1 jmontija  2015_paris  1642 Mar  2 17:31 pre-commit.sample
+> -rwxr-xr-x  1 jmontija  2015_paris  4951 Mar  2 17:31 pre-rebase.sample
+> -rwxr-xr-x  1 jmontija  2015_paris  1348 Mar  2 17:31 pre-push.sample
+> -rwxr-xr-x  1 jmontija  2015_paris  3611 Mar  2 17:31 update.sample
+> -rwxr-xr-x  1 jmontija  2015_paris  1239 Mar  2 17:31 prepare-commit-msg.sample
+76,77c75,77
+< ./.git/branches:
+< total 16
 ---
-> lrwxr-xr-x@ 1 root  admin    1 Sep 22 10:54 Current -> A
-10835,10836c10838,10839
-< lrwxr-xr-x   1 root  admin    11 Sep 22 10:54 pt.lproj -> pt_BR.lproj
-< lrwxr-xr-x   1 root  admin     8 Sep 22 10:54 fr_CA.lproj -> fr.lproj
+> ./.git/info:
+> total 17
+> -rw-r--r--  1 jmontija  2015_paris   240 Mar  2 17:31 exclude
+86d85
+< drwxr-xr-x  2 jmontija  2015_paris  4096 Mar  2 20:32 heads
+87a87
+> drwxr-xr-x  2 jmontija  2015_paris  4096 Mar  2 20:32 heads
+102d101
+< -rw-r--r--  1 jmontija  2015_paris    32 Mar  2 17:31 HEAD
+103a103
+> -rw-r--r--  1 jmontija  2015_paris    32 Mar  2 17:31 HEAD
+117d116
+< -rw-r--r--  1 jmontija  2015_paris   667 Mar  2 20:32 HEAD
+118a118
+> -rw-r--r--  1 jmontija  2015_paris   667 Mar  2 20:32 HEAD
+124d123
+< drwxr-xr-x  3 jmontija  2015_paris  4096 Mar  2 17:31 ..
+125a125
+> drwxr-xr-x  3 jmontija  2015_paris  4096 Mar  2 17:31 ..
+129d128
+< drwxr-xr-x  4 jmontija  2015_paris  4096 Mar  2 17:31 ..
+130a130
+> drwxr-xr-x  4 jmontija  2015_paris  4096 Mar  2 17:31 ..
+135d134
+< -rw-r--r--  1 jmontija  2015_paris   186 Mar  2 17:31 HEAD
+136a136
+> -rw-r--r--  1 jmontija  2015_paris   186 Mar  2 17:31 HEAD
+150,156c150,151
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 e9
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 d7
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 c4
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 bb
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 b7
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 b1
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 ad
 ---
-> lrwxr-xr-x@  1 root  admin    11 Sep 22 10:54 pt.lproj -> pt_BR.lproj
-> lrwxr-xr-x@  1 root  admin     8 Sep 22 10:54 fr_CA.lproj -> fr.lproj
-12802,12804c12805,12807
-< lrwxr-xr-x  1 root  admin   24 Dec  8 22:38 Sparkle -> Versions/Current/Sparkle
-< lrwxr-xr-x  1 root  admin   26 Dec  8 22:38 Resources -> Versions/Current/Resources
-< lrwxr-xr-x  1 root  admin   24 Dec  8 22:38 Headers -> Versions/Current/Headers
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 7a
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 88
+159,166d153
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 a7
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 a5
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 98
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 88
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 86
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 7a
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 5c
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 4e
+167a155,159
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 86
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 bb
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 b1
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 a7
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 e9
+168a161,162
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 d7
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 ad
+169a164,165
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 4e
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 5c
+171,172c167,170
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 ef
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 e5
 ---
-> lrwxr-xr-x@ 1 root  admin   24 Dec  8 22:38 Sparkle -> Versions/Current/Sparkle
-> lrwxr-xr-x@ 1 root  admin   26 Dec  8 22:38 Resources -> Versions/Current/Resources
-> lrwxr-xr-x@ 1 root  admin   24 Dec  8 22:38 Headers -> Versions/Current/Headers
-12811c12814
-< lrwxr-xr-x  1 root  admin    1 Dec  8 22:38 Current -> A
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 a5
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 c4
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 b7
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 98
+174c172
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 d1
 ---
-> lrwxr-xr-x@ 1 root  admin    1 Dec  8 22:38 Current -> A
-888743c888746
-< drwxr-xr-x  5 root  admin  170 Aug  7 13:25 MacOSX10.11.sdk
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 e5
+175a174,175
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 ef
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 d1
+179c179
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 e6
 ---
-> drwxr-xr-x  5 root  admin  170 Aug  7  2017 MacOSX10.11.sdk
-888751c888754
-< drwxr-xr-x  5 root  admin   170 Aug  7 13:25 .
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 91
+182c182,183
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 91
 ---
-> drwxr-xr-x  5 root  admin   170 Aug  7  2017 .
-888757c888760
-< drwxr-xr-x  5 root  admin  170 Aug  7 13:25 ..
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 41
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 09
+183a185
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 2f
+185,187d186
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 6a
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 68
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 41
+189,192c188,191
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 2f
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 09
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 ca
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 c8
 ---
-> drwxr-xr-x  5 root  admin  170 Aug  7  2017 ..
-912017c912020
-< drwxr-xr-x    5 root  admin   170 Aug  7 13:25 ..
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 e6
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 68
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 6a
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 43
+194a194
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 c8
+196d195
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 78
+198,199c197,199
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 43
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:32 cd
 ---
-> drwxr-xr-x    5 root  admin   170 Aug  7  2017 ..
-967580,967583c967583,967586
-< lrwxr-xr-x  1 root  admin   25 Dec 29 15:18 Squirrel -> Versions/Current/Squirrel
-< lrwxr-xr-x  1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
-< lrwxr-xr-x  1 root  admin   24 Dec 29 15:18 Modules -> Versions/Current/Modules
-< lrwxr-xr-x  1 root  admin   24 Dec 29 15:18 Headers -> Versions/Current/Headers
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 78
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 ca
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:32 18
+202d201
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:32 18
+204a204
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:32 cd
+218c218
+< ./.git/objects/e9:
 ---
-> lrwxr-xr-x@ 1 root  admin   25 Dec 29 15:18 Squirrel -> Versions/Current/Squirrel
-> lrwxr-xr-x@ 1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
-> lrwxr-xr-x@ 1 root  admin   24 Dec 29 15:18 Modules -> Versions/Current/Modules
-> lrwxr-xr-x@ 1 root  admin   24 Dec 29 15:18 Headers -> Versions/Current/Headers
-967590c967593
-< lrwxr-xr-x  1 root  admin    1 Dec 29 15:18 Current -> A
+> ./.git/objects/7a:
+220c220
+< -r--r--r--   1 jmontija  2015_paris   802 Mar  2 19:31 0872e19f546700184dd380fa3e981491607efb
 ---
-> lrwxr-xr-x@ 1 root  admin    1 Dec 29 15:18 Current -> A
-967637,967640c967640,967643
-< lrwxr-xr-x  1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
-< lrwxr-xr-x  1 root  admin   30 Dec 29 15:18 ReactiveCocoa -> Versions/Current/ReactiveCocoa
-< lrwxr-xr-x  1 root  admin   24 Dec 29 15:18 Modules -> Versions/Current/Modules
-< lrwxr-xr-x  1 root  admin   24 Dec 29 15:18 Headers -> Versions/Current/Headers
+> -r--r--r--   1 jmontija  2015_paris   652 Mar  2 19:31 1f396b5e7c76fa9a5cdff34d43ced7733a9385
+224,226c224,226
+< ./.git/objects/d7:
+< total 18
+< -r--r--r--   1 jmontija  2015_paris   765 Mar  2 19:31 297f01816d2d476593951822e359485471d249
 ---
-> lrwxr-xr-x@ 1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
-> lrwxr-xr-x@ 1 root  admin   30 Dec 29 15:18 ReactiveCocoa -> Versions/Current/ReactiveCocoa
-> lrwxr-xr-x@ 1 root  admin   24 Dec 29 15:18 Modules -> Versions/Current/Modules
-> lrwxr-xr-x@ 1 root  admin   24 Dec 29 15:18 Headers -> Versions/Current/Headers
-967647c967650
-< lrwxr-xr-x  1 root  admin    1 Dec 29 15:18 Current -> A
+> ./.git/objects/88:
+> total 35
+> -r--r--r--   1 jmontija  2015_paris  9258 Mar  2 19:31 a6b0d0db0a5f353339ec44dc54f7f68f1371d6
+230,234c230,234
+< ./.git/objects/c4:
+< total 19
+< -r--r--r--   1 jmontija  2015_paris  1124 Mar  2 19:31 14e6f6a1a42ce8815194b6630809b046ef5f32
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 .
+< drwxr-xr-x  57 jmontija  2015_paris  4096 Mar  2 20:32 ..
 ---
-> lrwxr-xr-x@ 1 root  admin    1 Dec 29 15:18 Current -> A
-967740,967743c967743,967746
-< lrwxr-xr-x  1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
-< lrwxr-xr-x  1 root  admin   24 Dec 29 15:18 Modules -> Versions/Current/Modules
-< lrwxr-xr-x  1 root  admin   23 Dec 29 15:18 Mantle -> Versions/Current/Mantle
-< lrwxr-xr-x  1 root  admin   24 Dec 29 15:18 Headers -> Versions/Current/Headers
+> ./.git/objects/a9:
+> total 40
+> -r--r--r--   1 jmontija  2015_paris  11990 Mar  2 19:31 117be540381322fe3cc0aab21cfe6c413e932b
+> drwxr-xr-x   2 jmontija  2015_paris   4096 Mar  2 19:31 .
+> drwxr-xr-x  57 jmontija  2015_paris   4096 Mar  2 20:32 ..
+236,238c236,237
+< ./.git/objects/bb:
+< total 18
+< -r--r--r--   1 jmontija  2015_paris   784 Mar  2 19:31 d00cb0b5de5ecab84ae30a9bfee738d06cc53c
 ---
-> lrwxr-xr-x@ 1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
-> lrwxr-xr-x@ 1 root  admin   24 Dec 29 15:18 Modules -> Versions/Current/Modules
-> lrwxr-xr-x@ 1 root  admin   23 Dec 29 15:18 Mantle -> Versions/Current/Mantle
-> lrwxr-xr-x@ 1 root  admin   24 Dec 29 15:18 Headers -> Versions/Current/Headers
-967750c967753
-< lrwxr-xr-x  1 root  admin    1 Dec 29 15:18 Current -> A
+> ./.git/objects/a8:
+> total 17
+239a239
+> -r--r--r--   1 jmontija  2015_paris   372 Mar  2 20:31 78d70cd7e752a4dc7f3ceb07de3129c1261ae2
+242,244c242,244
+< ./.git/objects/b7:
+< total 18
+< -r--r--r--   1 jmontija  2015_paris   735 Mar  2 19:31 cf7e33ba69fe01e1e23eb1ed889ff4f4adc642
 ---
-> lrwxr-xr-x@ 1 root  admin    1 Dec 29 15:18 Current -> A
-967801,967803c967804,967806
-< lrwxr-xr-x  1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
-< lrwxr-xr-x  1 root  admin   26 Dec 29 15:18 Libraries -> Versions/Current/Libraries
-< lrwxr-xr-x  1 root  admin   35 Dec 29 15:18 Electron Framework -> Versions/Current/Electron Framework
+> ./.git/objects/4d:
+> total 21
+> -r--r--r--   1 jmontija  2015_paris   682 Mar  2 19:31 7fe0bc914bfd9c4f804d9261d5293b859c8e54
+245a246
+> -r--r--r--   1 jmontija  2015_paris  1099 Mar  2 20:31 101494ac7039fd99d89f86c371279cf36b053b
+248,250c249,251
+< ./.git/objects/b1:
+< total 17
+< -r--r--r--   1 jmontija  2015_paris   326 Mar  2 19:31 80be3c50f5d99e7e271ec456a823fee167b030
 ---
-> lrwxr-xr-x@ 1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
-> lrwxr-xr-x@ 1 root  admin   26 Dec 29 15:18 Libraries -> Versions/Current/Libraries
-> lrwxr-xr-x@ 1 root  admin   35 Dec 29 15:18 Electron Framework -> Versions/Current/Electron Framework
-967810c967813
-< lrwxr-xr-x  1 root  admin    1 Dec 29 15:18 Current -> A
+> ./.git/objects/86:
+> total 18
+> -r--r--r--   1 jmontija  2015_paris   548 Mar  2 19:31 d1fb8ff3a9d66f6273016f3f2047c3b8b6c75b
+254c255
+< ./.git/objects/ad:
 ---
-> lrwxr-xr-x@ 1 root  admin    1 Dec 29 15:18 Current -> A
-968341c968344
-< lrwxr-xr-x  1 root  admin   20 Dec 29 15:18 mkdirp -> ../mkdirp/bin/cmd.js
+> ./.git/objects/bb:
+256c257
+< -r--r--r--   1 jmontija  2015_paris   613 Mar  2 19:31 6b4a1cd148615ac56eb953029288dea16a5d40
 ---
-> lrwxr-xr-x@ 1 root  admin   20 Dec 29 15:18 mkdirp -> ../mkdirp/bin/cmd.js
-968361c968364
-< lrwxr-xr-x  1 root  admin   16 Dec 29 15:18 asar -> ../asar/bin/asar
+> -r--r--r--   1 jmontija  2015_paris   784 Mar  2 19:31 d00cb0b5de5ecab84ae30a9bfee738d06cc53c
+260,266c261
+< ./.git/objects/a9:
+< total 40
+< -r--r--r--   1 jmontija  2015_paris  11990 Mar  2 19:31 117be540381322fe3cc0aab21cfe6c413e932b
+< drwxr-xr-x   2 jmontija  2015_paris   4096 Mar  2 19:31 .
+< drwxr-xr-x  57 jmontija  2015_paris   4096 Mar  2 20:32 ..
+< 
+< ./.git/objects/a8:
 ---
-> lrwxr-xr-x@ 1 root  admin   16 Dec 29 15:18 asar -> ../asar/bin/asar
-968455,968456c968458,968459
-< lrwxr-xr-x  1 root  admin   16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
-< lrwxr-xr-x  1 root  admin   14 Dec 29 15:18 ncp -> ../ncp/bin/ncp
+> ./.git/objects/b1:
+267a263
+> -r--r--r--   1 jmontija  2015_paris   326 Mar  2 19:31 80be3c50f5d99e7e271ec456a823fee167b030
+269d264
+< -r--r--r--   1 jmontija  2015_paris   372 Mar  2 20:31 78d70cd7e752a4dc7f3ceb07de3129c1261ae2
+278,280c273,275
+< ./.git/objects/a5:
+< total 22
+< -r--r--r--   1 jmontija  2015_paris  1541 Mar  2 19:31 5d6051764cf68d2de5429f71ac6ae72304c9fb
 ---
-> lrwxr-xr-x@ 1 root  admin   16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
-> lrwxr-xr-x@ 1 root  admin   14 Dec 29 15:18 ncp -> ../ncp/bin/ncp
-968566c968569
-< lrwxr-xr-x  1 root  admin   16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
+> ./.git/objects/e9:
+> total 18
+> -r--r--r--   1 jmontija  2015_paris   802 Mar  2 19:31 0872e19f546700184dd380fa3e981491607efb
+282d276
+< -r--r--r--   1 jmontija  2015_paris   748 Mar  2 20:31 8e25db97a9222718c6c97c77f93ef30be3af21
+285,287c279,281
+< ./.git/objects/98:
+< total 19
+< -r--r--r--   1 jmontija  2015_paris  1186 Mar  2 19:31 25328137937a5a14a19286ced1bbb49a8eb0af
 ---
-> lrwxr-xr-x@ 1 root  admin   16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
-969963c969966
-< lrwxr-xr-x   1 root  admin   21 Dec 29 15:18 window-size -> ../window-size/cli.js
+> ./.git/objects/37:
+> total 18
+> -r--r--r--   1 jmontija  2015_paris   656 Mar  2 19:31 44fe898773ac93f9bc899d737e26fc90da8252
+291,293c285,287
+< ./.git/objects/88:
+< total 35
+< -r--r--r--   1 jmontija  2015_paris  9258 Mar  2 19:31 a6b0d0db0a5f353339ec44dc54f7f68f1371d6
 ---
-> lrwxr-xr-x@  1 root  admin   21 Dec 29 15:18 window-size -> ../window-size/cli.js
-970080c970083
-< lrwxr-xr-x  1 root  admin   16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
+> ./.git/objects/d7:
+> total 18
+> -r--r--r--   1 jmontija  2015_paris   765 Mar  2 19:31 297f01816d2d476593951822e359485471d249
+297c291
+< ./.git/objects/86:
 ---
-> lrwxr-xr-x@ 1 root  admin   16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
-970188,970189c970191,970192
-< lrwxr-xr-x  1 root  admin   27 Dec 29 15:18 coffee -> ../coffee-script/bin/coffee
-< lrwxr-xr-x  1 root  admin   25 Dec 29 15:18 cake -> ../coffee-script/bin/cake
+> ./.git/objects/ad:
+299c293
+< -r--r--r--   1 jmontija  2015_paris   548 Mar  2 19:31 d1fb8ff3a9d66f6273016f3f2047c3b8b6c75b
 ---
-> lrwxr-xr-x@ 1 root  admin   27 Dec 29 15:18 coffee -> ../coffee-script/bin/coffee
-> lrwxr-xr-x@ 1 root  admin   25 Dec 29 15:18 cake -> ../coffee-script/bin/cake
-973783,973789c973786,973792
-< lrwxr-xr-x   1 root  admin    18 Dec 29 15:18 which -> ../which/bin/which
-< lrwxr-xr-x   1 root  admin    20 Dec 29 15:18 semver -> ../semver/bin/semver
-< lrwxr-xr-x   1 root  admin    16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
-< lrwxr-xr-x   1 root  admin    19 Dec 29 15:18 opener -> ../opener/opener.js
-< lrwxr-xr-x   1 root  admin    19 Dec 29 15:18 nopt -> ../nopt/bin/nopt.js
-< lrwxr-xr-x   1 root  admin    27 Dec 29 15:18 node-gyp -> ../node-gyp/bin/node-gyp.js
-< lrwxr-xr-x   1 root  admin    20 Dec 29 15:18 mkdirp -> ../mkdirp/bin/cmd.js
+> -r--r--r--   1 jmontija  2015_paris   613 Mar  2 19:31 6b4a1cd148615ac56eb953029288dea16a5d40
+303,305c297,305
+< ./.git/objects/7a:
+< total 18
+< -r--r--r--   1 jmontija  2015_paris   652 Mar  2 19:31 1f396b5e7c76fa9a5cdff34d43ced7733a9385
 ---
-> lrwxr-xr-x@  1 root  admin    18 Dec 29 15:18 which -> ../which/bin/which
-> lrwxr-xr-x@  1 root  admin    20 Dec 29 15:18 semver -> ../semver/bin/semver
-> lrwxr-xr-x@  1 root  admin    16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
-> lrwxr-xr-x@  1 root  admin    19 Dec 29 15:18 opener -> ../opener/opener.js
-> lrwxr-xr-x@  1 root  admin    19 Dec 29 15:18 nopt -> ../nopt/bin/nopt.js
-> lrwxr-xr-x@  1 root  admin    27 Dec 29 15:18 node-gyp -> ../node-gyp/bin/node-gyp.js
-> lrwxr-xr-x@  1 root  admin    20 Dec 29 15:18 mkdirp -> ../mkdirp/bin/cmd.js
-973795,973798c973798,973801
-< lrwxr-xr-x   1 root  admin   21 Dec 29 15:18 npm -> ../npm/bin/npm-cli.js
-< lrwxr-xr-x   1 root  admin   14 Dec 29 15:18 ncp -> ../ncp/bin/ncp
-< lrwxr-xr-x   1 root  admin   19 Dec 29 15:18 csonc -> ../season/bin/csonc
-< lrwxr-xr-x   1 root  admin   13 Dec 29 15:18 apm -> ../../bin/apm
+> ./.git/objects/1f:
+> total 1825
+> drwxr-xr-x   2 jmontija  2015_paris    4096 Mar  2 19:31 .
+> -r--r--r--   1 jmontija  2015_paris  925822 Mar  2 19:31 f2b214a10eb4fdcc7ed06dd912a750b4e51124
+> drwxr-xr-x  57 jmontija  2015_paris    4096 Mar  2 20:32 ..
+> 
+> ./.git/objects/4e:
+> total 19
+> -r--r--r--   1 jmontija  2015_paris  1488 Mar  2 19:31 703f7d04c862916235dce1b09a4b843f2c13ea
+315c315
+< ./.git/objects/4e:
 ---
-> lrwxr-xr-x@  1 root  admin   21 Dec 29 15:18 npm -> ../npm/bin/npm-cli.js
-> lrwxr-xr-x@  1 root  admin   14 Dec 29 15:18 ncp -> ../ncp/bin/ncp
-> lrwxr-xr-x@  1 root  admin   19 Dec 29 15:18 csonc -> ../season/bin/csonc
-> lrwxr-xr-x@  1 root  admin   13 Dec 29 15:18 apm -> ../../bin/apm
-980090,980092c980093,980095
-< lrwxr-xr-x  1 root  admin   22 Dec 29 16:31 Skype -> Versions/Current/Skype
-< lrwxr-xr-x  1 root  admin   26 Dec 29 16:31 Resources -> Versions/Current/Resources
-< lrwxr-xr-x  1 root  admin   24 Dec 29 16:31 Headers -> Versions/Current/Headers
+> ./.git/objects/15:
+317d316
+< -r--r--r--   1 jmontija  2015_paris  1488 Mar  2 19:31 703f7d04c862916235dce1b09a4b843f2c13ea
+318a318
+> -r--r--r--   1 jmontija  2015_paris  1117 Mar  2 20:31 940149b52dda7142ef3944da94bd0b5edeea39
+321,323c321,323
+< ./.git/objects/4d:
+< total 21
+< -r--r--r--   1 jmontija  2015_paris   682 Mar  2 19:31 7fe0bc914bfd9c4f804d9261d5293b859c8e54
 ---
-> lrwxr-xr-x@ 1 root  admin   22 Dec 29 16:31 Skype -> Versions/Current/Skype
-> lrwxr-xr-x@ 1 root  admin   26 Dec 29 16:31 Resources -> Versions/Current/Resources
-> lrwxr-xr-x@ 1 root  admin   24 Dec 29 16:31 Headers -> Versions/Current/Headers
-980099c980102
-< lrwxr-xr-x  1 root  admin    1 Dec 29 16:31 Current -> A
+> ./.git/objects/a5:
+> total 22
+> -r--r--r--   1 jmontija  2015_paris  1541 Mar  2 19:31 5d6051764cf68d2de5429f71ac6ae72304c9fb
+325c325
+< -r--r--r--   1 jmontija  2015_paris  1099 Mar  2 20:31 101494ac7039fd99d89f86c371279cf36b053b
 ---
-> lrwxr-xr-x@ 1 root  admin    1 Dec 29 16:31 Current -> A
-980135,980138c980138,980141
-< lrwxr-xr-x  1 root  admin   26 Dec 29 16:31 Resources -> Versions/Current/Resources
-< lrwxr-xr-x  1 root  admin   26 Dec 29 16:31 HockeySDK -> Versions/Current/HockeySDK
-< lrwxr-xr-x  1 root  admin   24 Dec 29 16:31 Headers -> Versions/Current/Headers
-< lrwxr-xr-x  1 root  admin   27 Dec 29 16:31 Frameworks -> Versions/Current/Frameworks
+> -r--r--r--   1 jmontija  2015_paris   748 Mar  2 20:31 8e25db97a9222718c6c97c77f93ef30be3af21
+328,330c328,330
+< ./.git/objects/37:
+< total 18
+< -r--r--r--   1 jmontija  2015_paris   656 Mar  2 19:31 44fe898773ac93f9bc899d737e26fc90da8252
 ---
-> lrwxr-xr-x@ 1 root  admin   26 Dec 29 16:31 Resources -> Versions/Current/Resources
-> lrwxr-xr-x@ 1 root  admin   26 Dec 29 16:31 HockeySDK -> Versions/Current/HockeySDK
-> lrwxr-xr-x@ 1 root  admin   24 Dec 29 16:31 Headers -> Versions/Current/Headers
-> lrwxr-xr-x@ 1 root  admin   27 Dec 29 16:31 Frameworks -> Versions/Current/Frameworks
-980145c980148
-< lrwxr-xr-x  1 root  admin    1 Dec 29 16:31 Current -> A
+> ./.git/objects/c4:
+> total 19
+> -r--r--r--   1 jmontija  2015_paris  1124 Mar  2 19:31 14e6f6a1a42ce8815194b6630809b046ef5f32
+334,338c334,338
+< ./.git/objects/1f:
+< total 1825
+< drwxr-xr-x   2 jmontija  2015_paris    4096 Mar  2 19:31 .
+< -r--r--r--   1 jmontija  2015_paris  925822 Mar  2 19:31 f2b214a10eb4fdcc7ed06dd912a750b4e51124
+< drwxr-xr-x  57 jmontija  2015_paris    4096 Mar  2 20:32 ..
 ---
-> lrwxr-xr-x@ 1 root  admin    1 Dec 29 16:31 Current -> A
-980432,980434c980435,980437
-< lrwxr-xr-x  1 root  admin   26 Dec 29 16:31 Resources -> Versions/Current/Resources
-< lrwxr-xr-x  1 root  admin   24 Dec 29 16:31 Headers -> Versions/Current/Headers
-< lrwxr-xr-x  1 root  admin   30 Dec 29 16:31 CrashReporter -> Versions/Current/CrashReporter
+> ./.git/objects/b7:
+> total 18
+> -r--r--r--   1 jmontija  2015_paris   735 Mar  2 19:31 cf7e33ba69fe01e1e23eb1ed889ff4f4adc642
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 19:31 .
+> drwxr-xr-x  57 jmontija  2015_paris  4096 Mar  2 20:32 ..
+340c340
+< ./.git/objects/15:
 ---
-> lrwxr-xr-x@ 1 root  admin   26 Dec 29 16:31 Resources -> Versions/Current/Resources
-> lrwxr-xr-x@ 1 root  admin   24 Dec 29 16:31 Headers -> Versions/Current/Headers
-> lrwxr-xr-x@ 1 root  admin   30 Dec 29 16:31 CrashReporter -> Versions/Current/CrashReporter
-980441c980444
-< lrwxr-xr-x  1 root  admin    1 Dec 29 16:31 Current -> A
+> ./.git/objects/98:
+341a342
+> -r--r--r--   1 jmontija  2015_paris  1186 Mar  2 19:31 25328137937a5a14a19286ced1bbb49a8eb0af
+343d343
+< -r--r--r--   1 jmontija  2015_paris  1117 Mar  2 20:31 940149b52dda7142ef3944da94bd0b5edeea39
+346c346
+< ./.git/objects/ef:
 ---
-> lrwxr-xr-x@ 1 root  admin    1 Dec 29 16:31 Current -> A
+> ./.git/objects/d4:
+348c348
+< -r--r--r--   1 jmontija  2015_paris   427 Mar  2 19:31 17a714435b3a19d327cfa9f95feb9ccfda0b02
+---
+> -r--r--r--   1 jmontija  2015_paris    52 Mar  2 19:31 ab9b72c7bdde03ec22be136a4e65e6d1898f5f
+358c358
+< ./.git/objects/d4:
+---
+> ./.git/objects/27:
+360c360
+< -r--r--r--   1 jmontija  2015_paris    52 Mar  2 19:31 ab9b72c7bdde03ec22be136a4e65e6d1898f5f
+---
+> -r--r--r--   1 jmontija  2015_paris   425 Mar  2 19:31 ee81fefe174c5c44729c0187eb7461fc21f050
+364c364
+< ./.git/objects/d1:
+---
+> ./.git/objects/ef:
+366c366
+< -r--r--r--   1 jmontija  2015_paris   265 Mar  2 19:31 d11475f5d3a836886c9b9e6be3d108ce2e1770
+---
+> -r--r--r--   1 jmontija  2015_paris   427 Mar  2 19:31 17a714435b3a19d327cfa9f95feb9ccfda0b02
+370c370
+< ./.git/objects/27:
+---
+> ./.git/objects/d1:
+372c372
+< -r--r--r--   1 jmontija  2015_paris   425 Mar  2 19:31 ee81fefe174c5c44729c0187eb7461fc21f050
+---
+> -r--r--r--   1 jmontija  2015_paris   265 Mar  2 19:31 d11475f5d3a836886c9b9e6be3d108ce2e1770
+395,397c395,397
+< ./.git/objects/e6:
+< total 18
+< -r--r--r--   1 jmontija  2015_paris   726 Mar  2 20:31 dc28a78f74db4dfb39a8097ce7982e20491f70
+---
+> ./.git/objects/91:
+> total 20
+> -r--r--r--   1 jmontija  2015_paris  1785 Mar  2 20:31 a8f70d34a6ccafd46d8872d825d6cae4e5bc3e
+413,415c413,415
+< ./.git/objects/91:
+< total 20
+< -r--r--r--   1 jmontija  2015_paris  1785 Mar  2 20:31 a8f70d34a6ccafd46d8872d825d6cae4e5bc3e
+---
+> ./.git/objects/41:
+> total 17
+> -r--r--r--   1 jmontija  2015_paris   324 Mar  2 20:31 e3122e42f648309c9ff4c92a832183b305b827
+419,421c419,421
+< ./.git/objects/82:
+< total 18
+< -r--r--r--   1 jmontija  2015_paris   722 Mar  2 20:31 cc80a6a565ab223c8cd07f1949249a65f3901f
+---
+> ./.git/objects/09:
+> total 19
+> -r--r--r--   1 jmontija  2015_paris  1122 Mar  2 20:31 0a3f690d176b766b5ad7b2f7fa835d4154066a
+425c425
+< ./.git/objects/6e:
+---
+> ./.git/objects/82:
+427c427
+< -r--r--r--   1 jmontija  2015_paris   712 Mar  2 20:31 664709003ae29bbc2535daec26af6cd96bebff
+---
+> -r--r--r--   1 jmontija  2015_paris   722 Mar  2 20:31 cc80a6a565ab223c8cd07f1949249a65f3901f
+431,439c431,433
+< ./.git/objects/6a:
+< total 16430
+< -r--r--r--   1 jmontija  2015_paris  8403565 Mar  2 20:31 7901b6ca906931d661c6b1ddd266a448ea465e
+< drwxr-xr-x   2 jmontija  2015_paris     4096 Mar  2 20:31 .
+< drwxr-xr-x  57 jmontija  2015_paris     4096 Mar  2 20:32 ..
+< 
+< ./.git/objects/68:
+< total 19
+< -r--r--r--   1 jmontija  2015_paris  1185 Mar  2 20:31 a9d5db7a22df207a5bf827d626e074b285f76c
+---
+> ./.git/objects/2f:
+> total 18
+> -r--r--r--   1 jmontija  2015_paris   657 Mar  2 20:31 2b4895fca0f5064f8811534b93c7a3368ee34b
+443,445c437,439
+< ./.git/objects/41:
+< total 17
+< -r--r--r--   1 jmontija  2015_paris   324 Mar  2 20:31 e3122e42f648309c9ff4c92a832183b305b827
+---
+> ./.git/objects/6e:
+> total 18
+> -r--r--r--   1 jmontija  2015_paris   712 Mar  2 20:31 664709003ae29bbc2535daec26af6cd96bebff
+455c449
+< ./.git/objects/2f:
+---
+> ./.git/objects/e6:
+457c451
+< -r--r--r--   1 jmontija  2015_paris   657 Mar  2 20:31 2b4895fca0f5064f8811534b93c7a3368ee34b
+---
+> -r--r--r--   1 jmontija  2015_paris   726 Mar  2 20:31 dc28a78f74db4dfb39a8097ce7982e20491f70
+461c455
+< ./.git/objects/09:
+---
+> ./.git/objects/68:
+463c457
+< -r--r--r--   1 jmontija  2015_paris  1122 Mar  2 20:31 0a3f690d176b766b5ad7b2f7fa835d4154066a
+---
+> -r--r--r--   1 jmontija  2015_paris  1185 Mar  2 20:31 a9d5db7a22df207a5bf827d626e074b285f76c
+467,471c461,465
+< ./.git/objects/ca:
+< total 20
+< -r--r--r--   1 jmontija  2015_paris  1537 Mar  2 20:31 2b0ab908d64ba729d2cf756b1f52b2f7059d95
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 .
+< drwxr-xr-x  57 jmontija  2015_paris  4096 Mar  2 20:32 ..
+---
+> ./.git/objects/6a:
+> total 16430
+> -r--r--r--   1 jmontija  2015_paris  8403565 Mar  2 20:31 7901b6ca906931d661c6b1ddd266a448ea465e
+> drwxr-xr-x   2 jmontija  2015_paris     4096 Mar  2 20:31 .
+> drwxr-xr-x  57 jmontija  2015_paris     4096 Mar  2 20:32 ..
+473,477c467,471
+< ./.git/objects/c8:
+< total 19
+< -r--r--r--   1 jmontija  2015_paris  1506 Mar  2 20:31 1e5b98d187212dcab027a25cbd58f2edcfc7a9
+< drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 .
+< drwxr-xr-x  57 jmontija  2015_paris  4096 Mar  2 20:32 ..
+---
+> ./.git/objects/43:
+> total 16430
+> -r--r--r--   1 jmontija  2015_paris  8403646 Mar  2 20:31 f545b014b2dce010341bc816dfcea6bcfc9adc
+> drwxr-xr-x   2 jmontija  2015_paris     4096 Mar  2 20:31 .
+> drwxr-xr-x  57 jmontija  2015_paris     4096 Mar  2 20:32 ..
+491,493c485,487
+< ./.git/objects/81:
+< total 18
+< -r--r--r--   1 jmontija  2015_paris   893 Mar  2 20:31 80b86f52c5a57e6b15ab5b093a0dc76afc40bc
+---
+> ./.git/objects/c8:
+> total 19
+> -r--r--r--   1 jmontija  2015_paris  1506 Mar  2 20:31 1e5b98d187212dcab027a25cbd58f2edcfc7a9
+497c491
+< ./.git/objects/78:
+---
+> ./.git/objects/81:
+499c493
+< -r--r--r--   1 jmontija  2015_paris   697 Mar  2 20:31 4e72254aecad7418df9937b970e2f2ac73b6a3
+---
+> -r--r--r--   1 jmontija  2015_paris   893 Mar  2 20:31 80b86f52c5a57e6b15ab5b093a0dc76afc40bc
+510,514c504,508
+< ./.git/objects/43:
+< total 16430
+< -r--r--r--   1 jmontija  2015_paris  8403646 Mar  2 20:31 f545b014b2dce010341bc816dfcea6bcfc9adc
+< drwxr-xr-x   2 jmontija  2015_paris     4096 Mar  2 20:31 .
+< drwxr-xr-x  57 jmontija  2015_paris     4096 Mar  2 20:32 ..
+---
+> ./.git/objects/78:
+> total 18
+> -r--r--r--   1 jmontija  2015_paris   697 Mar  2 20:31 4e72254aecad7418df9937b970e2f2ac73b6a3
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 .
+> drwxr-xr-x  57 jmontija  2015_paris  4096 Mar  2 20:32 ..
+516,518c510,513
+< ./.git/objects/cd:
+< total 17
+< -r--r--r--   1 jmontija  2015_paris   166 Mar  2 20:32 3eb3007e203780647261f9f0bf97f328ce5e8e
+---
+> ./.git/objects/ca:
+> total 20
+> -r--r--r--   1 jmontija  2015_paris  1537 Mar  2 20:31 2b0ab908d64ba729d2cf756b1f52b2f7059d95
+> drwxr-xr-x   2 jmontija  2015_paris  4096 Mar  2 20:31 .
+519a515,518
+> 
+> ./.git/objects/18:
+> total 17
+> -r--r--r--   1 jmontija  2015_paris    52 Mar  2 20:32 1f7fcbce8fa73181bf64300a3c1b687a2ab46c
+520a520
+> drwxr-xr-x  57 jmontija  2015_paris  4096 Mar  2 20:32 ..
+525d524
+< drwxr-xr-x  57 jmontija  2015_paris  4096 Mar  2 20:32 ..
+526a526
+> drwxr-xr-x  57 jmontija  2015_paris  4096 Mar  2 20:32 ..
+532d531
+< drwxr-xr-x  57 jmontija  2015_paris  4096 Mar  2 20:32 ..
+533a533
+> drwxr-xr-x  57 jmontija  2015_paris  4096 Mar  2 20:32 ..
+535c535
+< ./.git/objects/18:
+---
+> ./.git/objects/cd:
+537c537
+< -r--r--r--   1 jmontija  2015_paris    52 Mar  2 20:32 1f7fcbce8fa73181bf64300a3c1b687a2ab46c
+---
+> -r--r--r--   1 jmontija  2015_paris   166 Mar  2 20:32 3eb3007e203780647261f9f0bf97f328ce5e8e
+543,581d542
+< -rwxr-xr-x  1 jmontija  2015_paris   1100 Mar  2 17:31 ft_strcmp.c
+< -rw-r--r--  1 jmontija  2015_paris    977 Mar  2 17:31 ft_strclr.c
+< -rw-r--r--  1 jmontija  2015_paris   1154 Mar  2 17:31 ft_strchr.c
+< -rw-r--r--  1 jmontija  2015_paris   1003 Mar  2 17:31 ft_strcat.c
+< -rw-r--r--  1 jmontija  2015_paris    995 Mar  2 17:31 ft_putstr_fd.c
+< -rw-r--r--  1 jmontija  2015_paris    967 Mar  2 17:31 ft_putstr.c
+< -rw-r--r--  1 jmontija  2015_paris   1146 Mar  2 17:31 ft_putnbr_fd.c
+< -rw-r--r--  1 jmontija  2015_paris    959 Mar  2 17:31 ft_putnbr.c
+< -rw-r--r--  1 jmontija  2015_paris   1006 Mar  2 17:31 ft_putendl_fd.c
+< -rw-r--r--  1 jmontija  2015_paris    969 Mar  2 17:31 ft_putendl.c
+< -rw-r--r--  1 jmontija  2015_paris    970 Mar  2 17:31 ft_putchar_fd.c
+< -rw-r--r--  1 jmontija  2015_paris    962 Mar  2 17:31 ft_putchar.c
+< -rw-r--r--  1 jmontija  2015_paris   1133 Mar  2 17:31 ft_power.c
+< -rw-r--r--  1 jmontija  2015_paris   1104 Mar  2 17:31 ft_memset.c
+< -rw-r--r--  1 jmontija  2015_paris   1224 Mar  2 17:31 ft_memmove.c
+< -rw-r--r--  1 jmontija  2015_paris    984 Mar  2 17:31 ft_memdel.c
+< -rw-r--r--  1 jmontija  2015_paris   1188 Mar  2 17:31 ft_memcpy.c
+< -rw-r--r--  1 jmontija  2015_paris   1195 Mar  2 17:31 ft_memcmp.c
+< -rw-r--r--  1 jmontija  2015_paris   1133 Mar  2 17:31 ft_memchr.c
+< -rw-r--r--  1 jmontija  2015_paris   1351 Mar  2 17:31 ft_memccpy.c
+< -rw-r--r--  1 jmontija  2015_paris   1099 Mar  2 17:31 ft_memalloc.c
+< -rw-r--r--  1 jmontija  2015_paris   1384 Mar  2 17:31 ft_lstnew.c
+< -rw-r--r--  1 jmontija  2015_paris   1185 Mar  2 17:31 ft_lstmap.c
+< -rw-r--r--  1 jmontija  2015_paris   1057 Mar  2 17:31 ft_lstiter.c
+< -rw-r--r--  1 jmontija  2015_paris   1081 Mar  2 17:31 ft_lstdelone.c
+< -rw-r--r--  1 jmontija  2015_paris   1080 Mar  2 17:31 ft_lstdel.c
+< -rw-r--r--  1 jmontija  2015_paris   1069 Mar  2 17:31 ft_lstadd.c
+< -rw-r--r--  1 jmontija  2015_paris   1271 Mar  2 17:31 ft_len_nospace.c
+< -rwxr-xr-x  1 jmontija  2015_paris   1414 Mar  2 17:31 ft_itoa.c
+< -rw-r--r--  1 jmontija  2015_paris   1055 Mar  2 17:31 ft_isspace.c
+< -rw-r--r--  1 jmontija  2015_paris   1022 Mar  2 17:31 ft_ispunct.c
+< -rw-r--r--  1 jmontija  2015_paris    998 Mar  2 17:31 ft_isprint.c
+< -rw-r--r--  1 jmontija  2015_paris    104 Mar  2 17:31 ft_ismaj.c
+< -rw-r--r--  1 jmontija  2015_paris    999 Mar  2 17:31 ft_isdigit.c
+< -rw-r--r--  1 jmontija  2015_paris    997 Mar  2 17:31 ft_isascii.c
+< -rwxr-xr-x  1 jmontija  2015_paris   1027 Mar  2 17:31 ft_isalpha.c
+< -rw-r--r--  1 jmontija  2015_paris   1055 Mar  2 17:31 ft_isalnum.c
+< -rw-r--r--  1 jmontija  2015_paris    970 Mar  2 17:31 ft_bzero.c
+< -rw-r--r--  1 jmontija  2015_paris   1249 Mar  2 17:31 ft_atoi.c
+583,607c544,582
+< drwxr-xr-x  2 jmontija  2015_paris   4096 Mar  2 17:31 includes
+< -rw-r--r--  1 jmontija  2015_paris   1214 Mar  2 17:31 ft_wordnb.c
+< -rw-r--r--  1 jmontija  2015_paris    990 Mar  2 17:31 ft_toupper.c
+< -rw-r--r--  1 jmontija  2015_paris    990 Mar  2 17:31 ft_tolower.c
+< -rw-r--r--  1 jmontija  2015_paris   1328 Mar  2 17:31 ft_strtrim.c
+< -rw-r--r--  1 jmontija  2015_paris   1118 Mar  2 17:31 ft_strsub.c
+< -rw-r--r--  1 jmontija  2015_paris   1009 Mar  2 17:31 ft_strstr.c
+< -rw-r--r--  1 jmontija  2015_paris   2203 Mar  2 17:31 ft_strsplit.c
+< -rw-r--r--  1 jmontija  2015_paris   1145 Mar  2 17:31 ft_strrchr.c
+< -rw-r--r--  1 jmontija  2015_paris   1230 Mar  2 17:31 ft_strnstr.c
+< -rw-r--r--  1 jmontija  2015_paris    978 Mar  2 17:31 ft_strnew.c
+< -rw-r--r--  1 jmontija  2015_paris   1040 Mar  2 17:31 ft_strnequ.c
+< -rw-r--r--  1 jmontija  2015_paris   1151 Mar  2 17:31 ft_strncpy.c
+< -rwxr-xr-x  1 jmontija  2015_paris   1154 Mar  2 17:31 ft_strncmp.c
+< -rw-r--r--  1 jmontija  2015_paris   1127 Mar  2 17:31 ft_strncat.c
+< -rw-r--r--  1 jmontija  2015_paris   1186 Mar  2 17:31 ft_strmapi.c
+< -rw-r--r--  1 jmontija  2015_paris   1158 Mar  2 17:31 ft_strmap.c
+< -rw-r--r--  1 jmontija  2015_paris   1010 Mar  2 17:31 ft_strlen.c
+< -rw-r--r--  1 jmontija  2015_paris   1219 Mar  2 17:31 ft_strlcat.c
+< -rw-r--r--  1 jmontija  2015_paris   1167 Mar  2 17:31 ft_strjoin.c
+< -rw-r--r--  1 jmontija  2015_paris   1055 Mar  2 17:31 ft_striteri.c
+< -rw-r--r--  1 jmontija  2015_paris   1028 Mar  2 17:31 ft_striter.c
+< -rw-r--r--  1 jmontija  2015_paris   1025 Mar  2 17:31 ft_strequ.c
+< -rw-r--r--  1 jmontija  2015_paris   1161 Mar  2 17:31 ft_strdup.c
+< -rw-r--r--  1 jmontija  2015_paris    984 Mar  2 17:31 ft_strdel.c
+---
+> -rw-r--r--  1 jmontija  2015_paris   1249 Mar  2 17:31 ft_atoi.c
+> -rw-r--r--  1 jmontija  2015_paris    970 Mar  2 17:31 ft_bzero.c
+> -rw-r--r--  1 jmontija  2015_paris   1055 Mar  2 17:31 ft_isalnum.c
+> -rwxr-xr-x  1 jmontija  2015_paris   1027 Mar  2 17:31 ft_isalpha.c
+> -rw-r--r--  1 jmontija  2015_paris    997 Mar  2 17:31 ft_isascii.c
+> -rw-r--r--  1 jmontija  2015_paris    999 Mar  2 17:31 ft_isdigit.c
+> -rw-r--r--  1 jmontija  2015_paris    104 Mar  2 17:31 ft_ismaj.c
+> -rw-r--r--  1 jmontija  2015_paris    998 Mar  2 17:31 ft_isprint.c
+> -rw-r--r--  1 jmontija  2015_paris   1022 Mar  2 17:31 ft_ispunct.c
+> -rw-r--r--  1 jmontija  2015_paris   1055 Mar  2 17:31 ft_isspace.c
+> -rwxr-xr-x  1 jmontija  2015_paris   1414 Mar  2 17:31 ft_itoa.c
+> -rw-r--r--  1 jmontija  2015_paris   1271 Mar  2 17:31 ft_len_nospace.c
+> -rw-r--r--  1 jmontija  2015_paris   1069 Mar  2 17:31 ft_lstadd.c
+> -rw-r--r--  1 jmontija  2015_paris   1080 Mar  2 17:31 ft_lstdel.c
+> -rw-r--r--  1 jmontija  2015_paris   1081 Mar  2 17:31 ft_lstdelone.c
+> -rw-r--r--  1 jmontija  2015_paris   1057 Mar  2 17:31 ft_lstiter.c
+> -rw-r--r--  1 jmontija  2015_paris   1185 Mar  2 17:31 ft_lstmap.c
+> -rw-r--r--  1 jmontija  2015_paris   1384 Mar  2 17:31 ft_lstnew.c
+> -rw-r--r--  1 jmontija  2015_paris   1099 Mar  2 17:31 ft_memalloc.c
+> -rw-r--r--  1 jmontija  2015_paris   1351 Mar  2 17:31 ft_memccpy.c
+> -rw-r--r--  1 jmontija  2015_paris   1133 Mar  2 17:31 ft_memchr.c
+> -rw-r--r--  1 jmontija  2015_paris   1195 Mar  2 17:31 ft_memcmp.c
+> -rw-r--r--  1 jmontija  2015_paris   1188 Mar  2 17:31 ft_memcpy.c
+> -rw-r--r--  1 jmontija  2015_paris    984 Mar  2 17:31 ft_memdel.c
+> -rw-r--r--  1 jmontija  2015_paris   1224 Mar  2 17:31 ft_memmove.c
+> -rw-r--r--  1 jmontija  2015_paris   1104 Mar  2 17:31 ft_memset.c
+> -rw-r--r--  1 jmontija  2015_paris   1133 Mar  2 17:31 ft_power.c
+> -rw-r--r--  1 jmontija  2015_paris    962 Mar  2 17:31 ft_putchar.c
+> -rw-r--r--  1 jmontija  2015_paris    970 Mar  2 17:31 ft_putchar_fd.c
+> -rw-r--r--  1 jmontija  2015_paris    969 Mar  2 17:31 ft_putendl.c
+> -rw-r--r--  1 jmontija  2015_paris   1006 Mar  2 17:31 ft_putendl_fd.c
+> -rw-r--r--  1 jmontija  2015_paris    959 Mar  2 17:31 ft_putnbr.c
+> -rw-r--r--  1 jmontija  2015_paris   1146 Mar  2 17:31 ft_putnbr_fd.c
+> -rw-r--r--  1 jmontija  2015_paris    967 Mar  2 17:31 ft_putstr.c
+> -rw-r--r--  1 jmontija  2015_paris    995 Mar  2 17:31 ft_putstr_fd.c
+> -rw-r--r--  1 jmontija  2015_paris   1003 Mar  2 17:31 ft_strcat.c
+> -rw-r--r--  1 jmontija  2015_paris   1154 Mar  2 17:31 ft_strchr.c
+> -rw-r--r--  1 jmontija  2015_paris    977 Mar  2 17:31 ft_strclr.c
+> -rwxr-xr-x  1 jmontija  2015_paris   1100 Mar  2 17:31 ft_strcmp.c
+608a584,608
+> -rw-r--r--  1 jmontija  2015_paris    984 Mar  2 17:31 ft_strdel.c
+> -rw-r--r--  1 jmontija  2015_paris   1161 Mar  2 17:31 ft_strdup.c
+> -rw-r--r--  1 jmontija  2015_paris   1025 Mar  2 17:31 ft_strequ.c
+> -rw-r--r--  1 jmontija  2015_paris   1028 Mar  2 17:31 ft_striter.c
+> -rw-r--r--  1 jmontija  2015_paris   1055 Mar  2 17:31 ft_striteri.c
+> -rw-r--r--  1 jmontija  2015_paris   1167 Mar  2 17:31 ft_strjoin.c
+> -rw-r--r--  1 jmontija  2015_paris   1219 Mar  2 17:31 ft_strlcat.c
+> -rw-r--r--  1 jmontija  2015_paris   1010 Mar  2 17:31 ft_strlen.c
+> -rw-r--r--  1 jmontija  2015_paris   1158 Mar  2 17:31 ft_strmap.c
+> -rw-r--r--  1 jmontija  2015_paris   1186 Mar  2 17:31 ft_strmapi.c
+> -rw-r--r--  1 jmontija  2015_paris   1127 Mar  2 17:31 ft_strncat.c
+> -rwxr-xr-x  1 jmontija  2015_paris   1154 Mar  2 17:31 ft_strncmp.c
+> -rw-r--r--  1 jmontija  2015_paris   1151 Mar  2 17:31 ft_strncpy.c
+> -rw-r--r--  1 jmontija  2015_paris   1040 Mar  2 17:31 ft_strnequ.c
+> -rw-r--r--  1 jmontija  2015_paris    978 Mar  2 17:31 ft_strnew.c
+> -rw-r--r--  1 jmontija  2015_paris   1230 Mar  2 17:31 ft_strnstr.c
+> -rw-r--r--  1 jmontija  2015_paris   1145 Mar  2 17:31 ft_strrchr.c
+> -rw-r--r--  1 jmontija  2015_paris   2203 Mar  2 17:31 ft_strsplit.c
+> -rw-r--r--  1 jmontija  2015_paris   1009 Mar  2 17:31 ft_strstr.c
+> -rw-r--r--  1 jmontija  2015_paris   1118 Mar  2 17:31 ft_strsub.c
+> -rw-r--r--  1 jmontija  2015_paris   1328 Mar  2 17:31 ft_strtrim.c
+> -rw-r--r--  1 jmontija  2015_paris    990 Mar  2 17:31 ft_tolower.c
+> -rw-r--r--  1 jmontija  2015_paris    990 Mar  2 17:31 ft_toupper.c
+> -rw-r--r--  1 jmontija  2015_paris   1214 Mar  2 17:31 ft_wordnb.c
+> drwxr-xr-x  2 jmontija  2015_paris   4096 Mar  2 17:31 includes
+610,627c610,614
+< -rw-r--r--  1 jmontija  2015_paris    740 Mar  2 20:33 ft_strcat.o
+< -rw-r--r--  1 jmontija  2015_paris    748 Mar  2 20:33 ft_putstr_fd.o
+< -rw-r--r--  1 jmontija  2015_paris    668 Mar  2 20:33 ft_putstr.o
+< -rw-r--r--  1 jmontija  2015_paris    816 Mar  2 20:33 ft_putnbr_fd.o
+< -rw-r--r--  1 jmontija  2015_paris    668 Mar  2 20:33 ft_putnbr.o
+< -rw-r--r--  1 jmontija  2015_paris    728 Mar  2 20:33 ft_putendl_fd.o
+< -rw-r--r--  1 jmontija  2015_paris    668 Mar  2 20:33 ft_putendl.o
+< -rw-r--r--  1 jmontija  2015_paris    688 Mar  2 20:33 ft_putchar_fd.o
+< -rw-r--r--  1 jmontija  2015_paris    676 Mar  2 20:33 ft_putchar.o
+< -rw-r--r--  1 jmontija  2015_paris    724 Mar  2 20:33 ft_power.o
+< -rw-r--r--  1 jmontija  2015_paris    684 Mar  2 20:33 ft_memset.o
+< -rw-r--r--  1 jmontija  2015_paris    824 Mar  2 20:33 ft_memmove.o
+< -rw-r--r--  1 jmontija  2015_paris    700 Mar  2 20:33 ft_memcpy.o
+< -rw-r--r--  1 jmontija  2015_paris    748 Mar  2 20:33 ft_memcmp.o
+< -rw-r--r--  1 jmontija  2015_paris    724 Mar  2 20:33 ft_memchr.o
+< -rw-r--r--  1 jmontija  2015_paris    872 Mar  2 20:33 ft_memccpy.o
+< -rw-r--r--  1 jmontija  2015_paris    780 Mar  2 20:33 ft_memalloc.o
+< -rw-r--r--  1 jmontija  2015_paris   1000 Mar  2 20:33 ft_len_nospace.o
+---
+> -rw-r--r--  1 jmontija  2015_paris    712 Mar  2 20:33 ft_isalnum.o
+> -rw-r--r--  1 jmontija  2015_paris    688 Mar  2 20:33 ft_isalpha.o
+> -rw-r--r--  1 jmontija  2015_paris    664 Mar  2 20:33 ft_isascii.o
+> -rw-r--r--  1 jmontija  2015_paris    664 Mar  2 20:33 ft_isdigit.o
+> -rw-r--r--  1 jmontija  2015_paris    664 Mar  2 20:33 ft_isprint.o
+630d616
+< -rw-r--r--  1 jmontija  2015_paris    664 Mar  2 20:33 ft_isprint.o
+632,636c618,643
+< -rw-r--r--  1 jmontija  2015_paris    664 Mar  2 20:33 ft_isdigit.o
+< -rw-r--r--  1 jmontija  2015_paris    664 Mar  2 20:33 ft_isascii.o
+< -rw-r--r--  1 jmontija  2015_paris    688 Mar  2 20:33 ft_isalpha.o
+< -rw-r--r--  1 jmontija  2015_paris    712 Mar  2 20:33 ft_isalnum.o
+< -rw-r--r--  1 jmontija  2015_paris    656 Mar  2 20:33 ft_toupper.o
+---
+> -rw-r--r--  1 jmontija  2015_paris    724 Mar  2 20:33 ft_power.o
+> -rw-r--r--  1 jmontija  2015_paris   1000 Mar  2 20:33 ft_len_nospace.o
+> -rw-r--r--  1 jmontija  2015_paris    780 Mar  2 20:33 ft_memalloc.o
+> -rw-r--r--  1 jmontija  2015_paris    872 Mar  2 20:33 ft_memccpy.o
+> -rw-r--r--  1 jmontija  2015_paris    724 Mar  2 20:33 ft_memchr.o
+> -rw-r--r--  1 jmontija  2015_paris    748 Mar  2 20:33 ft_memcmp.o
+> -rw-r--r--  1 jmontija  2015_paris    700 Mar  2 20:33 ft_memcpy.o
+> -rw-r--r--  1 jmontija  2015_paris    824 Mar  2 20:33 ft_memmove.o
+> -rw-r--r--  1 jmontija  2015_paris    684 Mar  2 20:33 ft_memset.o
+> -rw-r--r--  1 jmontija  2015_paris    676 Mar  2 20:33 ft_putchar.o
+> -rw-r--r--  1 jmontija  2015_paris    688 Mar  2 20:33 ft_putchar_fd.o
+> -rw-r--r--  1 jmontija  2015_paris    668 Mar  2 20:33 ft_putendl.o
+> -rw-r--r--  1 jmontija  2015_paris    728 Mar  2 20:33 ft_putendl_fd.o
+> -rw-r--r--  1 jmontija  2015_paris    668 Mar  2 20:33 ft_putnbr.o
+> -rw-r--r--  1 jmontija  2015_paris    816 Mar  2 20:33 ft_putnbr_fd.o
+> -rw-r--r--  1 jmontija  2015_paris    668 Mar  2 20:33 ft_putstr.o
+> -rw-r--r--  1 jmontija  2015_paris    748 Mar  2 20:33 ft_putstr_fd.o
+> -rw-r--r--  1 jmontija  2015_paris    740 Mar  2 20:33 ft_strcat.o
+> -rw-r--r--  1 jmontija  2015_paris    772 Mar  2 20:33 ft_strcmp.o
+> -rw-r--r--  1 jmontija  2015_paris    700 Mar  2 20:33 ft_strcpy.o
+> -rw-r--r--  1 jmontija  2015_paris    840 Mar  2 20:33 ft_strdup.o
+> -rw-r--r--  1 jmontija  2015_paris    728 Mar  2 20:33 ft_strequ.o
+> -rw-r--r--  1 jmontija  2015_paris    668 Mar  2 20:33 ft_strlen.o
+> -rw-r--r--  1 jmontija  2015_paris    808 Mar  2 20:33 ft_strncat.o
+> -rw-r--r--  1 jmontija  2015_paris    848 Mar  2 20:33 ft_strncmp.o
+> -rw-r--r--  1 jmontija  2015_paris    740 Mar  2 20:33 ft_strnequ.o
+638,642c645,646
+< -rw-r--r--  1 jmontija  2015_paris   1204 Mar  2 20:33 ft_strtrim.o
+< -rw-r--r--  1 jmontija  2015_paris    740 Mar  2 20:33 ft_strstr.o
+< -rw-r--r--  1 jmontija  2015_paris   1876 Mar  2 20:33 ft_strsplit.o
+< -rw-r--r--  1 jmontija  2015_paris    800 Mar  2 20:33 ft_strrchr.o
+< -rw-r--r--  1 jmontija  2015_paris    908 Mar  2 20:33 ft_strnstr.o
+---
+> -rw-r--r--  1 jmontija  2015_paris    656 Mar  2 20:33 ft_toupper.o
+> -rw-r--r--  1 jmontija  2015_paris    684 Mar  2 20:33 ft_memdel.o
+644,656d647
+< -rw-r--r--  1 jmontija  2015_paris    740 Mar  2 20:33 ft_strnequ.o
+< -rw-r--r--  1 jmontija  2015_paris    808 Mar  2 20:33 ft_strncpy.o
+< -rw-r--r--  1 jmontija  2015_paris    848 Mar  2 20:33 ft_strncmp.o
+< -rw-r--r--  1 jmontija  2015_paris    808 Mar  2 20:33 ft_strncat.o
+< -rw-r--r--  1 jmontija  2015_paris    868 Mar  2 20:33 ft_strmapi.o
+< -rw-r--r--  1 jmontija  2015_paris    860 Mar  2 20:33 ft_strmap.o
+< -rw-r--r--  1 jmontija  2015_paris    668 Mar  2 20:33 ft_strlen.o
+< -rw-r--r--  1 jmontija  2015_paris    928 Mar  2 20:33 ft_strlcat.o
+< -rw-r--r--  1 jmontija  2015_paris    916 Mar  2 20:33 ft_strjoin.o
+< -rw-r--r--  1 jmontija  2015_paris    736 Mar  2 20:33 ft_striteri.o
+< -rw-r--r--  1 jmontija  2015_paris    728 Mar  2 20:33 ft_striter.o
+< -rw-r--r--  1 jmontija  2015_paris    728 Mar  2 20:33 ft_strequ.o
+< -rw-r--r--  1 jmontija  2015_paris    840 Mar  2 20:33 ft_strdup.o
+658,659d648
+< -rw-r--r--  1 jmontija  2015_paris    700 Mar  2 20:33 ft_strcpy.o
+< -rw-r--r--  1 jmontija  2015_paris    772 Mar  2 20:33 ft_strcmp.o
+660a650,657
+> -rw-r--r--  1 jmontija  2015_paris    728 Mar  2 20:33 ft_striter.o
+> -rw-r--r--  1 jmontija  2015_paris    736 Mar  2 20:33 ft_striteri.o
+> -rw-r--r--  1 jmontija  2015_paris    860 Mar  2 20:33 ft_strmap.o
+> -rw-r--r--  1 jmontija  2015_paris    868 Mar  2 20:33 ft_strmapi.o
+> -rw-r--r--  1 jmontija  2015_paris    916 Mar  2 20:33 ft_strjoin.o
+> -rw-r--r--  1 jmontija  2015_paris   1204 Mar  2 20:33 ft_strtrim.o
+> -rw-r--r--  1 jmontija  2015_paris   1876 Mar  2 20:33 ft_strsplit.o
+> -rw-r--r--  1 jmontija  2015_paris   1028 Mar  2 20:33 ft_atoi.o
+662c659,663
+< -rw-r--r--  1 jmontija  2015_paris    684 Mar  2 20:33 ft_memdel.o
+---
+> -rw-r--r--  1 jmontija  2015_paris    928 Mar  2 20:33 ft_strlcat.o
+> -rw-r--r--  1 jmontija  2015_paris    808 Mar  2 20:33 ft_strncpy.o
+> -rw-r--r--  1 jmontija  2015_paris    800 Mar  2 20:33 ft_strrchr.o
+> -rw-r--r--  1 jmontija  2015_paris    740 Mar  2 20:33 ft_strstr.o
+> -rw-r--r--  1 jmontija  2015_paris    908 Mar  2 20:33 ft_strnstr.o
+664,665d664
+< -rw-r--r--  1 jmontija  2015_paris   1028 Mar  2 20:33 ft_atoi.o
+< -rw-r--r--  1 jmontija  2015_paris    900 Mar  2 20:33 ft_wordnb.o
+668,669d666
+< -rw-r--r--  1 jmontija  2015_paris    772 Mar  2 20:33 ft_lstmap.o
+< -rw-r--r--  1 jmontija  2015_paris    688 Mar  2 20:33 ft_lstiter.o
+672a670,672
+> -rw-r--r--  1 jmontija  2015_paris    688 Mar  2 20:33 ft_lstiter.o
+> -rw-r--r--  1 jmontija  2015_paris    772 Mar  2 20:33 ft_lstmap.o
+> -rw-r--r--  1 jmontija  2015_paris    900 Mar  2 20:33 ft_wordnb.o
+679d678
+< -rw-r--r--  1 jmontija  2015_paris  3948 Mar  2 17:31 libft.h
+680a680
+> -rw-r--r--  1 jmontija  2015_paris  3948 Mar  2 17:31 libft.h
+685d684
+< -rw-r--r--  1 jmontija  2015_paris   728 Mar  2 20:46 main.o
+687,688c686,689
+< -rw-r--r--  1 jmontija  2015_paris  3288 Mar  2 20:46 stuff_files.o
+< -rw-r--r--  1 jmontija  2015_paris  2268 Mar  2 20:46 sort_arg.o
+---
+> -rw-r--r--  1 jmontija  2015_paris   728 Mar  2 20:46 main.o
+> -rw-r--r--  1 jmontija  2015_paris  3132 Mar  2 20:46 manager.o
+> -rw-r--r--  1 jmontija  2015_paris  2056 Mar  2 20:46 lst_lib.o
+> -rw-r--r--  1 jmontija  2015_paris  2416 Mar  2 20:46 launcher.o
+690d690
+< -rw-r--r--  1 jmontija  2015_paris  1480 Mar  2 20:46 organize_files.o
+691a692,694
+> -rw-r--r--  1 jmontija  2015_paris  1480 Mar  2 20:46 organize_files.o
+> -rw-r--r--  1 jmontija  2015_paris  2268 Mar  2 20:46 sort_arg.o
+> -rw-r--r--  1 jmontija  2015_paris  3288 Mar  2 20:46 stuff_files.o
+694,696d696
+< -rw-r--r--  1 jmontija  2015_paris  3132 Mar  2 20:46 manager.o
+< -rw-r--r--  1 jmontija  2015_paris  2056 Mar  2 20:46 lst_lib.o
+< -rw-r--r--  1 jmontija  2015_paris  2416 Mar  2 20:46 launcher.o
