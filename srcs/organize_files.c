@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 05:18:05 by jmontija          #+#    #+#             */
-/*   Updated: 2016/03/02 19:07:42 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/03/02 20:00:42 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	delete_files(t_group *grp)
 {
 	t_dir	*file;
-	//t_dir *trash = NULL;
+	t_dir	*trash;
 
 	file = grp->first_dir;
 	while (file != NULL)
@@ -31,9 +31,9 @@ void	delete_files(t_group *grp)
 		file->size = 0;
 		file->size_min = -1;
 		file->blocks = 0;
-		//trash = file;
+		trash = file;
+		ft_memdel((void *)trash);
 		file = file->next;
-		//ft_memdel((void *)trash);
 	}
 	grp->first_dir = NULL;
 	grp->curr_first_dir = NULL;

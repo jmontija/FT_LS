@@ -1,0 +1,218 @@
+284,286c284,286
+< lrwxr-xr-x  1 root  admin    24 Sep  8 17:40 Sparkle -> Versions/Current/Sparkle
+< lrwxr-xr-x  1 root  admin    26 Sep  8 17:40 Resources -> Versions/Current/Resources
+< lrwxr-xr-x  1 root  admin    24 Sep  8 17:40 Headers -> Versions/Current/Headers
+---
+> lrwxr-xr-x@ 1 root  admin    24 Sep  8 17:40 Sparkle -> Versions/Current/Sparkle
+> lrwxr-xr-x@ 1 root  admin    26 Sep  8 17:40 Resources -> Versions/Current/Resources
+> lrwxr-xr-x@ 1 root  admin    24 Sep  8 17:40 Headers -> Versions/Current/Headers
+294c294
+< lrwxr-xr-x  1 root  admin     1 Sep  8 17:40 Current -> A
+---
+> lrwxr-xr-x@ 1 root  admin     1 Sep  8 17:40 Current -> A
+6149a6150
+> /Applications/Thingz Arduino.app/Contents/Resources/Java/examples/BoutonAllumeLed:
+6150a6152
+> /Applications/Thingz Arduino.app/Contents/Resources/Java/examples/Clignottement:
+6151a6154
+> /Applications/Thingz Arduino.app/Contents/Resources/Java/examples/HappyBirthday:
+10744,10748c10747,10751
+< lrwxr-xr-x  1 root  admin   24 Sep 22 10:54 Sparkle -> Versions/Current/Sparkle
+< lrwxr-xr-x  1 root  admin   26 Sep 22 10:54 Resources -> Versions/Current/Resources
+< lrwxr-xr-x  1 root  admin   31 Sep 22 10:54 PrivateHeaders -> Versions/Current/PrivateHeaders
+< lrwxr-xr-x  1 root  admin   24 Sep 22 10:54 Modules -> Versions/Current/Modules
+< lrwxr-xr-x  1 root  admin   24 Sep 22 10:54 Headers -> Versions/Current/Headers
+---
+> lrwxr-xr-x@ 1 root  admin   24 Sep 22 10:54 Sparkle -> Versions/Current/Sparkle
+> lrwxr-xr-x@ 1 root  admin   26 Sep 22 10:54 Resources -> Versions/Current/Resources
+> lrwxr-xr-x@ 1 root  admin   31 Sep 22 10:54 PrivateHeaders -> Versions/Current/PrivateHeaders
+> lrwxr-xr-x@ 1 root  admin   24 Sep 22 10:54 Modules -> Versions/Current/Modules
+> lrwxr-xr-x@ 1 root  admin   24 Sep 22 10:54 Headers -> Versions/Current/Headers
+10755c10758
+< lrwxr-xr-x  1 root  admin    1 Sep 22 10:54 Current -> A
+---
+> lrwxr-xr-x@ 1 root  admin    1 Sep 22 10:54 Current -> A
+10835,10836c10838,10839
+< lrwxr-xr-x   1 root  admin    11 Sep 22 10:54 pt.lproj -> pt_BR.lproj
+< lrwxr-xr-x   1 root  admin     8 Sep 22 10:54 fr_CA.lproj -> fr.lproj
+---
+> lrwxr-xr-x@  1 root  admin    11 Sep 22 10:54 pt.lproj -> pt_BR.lproj
+> lrwxr-xr-x@  1 root  admin     8 Sep 22 10:54 fr_CA.lproj -> fr.lproj
+12802,12804c12805,12807
+< lrwxr-xr-x  1 root  admin   24 Dec  8 22:38 Sparkle -> Versions/Current/Sparkle
+< lrwxr-xr-x  1 root  admin   26 Dec  8 22:38 Resources -> Versions/Current/Resources
+< lrwxr-xr-x  1 root  admin   24 Dec  8 22:38 Headers -> Versions/Current/Headers
+---
+> lrwxr-xr-x@ 1 root  admin   24 Dec  8 22:38 Sparkle -> Versions/Current/Sparkle
+> lrwxr-xr-x@ 1 root  admin   26 Dec  8 22:38 Resources -> Versions/Current/Resources
+> lrwxr-xr-x@ 1 root  admin   24 Dec  8 22:38 Headers -> Versions/Current/Headers
+12811c12814
+< lrwxr-xr-x  1 root  admin    1 Dec  8 22:38 Current -> A
+---
+> lrwxr-xr-x@ 1 root  admin    1 Dec  8 22:38 Current -> A
+888743c888746
+< drwxr-xr-x  5 root  admin  170 Aug  7 13:25 MacOSX10.11.sdk
+---
+> drwxr-xr-x  5 root  admin  170 Aug  7  2017 MacOSX10.11.sdk
+888751c888754
+< drwxr-xr-x  5 root  admin   170 Aug  7 13:25 .
+---
+> drwxr-xr-x  5 root  admin   170 Aug  7  2017 .
+888757c888760
+< drwxr-xr-x  5 root  admin  170 Aug  7 13:25 ..
+---
+> drwxr-xr-x  5 root  admin  170 Aug  7  2017 ..
+912017c912020
+< drwxr-xr-x    5 root  admin   170 Aug  7 13:25 ..
+---
+> drwxr-xr-x    5 root  admin   170 Aug  7  2017 ..
+967580,967583c967583,967586
+< lrwxr-xr-x  1 root  admin   25 Dec 29 15:18 Squirrel -> Versions/Current/Squirrel
+< lrwxr-xr-x  1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
+< lrwxr-xr-x  1 root  admin   24 Dec 29 15:18 Modules -> Versions/Current/Modules
+< lrwxr-xr-x  1 root  admin   24 Dec 29 15:18 Headers -> Versions/Current/Headers
+---
+> lrwxr-xr-x@ 1 root  admin   25 Dec 29 15:18 Squirrel -> Versions/Current/Squirrel
+> lrwxr-xr-x@ 1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
+> lrwxr-xr-x@ 1 root  admin   24 Dec 29 15:18 Modules -> Versions/Current/Modules
+> lrwxr-xr-x@ 1 root  admin   24 Dec 29 15:18 Headers -> Versions/Current/Headers
+967590c967593
+< lrwxr-xr-x  1 root  admin    1 Dec 29 15:18 Current -> A
+---
+> lrwxr-xr-x@ 1 root  admin    1 Dec 29 15:18 Current -> A
+967637,967640c967640,967643
+< lrwxr-xr-x  1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
+< lrwxr-xr-x  1 root  admin   30 Dec 29 15:18 ReactiveCocoa -> Versions/Current/ReactiveCocoa
+< lrwxr-xr-x  1 root  admin   24 Dec 29 15:18 Modules -> Versions/Current/Modules
+< lrwxr-xr-x  1 root  admin   24 Dec 29 15:18 Headers -> Versions/Current/Headers
+---
+> lrwxr-xr-x@ 1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
+> lrwxr-xr-x@ 1 root  admin   30 Dec 29 15:18 ReactiveCocoa -> Versions/Current/ReactiveCocoa
+> lrwxr-xr-x@ 1 root  admin   24 Dec 29 15:18 Modules -> Versions/Current/Modules
+> lrwxr-xr-x@ 1 root  admin   24 Dec 29 15:18 Headers -> Versions/Current/Headers
+967647c967650
+< lrwxr-xr-x  1 root  admin    1 Dec 29 15:18 Current -> A
+---
+> lrwxr-xr-x@ 1 root  admin    1 Dec 29 15:18 Current -> A
+967740,967743c967743,967746
+< lrwxr-xr-x  1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
+< lrwxr-xr-x  1 root  admin   24 Dec 29 15:18 Modules -> Versions/Current/Modules
+< lrwxr-xr-x  1 root  admin   23 Dec 29 15:18 Mantle -> Versions/Current/Mantle
+< lrwxr-xr-x  1 root  admin   24 Dec 29 15:18 Headers -> Versions/Current/Headers
+---
+> lrwxr-xr-x@ 1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
+> lrwxr-xr-x@ 1 root  admin   24 Dec 29 15:18 Modules -> Versions/Current/Modules
+> lrwxr-xr-x@ 1 root  admin   23 Dec 29 15:18 Mantle -> Versions/Current/Mantle
+> lrwxr-xr-x@ 1 root  admin   24 Dec 29 15:18 Headers -> Versions/Current/Headers
+967750c967753
+< lrwxr-xr-x  1 root  admin    1 Dec 29 15:18 Current -> A
+---
+> lrwxr-xr-x@ 1 root  admin    1 Dec 29 15:18 Current -> A
+967801,967803c967804,967806
+< lrwxr-xr-x  1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
+< lrwxr-xr-x  1 root  admin   26 Dec 29 15:18 Libraries -> Versions/Current/Libraries
+< lrwxr-xr-x  1 root  admin   35 Dec 29 15:18 Electron Framework -> Versions/Current/Electron Framework
+---
+> lrwxr-xr-x@ 1 root  admin   26 Dec 29 15:18 Resources -> Versions/Current/Resources
+> lrwxr-xr-x@ 1 root  admin   26 Dec 29 15:18 Libraries -> Versions/Current/Libraries
+> lrwxr-xr-x@ 1 root  admin   35 Dec 29 15:18 Electron Framework -> Versions/Current/Electron Framework
+967810c967813
+< lrwxr-xr-x  1 root  admin    1 Dec 29 15:18 Current -> A
+---
+> lrwxr-xr-x@ 1 root  admin    1 Dec 29 15:18 Current -> A
+968341c968344
+< lrwxr-xr-x  1 root  admin   20 Dec 29 15:18 mkdirp -> ../mkdirp/bin/cmd.js
+---
+> lrwxr-xr-x@ 1 root  admin   20 Dec 29 15:18 mkdirp -> ../mkdirp/bin/cmd.js
+968361c968364
+< lrwxr-xr-x  1 root  admin   16 Dec 29 15:18 asar -> ../asar/bin/asar
+---
+> lrwxr-xr-x@ 1 root  admin   16 Dec 29 15:18 asar -> ../asar/bin/asar
+968455,968456c968458,968459
+< lrwxr-xr-x  1 root  admin   16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
+< lrwxr-xr-x  1 root  admin   14 Dec 29 15:18 ncp -> ../ncp/bin/ncp
+---
+> lrwxr-xr-x@ 1 root  admin   16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
+> lrwxr-xr-x@ 1 root  admin   14 Dec 29 15:18 ncp -> ../ncp/bin/ncp
+968566c968569
+< lrwxr-xr-x  1 root  admin   16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
+---
+> lrwxr-xr-x@ 1 root  admin   16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
+969963c969966
+< lrwxr-xr-x   1 root  admin   21 Dec 29 15:18 window-size -> ../window-size/cli.js
+---
+> lrwxr-xr-x@  1 root  admin   21 Dec 29 15:18 window-size -> ../window-size/cli.js
+970080c970083
+< lrwxr-xr-x  1 root  admin   16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
+---
+> lrwxr-xr-x@ 1 root  admin   16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
+970188,970189c970191,970192
+< lrwxr-xr-x  1 root  admin   27 Dec 29 15:18 coffee -> ../coffee-script/bin/coffee
+< lrwxr-xr-x  1 root  admin   25 Dec 29 15:18 cake -> ../coffee-script/bin/cake
+---
+> lrwxr-xr-x@ 1 root  admin   27 Dec 29 15:18 coffee -> ../coffee-script/bin/coffee
+> lrwxr-xr-x@ 1 root  admin   25 Dec 29 15:18 cake -> ../coffee-script/bin/cake
+973783,973789c973786,973792
+< lrwxr-xr-x   1 root  admin    18 Dec 29 15:18 which -> ../which/bin/which
+< lrwxr-xr-x   1 root  admin    20 Dec 29 15:18 semver -> ../semver/bin/semver
+< lrwxr-xr-x   1 root  admin    16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
+< lrwxr-xr-x   1 root  admin    19 Dec 29 15:18 opener -> ../opener/opener.js
+< lrwxr-xr-x   1 root  admin    19 Dec 29 15:18 nopt -> ../nopt/bin/nopt.js
+< lrwxr-xr-x   1 root  admin    27 Dec 29 15:18 node-gyp -> ../node-gyp/bin/node-gyp.js
+< lrwxr-xr-x   1 root  admin    20 Dec 29 15:18 mkdirp -> ../mkdirp/bin/cmd.js
+---
+> lrwxr-xr-x@  1 root  admin    18 Dec 29 15:18 which -> ../which/bin/which
+> lrwxr-xr-x@  1 root  admin    20 Dec 29 15:18 semver -> ../semver/bin/semver
+> lrwxr-xr-x@  1 root  admin    16 Dec 29 15:18 rimraf -> ../rimraf/bin.js
+> lrwxr-xr-x@  1 root  admin    19 Dec 29 15:18 opener -> ../opener/opener.js
+> lrwxr-xr-x@  1 root  admin    19 Dec 29 15:18 nopt -> ../nopt/bin/nopt.js
+> lrwxr-xr-x@  1 root  admin    27 Dec 29 15:18 node-gyp -> ../node-gyp/bin/node-gyp.js
+> lrwxr-xr-x@  1 root  admin    20 Dec 29 15:18 mkdirp -> ../mkdirp/bin/cmd.js
+973795,973798c973798,973801
+< lrwxr-xr-x   1 root  admin   21 Dec 29 15:18 npm -> ../npm/bin/npm-cli.js
+< lrwxr-xr-x   1 root  admin   14 Dec 29 15:18 ncp -> ../ncp/bin/ncp
+< lrwxr-xr-x   1 root  admin   19 Dec 29 15:18 csonc -> ../season/bin/csonc
+< lrwxr-xr-x   1 root  admin   13 Dec 29 15:18 apm -> ../../bin/apm
+---
+> lrwxr-xr-x@  1 root  admin   21 Dec 29 15:18 npm -> ../npm/bin/npm-cli.js
+> lrwxr-xr-x@  1 root  admin   14 Dec 29 15:18 ncp -> ../ncp/bin/ncp
+> lrwxr-xr-x@  1 root  admin   19 Dec 29 15:18 csonc -> ../season/bin/csonc
+> lrwxr-xr-x@  1 root  admin   13 Dec 29 15:18 apm -> ../../bin/apm
+980090,980092c980093,980095
+< lrwxr-xr-x  1 root  admin   22 Dec 29 16:31 Skype -> Versions/Current/Skype
+< lrwxr-xr-x  1 root  admin   26 Dec 29 16:31 Resources -> Versions/Current/Resources
+< lrwxr-xr-x  1 root  admin   24 Dec 29 16:31 Headers -> Versions/Current/Headers
+---
+> lrwxr-xr-x@ 1 root  admin   22 Dec 29 16:31 Skype -> Versions/Current/Skype
+> lrwxr-xr-x@ 1 root  admin   26 Dec 29 16:31 Resources -> Versions/Current/Resources
+> lrwxr-xr-x@ 1 root  admin   24 Dec 29 16:31 Headers -> Versions/Current/Headers
+980099c980102
+< lrwxr-xr-x  1 root  admin    1 Dec 29 16:31 Current -> A
+---
+> lrwxr-xr-x@ 1 root  admin    1 Dec 29 16:31 Current -> A
+980135,980138c980138,980141
+< lrwxr-xr-x  1 root  admin   26 Dec 29 16:31 Resources -> Versions/Current/Resources
+< lrwxr-xr-x  1 root  admin   26 Dec 29 16:31 HockeySDK -> Versions/Current/HockeySDK
+< lrwxr-xr-x  1 root  admin   24 Dec 29 16:31 Headers -> Versions/Current/Headers
+< lrwxr-xr-x  1 root  admin   27 Dec 29 16:31 Frameworks -> Versions/Current/Frameworks
+---
+> lrwxr-xr-x@ 1 root  admin   26 Dec 29 16:31 Resources -> Versions/Current/Resources
+> lrwxr-xr-x@ 1 root  admin   26 Dec 29 16:31 HockeySDK -> Versions/Current/HockeySDK
+> lrwxr-xr-x@ 1 root  admin   24 Dec 29 16:31 Headers -> Versions/Current/Headers
+> lrwxr-xr-x@ 1 root  admin   27 Dec 29 16:31 Frameworks -> Versions/Current/Frameworks
+980145c980148
+< lrwxr-xr-x  1 root  admin    1 Dec 29 16:31 Current -> A
+---
+> lrwxr-xr-x@ 1 root  admin    1 Dec 29 16:31 Current -> A
+980432,980434c980435,980437
+< lrwxr-xr-x  1 root  admin   26 Dec 29 16:31 Resources -> Versions/Current/Resources
+< lrwxr-xr-x  1 root  admin   24 Dec 29 16:31 Headers -> Versions/Current/Headers
+< lrwxr-xr-x  1 root  admin   30 Dec 29 16:31 CrashReporter -> Versions/Current/CrashReporter
+---
+> lrwxr-xr-x@ 1 root  admin   26 Dec 29 16:31 Resources -> Versions/Current/Resources
+> lrwxr-xr-x@ 1 root  admin   24 Dec 29 16:31 Headers -> Versions/Current/Headers
+> lrwxr-xr-x@ 1 root  admin   30 Dec 29 16:31 CrashReporter -> Versions/Current/CrashReporter
+980441c980444
+< lrwxr-xr-x  1 root  admin    1 Dec 29 16:31 Current -> A
+---
+> lrwxr-xr-x@ 1 root  admin    1 Dec 29 16:31 Current -> A

@@ -6,34 +6,11 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 05:16:00 by jmontija          #+#    #+#             */
-/*   Updated: 2016/03/02 19:12:50 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/03/02 20:12:27 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-void	opt_f(t_dir *new, t_dir **first, t_dir **curr)
-{
-	if (*curr != NULL)
-		(*curr)->next = new;
-	else
-		*first = new;
-	*curr = new;
-}
-
-int		insert_first(t_dir *new, t_dir **first, t_dir *other)
-{
-	*first = new;
-	new->next = other;
-	return (1);
-}
-
-int		insert_mid(t_dir *new, t_dir *other, t_dir *last_other)
-{
-	last_other->next = new;
-	new->next = other;
-	return (2);
-}
 
 int		opt_1(t_dir *new, t_dir **first, t_dir **curr)
 {

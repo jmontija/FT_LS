@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   lst_lib.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julio <julio@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:19:30 by jmontija          #+#    #+#             */
-/*   Updated: 2016/02/09 06:17:05 by julio            ###   ########.fr       */
+/*   Updated: 2016/03/02 20:26:40 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+void	opt_f(t_dir *new, t_dir **first, t_dir **curr)
+{
+	if (*curr != NULL)
+		(*curr)->next = new;
+	else
+		*first = new;
+	*curr = new;
+}
+
+int		insert_first(t_dir *new, t_dir **first, t_dir *other)
+{
+	*first = new;
+	new->next = other;
+	return (1);
+}
+
+int		insert_mid(t_dir *new, t_dir *other, t_dir *last_other)
+{
+	last_other->next = new;
+	new->next = other;
+	return (2);
+}
 
 t_dir	*copy_file(t_dir *cpy)
 {
@@ -36,20 +59,12 @@ t_dir	*copy_file(t_dir *cpy)
 	return (new);
 }
 
-void	init_opt(t_group *grp)
-{
-	int i;
-
-	i = -1;
-	grp->options = (int *)malloc(sizeof(int) * 10);
-	while (++i < 10)
-		grp->options[i] = false;
-}
-
 t_group	*init_grp(void)
 {
-	t_group *grp;
+	t_group	*grp;
+	int		i;
 
+	i = -1;
 	grp = (t_group*)malloc(sizeof(t_group));
 	if (!(grp))
 		exit(0);
@@ -62,6 +77,8 @@ t_group	*init_grp(void)
 	grp->ismaj_min = false;
 	grp->root = (char **)malloc(sizeof(char *) * 1);
 	grp->root[0] = SDUP(".");
-	init_opt(grp);
+	grp->options = (int *)malloc(sizeof(int) * 10);
+	while (++i < 10)
+		grp->options[i] = false;
 	return (grp);
 }

@@ -6,13 +6,11 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 05:20:26 by jmontija          #+#    #+#             */
-/*   Updated: 2016/03/02 19:07:39 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/03/02 20:27:05 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-// penser a implementer !
 
 void	delete_dir(t_dir *trash)
 {
@@ -21,7 +19,6 @@ void	delete_dir(t_dir *trash)
 	tmp = NULL;
 	while (trash != NULL)
 	{
-		//printf("deleting -> %s\n", trash->name);
 		REMOVE(&trash->name);
 		REMOVE(&trash->rights);
 		REMOVE(&trash->last_stat);
@@ -34,11 +31,9 @@ void	delete_dir(t_dir *trash)
 		trash->blocks = 0;
 		trash->size_min = -1;
 		tmp = trash;
-		trash = trash->next;
 		ft_memdel((void *)tmp);
+		trash = trash->next;
 	}
-	//grp->dir_organize = NULL;
-	//grp->curr_dir = NULL;
 }
 
 t_dir	*init_dir(char *name, struct stat buf)

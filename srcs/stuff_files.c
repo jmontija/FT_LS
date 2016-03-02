@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 18:52:53 by jmontija          #+#    #+#             */
-/*   Updated: 2016/03/02 19:08:12 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/03/02 20:06:49 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ void	majmin_file(t_group *grp, t_dir **new, struct stat buf)
 
 t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 {
+	t_dir	*new;
 	struct passwd *usr;
 	struct group *grpid;
-	t_dir	*new;
 
 	usr = getpwuid(buf.st_uid);
 	grpid = getgrgid(buf.st_gid);

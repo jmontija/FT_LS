@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 19:12:18 by jmontija          #+#    #+#             */
-/*   Updated: 2016/03/02 19:15:47 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/03/02 20:30:19 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		arg_loop(int i, t_group *grp, int argc, char **argv)
 			if (!(directory = opendir(argv[i])) || grp->options[d] == true)
 			{
 				if ((ret = lstat(argv[i], &buf)) < 0)
-					is_error(argv[i], "is not an available directory");
+					is_error(argv[i], "is not an available files");
 				else
 					define_status(grp, argv[i], buf);
 			}

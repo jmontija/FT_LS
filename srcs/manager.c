@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 19:26:46 by jmontija          #+#    #+#             */
-/*   Updated: 2016/03/02 19:29:07 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/03/02 20:01:45 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ t_dir	*arg_organizer(int i, t_group *grp, int argc, char **argv)
 void	manage_dir(int i, t_group *grp, int argc, char **argv)
 {
 	t_dir	*curr_arg;
-	//t_dir	*trash;
+	t_dir	*trash;
 	char	**sub_dir;
 	int		j;
 
 	j = 0;
 	sub_dir = (char **)malloc(sizeof(char *) * 10000);
 	curr_arg = arg_organizer(i, grp, argc, argv);
-	//trash = curr_arg;
+	trash = curr_arg;
 	while (curr_arg != NULL)
 	{
 		j = file_organizer(grp, curr_arg, &sub_dir);
@@ -110,7 +110,7 @@ void	manage_dir(int i, t_group *grp, int argc, char **argv)
 		j = 0;
 		curr_arg = curr_arg->next;
 	}
-	//delete_dir(trash);
+	delete_dir(trash);
 	if (grp->diropen == false)
 		manage_dir(-1, grp, 1, grp->root);
 }

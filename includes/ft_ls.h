@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 06:13:10 by jmontija          #+#    #+#             */
-/*   Updated: 2016/03/02 19:27:47 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/03/02 19:44:38 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void		delete_dir(t_dir *trash);
 void		delete_files(t_group *grp);
 void	 	sort_launcher(t_group *grp, t_dir **first);
 int			arg_loop(int i, t_group *grp, int argc, char **argv);
+int			insert_first(t_dir *new, t_dir **first, t_dir *other);
+int			insert_mid(t_dir *new, t_dir *other, t_dir *last_other);
 int			opt_1(t_dir	*new, t_dir **first, t_dir **curr);
 void		opt_l(t_group *grp, t_dir *file);
 void		opt_f(t_dir *new, t_dir **first, t_dir **curr);
