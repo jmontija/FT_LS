@@ -6,7 +6,7 @@
 /*   By: jmontija <jmontija@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 01:31:53 by jmontija          #+#    #+#             */
-/*   Updated: 2016/03/02 19:47:25 by jmontija         ###   ########.fr       */
+/*   Updated: 2016/03/08 22:31:50 by jmontija         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		isvalid_opt(t_group *grp, char opt)
 
 	adjust_opt(grp, opt);
 	i = -1;
-	ls_options = SDUP("adfglrRt");
+	ls_options = SDUP("-adfglrRt");
 	text = NEW(2);
 	text[0] = '-';
 	text[1] = opt;
