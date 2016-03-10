@@ -46,6 +46,7 @@ typedef struct		s_dir
 	char			*last_access;
 	char			*last_modif;
 	time_t			last_modif_int;
+	long			nano;
 	char			*uid;
 	char			*gid;
 	int				slink;
@@ -96,6 +97,7 @@ void				sort_launcher(t_group *grp, t_dir **first);
 int					arg_loop(int i, t_group *grp, int argc, char **argv);
 int					insert_first(t_dir *new, t_dir **first, t_dir *other);
 int					insert_mid(t_dir *new, t_dir *other, t_dir *last_other);
+int					opt_t(t_dir *new, t_dir **first, t_dir **curr);
 int					opt_1(t_dir	*new, t_dir **first, t_dir **curr);
 void				opt_l(t_group *grp, t_dir *file);
 void				opt_f(t_dir *new, t_dir **first, t_dir **curr);

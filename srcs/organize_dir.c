@@ -48,7 +48,8 @@ t_dir	*init_dir(char *name, struct stat buf)
 	new->rights = NULL;
 	new->last_stat = NULL;
 	new->last_access = NULL;
-	new->last_modif_int = buf.st_mtime;
+	new->last_modif_int = buf.st_mtimespec.tv_sec;
+	new->nano = buf.st_mtimespec.tv_nsec;
 	new->last_modif = manage_time(ctime(&buf.st_mtime));
 	new->uid = NULL;
 	new->gid = NULL;

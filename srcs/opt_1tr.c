@@ -45,10 +45,20 @@ int		opt_t(t_dir *new, t_dir **first, t_dir **curr)
 	if (*curr != NULL)
 	{
 		other = *first;
+		if (new->last_modif_int == other->last_modif_int)
+		{
+			if (new->nano > other->nano)
+				return (insert_first(new, first, other));
+		}
 		if (new->last_modif_int - other->last_modif_int > 0)
 			return (insert_first(new, first, other));
 		while (other != NULL)
 		{
+			if (new->last_modif_int == other->last_modif_int)
+			{
+				if (new->nano > other->nano)
+					return (insert_mid(new, other, last_other));
+			}
 			if (new->last_modif_int - other->last_modif_int > 0)
 				return (insert_mid(new, other, last_other));
 			last_other = other;

@@ -108,7 +108,8 @@ t_dir	*init_file(t_group *grp, char *file, struct stat buf)
 	new->rights = manage_rights(grp, buf);
 	new->last_stat = manage_time(ctime(&buf.st_ctime));
 	new->last_access = manage_time(ctime(&buf.st_atime));
-	new->last_modif_int = buf.st_mtime;
+	new->last_modif_int = buf.st_mtimespec.tv_sec;
+	new->nano = buf.st_mtimespec.tv_nsec;
 	new->last_modif = manage_time(ctime(&buf.st_mtime));
 	new->last_modif = display_years(buf, new->last_modif);
 	new->uid = SDUP(usr->pw_name);

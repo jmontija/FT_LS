@@ -1,0 +1,46 @@
+8159a8160
+> /usr/sbin/authserver:
+9227a9229
+> /usr/bin/wrapper.app:
+204740c204742
+< cr--r--r--   1 root      wheel        14,  15 Mar 10 21:59 io8logmt
+---
+> cr--r--r--   1 root      wheel        14,  19 Mar 10 21:59 io8logmt
+204757c204759
+< dr-xr-xr-x   3 root      wheel        4229 Mar 10 21:59 .
+---
+> dr-xr-xr-x   3 root      wheel           4229 Mar 10 21:59 .
+204762c204764
+< crw-rw-rw-   1 root      wheel        14,  19 Mar 10 21:59 io8log
+---
+> crw-rw-rw-   1 root      wheel        14,  18 Mar 10 21:59 io8log
+204772,204773c204774,204775
+< drwxr-xr-x  41 root      wheel        1462 Mar 10 22:01 ..
+< crw-rw-rw-   1 root      wheel        14,  16 Mar 10 22:01 io8logtemp
+---
+> drwxr-xr-x  41 root      wheel           1462 Mar 10 22:01 ..
+> crw-rw-rw-   1 root      wheel        14,  15 Mar 10 22:01 io8logtemp
+204775,204777c204777,204779
+< crw-rw-rw-   1 root      tty          15,   1 Mar 10 23:02 ptmx
+< crw--w----   1 jmontija  tty          16,   0 Mar 10 23:02 ttys000
+< crw-rw-rw-   1 root      wheel         3,   2 Mar 10 23:03 null
+---
+> crw-rw-rw-   1 root      tty          15,   1 Mar 10 23:04 ptmx
+> crw--w----   1 jmontija  tty          16,   0 Mar 10  2016 ttys000
+> crw-rw-rw-   1 root      wheel         3,   2 Mar 10  2016 null
+204780,204785c204782,204789
+< total 20676
+< dr--r--r--  1 root      wheel              0 Mar 10 21:59 3
+< crw--w----  1 jmontija  tty               16, 0 Mar 10 23:02 2
+< crw--w----  1 jmontija  tty               16, 0 Mar 10 23:02 0
+< -rw-r--r--  1 jmontija  2015_paris  10585769 Mar 10 23:04 1
+< ft_ls: /dev/fd/3 is not an available files
+---
+> total 20616
+> dr--r--r--  1 root      wheel              0 Mar 10 21:59 4
+> drw-r--r--  7 jmontija  2015_paris      4096 Mar 10 23:02 3
+> crw--w----  1 jmontija  tty          16,   0 Mar 10  2016 2
+> crw--w----  1 jmontija  tty          16,   0 Mar 10  2016 0
+> -rw-r--r--  1 jmontija  2015_paris  10551296 Mar 10  2016 1
+> 
+> /dev/fd/3:
